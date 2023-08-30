@@ -49,12 +49,15 @@ const Navbar = () => {
                         <GoBook size={30} className="absolute top-[10px] left-[10px]" />
                         <h1 className={styles.logo_name}>Sherlock</h1>
                     </div>
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-10">
+                        <Link className={`${styles.nav_menu} dark:before:bg-green-400`}>
+                            Gallery
+                        </Link>
                         <Link className={`${styles.nav_menu} dark:before:bg-green-400`}>
                             About Us
                         </Link>
                         <button
-                            className="text-lg px-3 py-2 rounded-md border" onClick={handleThemeSwitch}>
+                            className="" onClick={handleThemeSwitch}>
                             {theme === 'dark' ?
                                 <BsFillSunFill size={20} /> :
                                 <BsFillMoonStarsFill size={20} />}

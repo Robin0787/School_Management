@@ -1,9 +1,12 @@
+import Home_Banner from "../../Components/Home_Banner/Home_Banner";
+import Our_Classes from "../../Components/Our_Classes/Our_Classes";
 
 
 const Home = () => {
     return (
-        <section className="h-screen text-black dark:bg-[#0f172a] dark:text-white">
-            <h1 className="text-3xl text-center">Home</h1>
+        <section className="py-5">
+            <Home_Banner />
+            <Our_Classes />
         </section>
     );
 };
