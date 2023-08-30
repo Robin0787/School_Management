@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { BiSolidDownArrow } from 'react-icons/bi';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { GoBook } from 'react-icons/go';
+import { Link } from "react-router-dom";
 import Container from "../../../Components/Container";
 import styles from "./Navbar.module.css";
 
@@ -47,9 +47,12 @@ const Navbar = () => {
                     <div className="relative flex items-center gap-2 text-green-600 dark:text-green-400">
                         <GoBook size={50} />
                         <GoBook size={30} className="absolute top-[10px] left-[10px]" />
-                        <h1 className="text-3xl font-bold uppercase">Sherlock</h1>
+                        <h1 className={styles.logo_name}>Sherlock</h1>
                     </div>
-                    <div>
+                    <div className="flex items-center gap-5">
+                        <Link className={`${styles.nav_menu} dark:before:bg-green-400`}>
+                            About Us
+                        </Link>
                         <button
                             className="text-lg px-3 py-2 rounded-md border" onClick={handleThemeSwitch}>
                             {theme === 'dark' ?
@@ -59,17 +62,6 @@ const Navbar = () => {
                     </div>
                 </section>
             </Container>
-            <section className="border-t border-gray-200 dark:border-gray-700">
-                <Container>
-                    <nav className="text-gray-700 dark:text-gray-200">
-                        <div className={`${styles.nav_menu}`}>
-                            <button className={`text-[14px] uppercase font-[500] dark:before:bg-green-400 `}>Classes</button>
-                            <BiSolidDownArrow size={10} />
-                        </div>
-                    </nav>
-                </Container>
-            </section>
-
         </>
     );
 };

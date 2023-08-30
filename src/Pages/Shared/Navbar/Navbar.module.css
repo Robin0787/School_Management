@@ -1,19 +1,31 @@
+.logo_name {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.logo_name::selection {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(0, 219, 80);
+  background-color: transparent;
+}
+
 .nav_menu {
   position: relative;
-  padding: 12px 5px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  font-weight: 500;
+  padding: 5px 0;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .nav_menu::before {
   content: " ";
   position: absolute;
-  top: -2px;
+  bottom: 0;
   left: 0;
   background-color: rgb(34 197 94);
   width: 0;
-  height: 3px;
+  height: 2px;
   border-radius: 50px;
   transition: 0.3s ease;
 }
@@ -24,4 +36,9 @@
 
 .nav_menu:dark {
   color: white;
+}
+
+.nav_menu::selection {
+  color: rgb(34 197 94);
+  background-color: transparent;
 }
