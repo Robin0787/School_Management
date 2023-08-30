@@ -1,7 +1,7 @@
 
 const Container = ({children}) => {
     return (
-        <section className='w-[95%] mx-auto bg-white dark:bg-black'>
+        <section className='w-[95%] xl:w-[90%] 2xl:w-[80%] mx-auto'>
             {children}
         </section>
     );

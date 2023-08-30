@@ -1,0 +1,27 @@
+.nav_menu {
+  position: relative;
+  padding: 12px 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav_menu::before {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  background-color: rgb(34 197 94);
+  width: 0;
+  height: 3px;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.nav_menu:hover::before {
+  width: 100%;
+}
+
+.nav_menu:dark {
+  color: white;
+}
