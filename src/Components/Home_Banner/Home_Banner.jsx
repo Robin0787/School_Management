@@ -1,6 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import img1 from "../../assets/Home/Banner/img-1.jpg";
 import img2 from "../../assets/Home/Banner/img-2.jpg";
@@ -14,7 +14,11 @@ import Container from '../Container';
 const Home_Banner = () => {
     return (
         <Container>
-            <Swiper pagination={true} modules={[Pagination]} className="h-[70vh] cursor-grab">
+            <Swiper pagination={true} 
+            autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }} modules={[Autoplay, Pagination]} className="h-[70vh] cursor-grab">
                 <SwiperSlide>
                     <img src={img1} alt="image-1" className='w-full object-cover h-full' />
                 </SwiperSlide>
