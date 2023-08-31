@@ -7,52 +7,9 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from '../Container';
 
-const classes = [
-    {
-        class_Name: 'Six',
-        subject: 7,
-        link: '/subjects/class/6',
-        color: 'green-500',
-        background: '#22c55e',
-        icon: PiNumberSixBold
-    },
-    {
-        class_Name: 'Seven',
-        subject: 8,
-        link: '/subjects/class/7',
-        color: 'blue-500',
-        background: '#3b82f6',
-        icon: PiNumberSevenBold
-    },
-    {
-        class_Name: 'Eight',
-        subject: 9,
-        link: '/subjects/class/8',
-        color: 'red-500',
-        background: '#ef4444',
-        icon: PiNumberEightBold
-    },
-    {
-        class_Name: 'Nine',
-        subject: 12,
-        link: '/subjects/class/9',
-        color: 'green-500',
-        background: '#22c55e',
-        icon: PiNumberNineBold
-    },
-    // {
-    //     class_Name: 'Ten',
-    //     subject: 12,
-    //     link: '/subjects/10',
-    //     color: 'blue-500',
-    //     background: '#3b82f610',
-    // },
-]
-
-
 
 const Our_Classes = () => {
-    const [slidesOnView, setSlidesOnView] = useState(1);
+    const [slidesOnView, setSlidesOnView] = useState(3);
 
     function changeSlidesPerView() {
         const width = window.innerWidth;
@@ -80,27 +37,59 @@ const Our_Classes = () => {
         <Container >
             <section>
                 <Swiper navigation={true} autoplay={true} spaceBetween={50}
-                    slidesPerView={slidesOnView} modules={[Navigation]} className="px-12 h-[140px]">
-                    {
-                        classes.map((item) => {
-                            const { class_Name, subject, link, color, background, icon } = item;
-                            return (
-                                <SwiperSlide className="h-full" key={class_Name}>
-                                    <Link to={link} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
-                                    hover:bg-[${background}10] hover:border-[${background}] duration-300 `}>
-                                        <div
-                                            className={`bg-${color} text-white rounded-full p-3`}>
-                                            {React.createElement(icon, { size: 30 })}
-                                        </div>
-                                        <div>
-                                            <p className='text-lg font-semibold uppercase'>Class {class_Name}</p>
-                                            <p className="text-sm">Subject : {subject}</p>
-                                        </div>
-                                    </Link>
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+                    slidesPerView={slidesOnView} modules={[Navigation]} className="px-12 h-[100px] md:h-[140px]">
+                    <SwiperSlide className="h-full">
+                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                                    hover:bg-[#22c55e10] hover:border-[#22c55e] duration-300 `}>
+                            <div
+                                className={`bg-green-500 text-white rounded-full p-3`}>
+                                {React.createElement(PiNumberSixBold, { size: 30 })}
+                            </div>
+                            <div>
+                                <p className='text-lg font-semibold uppercase whitespace-nowrap'>Class 6</p>
+                                <p className="text-sm whitespace-nowrap">Subject : 7</p>
+                            </div>
+                        </Link>
+                    </SwiperSlide>
+                    <SwiperSlide className="h-full">
+                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                                    hover:bg-[#ef444410] hover:border-[#ef4444] duration-300 `}>
+                            <div
+                                className={`bg-red-500 text-white rounded-full p-3`}>
+                                {React.createElement(PiNumberSevenBold, { size: 30 })}
+                            </div>
+                            <div>
+                                <p className='text-lg font-semibold uppercase whitespace-nowrap'>Class Seven</p>
+                                <p className="text-sm whitespace-nowrap">Subject : 8</p>
+                            </div>
+                        </Link>
+                    </SwiperSlide>
+                    <SwiperSlide className="h-full">
+                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                                    hover:bg-[#3b82f610] hover:border-[#3b82f6] duration-300 `}>
+                            <div
+                                className={`bg-blue-500 text-white rounded-full p-3`}>
+                                {React.createElement(PiNumberEightBold, { size: 30 })}
+                            </div>
+                            <div>
+                                <p className='text-lg font-semibold uppercase whitespace-nowrap'>Class Eight</p>
+                                <p className="text-sm whitespace-nowrap">Subject : 10</p>
+                            </div>
+                        </Link>
+                    </SwiperSlide>
+                    <SwiperSlide className="h-full">
+                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                                    hover:bg-[#a855f710] hover:border-[#a855f7] duration-300 `}>
+                            <div
+                                className={`bg-purple-500 text-white rounded-full p-3`}>
+                                {React.createElement(PiNumberNineBold, { size: 30 })}
+                            </div>
+                            <div>
+                                <p className='text-lg font-semibold uppercase whitespace-nowrap'>Class Nine</p>
+                                <p className="text-sm whitespace-nowrap">Subject : 13</p>
+                            </div>
+                        </Link>
+                    </SwiperSlide>
                     <SwiperSlide className="h-full">
                         <Link to={'/subjects/class/10'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
                                     hover:bg-[#eab30810] hover:border-yellow-500 duration-300 `}>
