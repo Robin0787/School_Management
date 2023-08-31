@@ -52,7 +52,7 @@ const Our_Classes = () => {
                         </Link>
                     </SwiperSlide>
                     <SwiperSlide className="h-full">
-                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                        <Link to={'/subjects/class/7'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
                                     hover:bg-[#ef444410] hover:border-[#ef4444] duration-300 `}>
                             <div
                                 className={`bg-red-500 text-white rounded-full p-3`}>
@@ -65,7 +65,7 @@ const Our_Classes = () => {
                         </Link>
                     </SwiperSlide>
                     <SwiperSlide className="h-full">
-                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                        <Link to={'/subjects/class/8'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
                                     hover:bg-[#3b82f610] hover:border-[#3b82f6] duration-300 `}>
                             <div
                                 className={`bg-blue-500 text-white rounded-full p-3`}>
@@ -78,7 +78,7 @@ const Our_Classes = () => {
                         </Link>
                     </SwiperSlide>
                     <SwiperSlide className="h-full">
-                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                        <Link to={'/subjects/class/9'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
                                     hover:bg-[#a855f710] hover:border-[#a855f7] duration-300 `}>
                             <div
                                 className={`bg-purple-500 text-white rounded-full p-3`}>
