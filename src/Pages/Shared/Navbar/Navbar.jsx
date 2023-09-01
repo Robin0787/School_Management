@@ -51,7 +51,7 @@ const Navbar = () => {
                         <GoBook size={30} className="absolute top-[10px] left-[10px]" />
                         <h1 className={styles.logo_name}>Sherlock</h1>
                     </Link>
-                    <div className="flex items-center gap-10">
+                    <div className="hidden md:flex items-center gap-10 ">
                         <Link className={`${styles.nav_menu} dark:before:bg-green-400`}>
                             Gallery
                         </Link>
@@ -64,6 +64,12 @@ const Navbar = () => {
                                 <BsFillSunFill size={20} /> :
                                 <BsFillMoonStarsFill size={20} />}
                         </button>
+                        <Link to={'/user/signUp'} className={`${styles.nav_menu} dark:before:bg-green-400`}>
+                            Sign Up
+                        </Link>
+                        <Link to={'/user/signIn'} className={`${styles.nav_menu} dark:before:bg-green-400`}>
+                            Sign In
+                        </Link>
                     </div>
                 </section>
             </Container>

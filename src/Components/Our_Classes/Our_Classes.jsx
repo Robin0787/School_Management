@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from '../Container';
 
 
+
 const Our_Classes = () => {
     const [slidesOnView, setSlidesOnView] = useState(3);
 
