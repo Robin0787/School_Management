@@ -33,9 +33,11 @@ const Navbar = () => {
     const handleThemeSwitch = () => {
         if (localStorage.getItem('theme') === 'light') {
             setTheme('dark');
+            document.documentElement.style.setProperty('--scrollbar-bg', '#0f172a');
             localStorage.setItem('theme', 'dark');
         } else {
             setTheme('light');
+            document.documentElement.style.setProperty('--scrollbar-bg', '#ffffff');
             localStorage.setItem('theme', 'light');
         }
     };
@@ -44,11 +46,11 @@ const Navbar = () => {
         <>
             <Container>
                 <section className="flex justify-between items-center pt-5 pb-2">
-                    <div className="relative flex items-center gap-2 text-green-600 dark:text-green-400">
+                    <Link to={'/'} className="relative flex items-center gap-2 text-green-600 dark:text-green-400">
                         <GoBook size={50} />
                         <GoBook size={30} className="absolute top-[10px] left-[10px]" />
                         <h1 className={styles.logo_name}>Sherlock</h1>
-                    </div>
+                    </Link>
                     <div className="flex items-center gap-10">
                         <Link className={`${styles.nav_menu} dark:before:bg-green-400`}>
                             Gallery

@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --scrollbar-bg: white;
+  --scrollbar-color: #01c001;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -13,4 +18,20 @@
 
 *::selection {
   background-color: transparent;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+  transition-duration: 0.3s;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 5px;
 }
