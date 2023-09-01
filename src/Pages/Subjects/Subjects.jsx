@@ -35,8 +35,9 @@ const Subjects = () => {
                             <hr className='border-1 border-white dark:border-gray-700' />
                             <section className="pb-20">
                                 {
-                                    isLoading ? 
-                                    <Loader /> :
+                                    isLoading ?
+                                    <Loader /> 
+                                    :
                                     <section className="pt-14">
                                     <h1 className='text-2xl md:text-3xl font-bold pb-6'>Subjects</h1>
                                     <article className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-5'>
@@ -48,11 +49,12 @@ const Subjects = () => {
                                 }
                                 {
                                     isLoading ?
-                                    <Loader /> :
+                                    '' 
+                                    :
                                     (
                                         categories?.science && <section className="pt-14">
                                             <h1 className='text-2xl md:text-3xl font-bold pb-6'>Science</h1>
-                                            <article className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
+                                            <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
                                                 {
                                                     categories?.science?.map((subject) => <SingleBook key={subject.name} subject={subject} />)
                                                 }
@@ -62,7 +64,7 @@ const Subjects = () => {
                                 }
                                 {
                                     isLoading ?
-                                    <Loader />
+                                    ''
                                     :
                                     (
                                         categories?.arts && <section className="pt-14">
@@ -77,11 +79,12 @@ const Subjects = () => {
                                 }
                                 {
                                     isLoading ?
-                                    <Loader /> :
+                                    '' 
+                                    :
                                     (
                                         categories?.commerce && <section className="pt-14">
                                         <h1 className='text-2xl md:text-3xl font-bold pb-6'>Commerce</h1>
-                                        <article className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
+                                        <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
                                             {
                                                 categories?.commerce?.map((subject) => <SingleBook key={subject.name} subject={subject} />)
                                             }
