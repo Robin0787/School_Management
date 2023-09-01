@@ -31,9 +31,9 @@ const routes = createBrowserRouter([
         element: <SubjectsLayout />,
         children: [
             {
-                path: 'class/:class_name',
+                path: 'class/:class_num',
                 element: <Subjects />,
-                loader: ({params}) => fetch(`${import.meta.env.VITE_BASE_URL}/subjects/${params.class_name}`)
+                loader: ({params}) => params.class_num
             },
             {
                 path: "test",

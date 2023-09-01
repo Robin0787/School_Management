@@ -11,4 +11,4 @@ const SingleBook = ({ subject }) => {
     );
 };
 
-export default SingleBook;
+export default SingleBook; 
