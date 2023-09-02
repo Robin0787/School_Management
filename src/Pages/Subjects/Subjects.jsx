@@ -4,8 +4,8 @@ import {
 import axios from 'axios';
 import { useLoaderData } from 'react-router-dom';
 import Container from '../../Components/Container';
-import Give_Space from '../../Components/Give_Space';
-import Loader from '../../Components/Loader/Loader';
+import HeaderTitle from '../../Components/HeaderTitle/HeaderTitle';
+import Loader2 from '../../Components/Loader2/Loader2';
 import SingleBook from '../../Components/SingleBook/SingleBook';
 import SingleBookCard from '../../Components/SingleBook/SingleBookCard';
 
@@ -23,20 +23,14 @@ const Subjects = () => {
     const categories = class_info?.subjects;
     
     return (
-        <>
-            <Container>
-                <section className='h-[60px] md:h-[100px] flex justify-center items-center bg-[#0f172a] text-white w-[90%] mx-auto mt-5 md:mt-10'>
-                    <h1 className='text-3xl md:text-4xl lg:text-5xl whitespace-nowrap text-center font-thin italic'>Subjects of Class: {class_num}</h1>
-                </section>
-            </Container>
-            <section className='bg-white text-black dark:bg-[#0f172a] dark:text-white duration-200'>
+        <section>
+            <HeaderTitle text={`Subjects of Class : ${class_num}`}/>
+            <section className='bg-white text-black dark:bg-[#0f172a] dark:text-white duration-200 '>
                     <Container>
-                            <Give_Space />
-                            <hr className='border-1 border-white dark:border-gray-700' />
                             <section className="pb-20">
                                 {
                                     isLoading ?
-                                    <Loader /> 
+                                    <section className='h-[45vh]'><Loader2 /></section>
                                     :
                                     <section className="pt-14">
                                     <h1 className='text-2xl md:text-3xl font-bold pb-6'>Subjects</h1>
@@ -95,7 +89,7 @@ const Subjects = () => {
                             </section>
                     </Container>
             </section>
-        </>
+        </section>
     );
 };
 

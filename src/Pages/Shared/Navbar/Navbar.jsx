@@ -7,7 +7,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
     // theme state
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');
 
     // if local storage is empty save theme as light
     useEffect(() => {

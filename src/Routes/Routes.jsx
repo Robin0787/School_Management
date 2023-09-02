@@ -6,7 +6,9 @@ import UserLayout from "../Layouts/UserLayout/UserLayout";
 import Classes from "../Pages/Classes/Classes";
 import Home from "../Pages/Home/Home";
 import SignIn from "../Pages/SignIn/SignIn";
+import InstructorSignUp from "../Pages/SignUp/InstructorSignUp/InstructorSignUp";
 import SignUp from "../Pages/SignUp/SignUp";
+import StudentSignUp from "../Pages/SignUp/StudentSignUp/StudentSignUp";
 import Subjects from "../Pages/Subjects/Subjects";
 import Teachers from "../Pages/Teachers/Teachers";
 
@@ -62,6 +64,14 @@ const routes = createBrowserRouter([
             {
                 path: 'signIn',
                 element: <SignIn />
+            },
+            {
+                path: 'signUp/instructor',
+                element: <InstructorSignUp />
+            },
+            {
+                path: 'signUp/student',
+                element: <StudentSignUp />
             }
         ]
     }
