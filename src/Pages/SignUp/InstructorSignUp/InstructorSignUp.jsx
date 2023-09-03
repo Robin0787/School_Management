@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import UploadImage from "../../../APIs/UploadImage";
+import Loader from "../../../Components/Loader/Loader";
 import SubmitBtn from "../../../Components/SubmitBtn/SubmitBtn";
 import styles from "../SignUp.module.css";
 
-
 const InstructorSignUp = () => {
     const { register, handleSubmit, formState: { errors }, setError, clearErrors, setFocus } = useForm();
+    const [uploadButtonText, setUploadButtonText] = useState('SVG, PNG, or JPG');
     const [showPass, setShowPass] = useState(false);
     const [passError, setPassError] = useState('');
     const [showEyeIcon, setShowEyeIcon] = useState(false);
+    const [photoURL, setPhotoURL] = useState('');
+    const [photoLoading, setPhotoLoading] = useState(false);
 
 
     const handleSignUp = (data) => {
@@ -44,8 +48,8 @@ const InstructorSignUp = () => {
         }
     }
 
-    function handleEyeIcon (pass) {
-        if(pass.length < 1) {
+    function handleEyeIcon(pass) {
+        if (pass.length < 1) {
             setShowEyeIcon(false);
         }
         else {
@@ -53,6 +57,18 @@ const InstructorSignUp = () => {
         }
     }
 
+    // Changing the name of image input field based on image name;
+    const handleImageChange = image => {
+        setPhotoLoading(true);
+        console.log(image.name);
+        UploadImage(image)
+            .then(data => {
+                setPhotoURL(data.display_url);
+                setPhotoLoading(false);
+            })
+            .catch(() => { setPhotoLoading(false) });
+    };
+    console.log(photoURL);
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -116,29 +132,46 @@ const InstructorSignUp = () => {
                                     <span className={styles.inputTitle}>Password</span>
                                     {
                                         passError &&
-                                        <span className="text-red-500 text-xs absolute -bottom-6 left-0">
+                                        <span className="text-red-500 text-[11px] absolute -bottom-6 left-0">
                                             {passError}
                                         </span>
                                     }
                                     {
                                         showEyeIcon &&
-                                        <div className="absolute right-4 top-[15px] text-green-500">
+                                        <div className="absolute right-4 top-[15px] text-gray-300">
                                             {
-                                            showPass ? 
-                                            <FaEye
-                                            onClick={() => {setShowPass((prev) => !prev)}}  
-                                            size={20}
-                                            className="cursor-pointer"/> 
-                                            : 
-                                            <FaEyeSlash
-                                            onClick={() => {setShowPass((prev) => !prev)}}
-                                            size={20}
-                                            className="cursor-pointer"/>
+                                                showPass ?
+                                                    <FaEye
+                                                        onClick={() => { setShowPass((prev) => !prev) }}
+                                                        size={20}
+                                                        className="cursor-pointer" />
+                                                    :
+                                                    <FaEyeSlash
+                                                        onClick={() => { setShowPass((prev) => !prev) }}
+                                                        size={20}
+                                                        className="cursor-pointer" />
                                             }
                                         </div>
-
-
                                     }
+                                </div>
+                                {/* Role Field */}
+                                <div className={`relative bg-[#0f172a] text-white`}>
+                                    <input type="text" autoComplete="off"
+                                        className={styles.inputField}
+                                        {...register('role',
+                                            {
+                                                required: true,
+                                                validate: {
+                                                    minLength: (v) => v.length >= 3,
+                                                },
+                                            }
+                                        )}
+                                    />
+                                    {
+                                        errors.role && <span className="absolute -top-2 
+                                        left-[66px] text-red-500 z-10">*</span>
+                                    }
+                                    <span className={styles.inputTitle}>Role</span>
                                 </div>
                             </article>
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">
@@ -179,6 +212,44 @@ const InstructorSignUp = () => {
                                     }
                                     <span className={styles.inputTitle}>Phone</span>
                                 </div>
+                                {/* Image Field */}
+                                {
+                                    photoLoading ?
+                                        <div className=" border-2 border-white border-dashed  w-full h-[120px] lg:h-[140px] rounded flex justify-center items-center"><Loader size={20}/></div>
+                                        :
+                                        <>
+                                            {
+                                                !photoURL ?
+                                                    <div className="flex items-center justify-center w-full relative">
+                                                        <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-[120px] lg:h-[140px] border-2 border-[#808080] border-dashed hover:border-gray-300 rounded-lg cursor-pointer bg-transparent hover:bg-inherit duration-500 group">
+                                                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                                                <svg aria-hidden="true" className="w-8 h-8 mb-3 text-white duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                                                <p className="mb-2 text-sm text-gray-200 group-hover:text-white duration-300"><span className="font-semibold ">Click to upload</span> or drag and drop</p>
+                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">{uploadButtonText}</p>
+                                                                {
+                                                                    errors.photo && <span className="text-red-500 text-[11px] absolute bottom-2 left-1/2 -translate-x-1/2">
+                                                                        {'Image is required'}
+                                                                    </span>
+                                                                }
+                                                            </div>
+                                                            <input id="dropzone-file" type="file" accept={['.png', '.jpg', '.svg']} className="hidden"
+                                                                {...register('photo',
+                                                                    {
+                                                                        required: true,
+                                                                        onChange: (e) => handleImageChange(e.target.files[0])
+                                                                    })
+                                                                } />
+                                                        </label>
+                                                    </div>
+                                                    :
+                                                    <div className="overflow-hidden border-2 border-white w-full h-[120px] lg:h-[140px] rounded">
+                                                        <img src={photoURL} alt="photo"
+                                                            className="w-full h-full object-cover rounded  hover:scale-110 duration-700" />
+                                                    </div>
+                                            }
+                                        </>
+                                }
+
                             </article>
                         </section>
                         <div className={`text-white`}>

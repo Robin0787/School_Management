@@ -38,7 +38,7 @@
 }
 
 .inputField:focus {
-  border: 1px solid #019e3a;
+  border: 1px solid #ffffff;
 }
 
 .inputField:disabled {
