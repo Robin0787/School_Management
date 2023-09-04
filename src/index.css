@@ -19,7 +19,27 @@
 
 *::selection {
   background-color: transparent;
+  color: white;
 }
+
+.banner-title-1 {
+  color: rgb(34 197 94);
+  -webkit-text-stroke: 2px rgb(34 197 94);
+}
+.banner-title-2 {
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(74 222 128);
+}
+.banner-title-2::selection {
+  color: rgb(34 197 94);
+  -webkit-text-stroke: 2px rgb(34 197 94);
+}
+
+.banner-title-1::selection {
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(74 222 128);
+}
+
 input::selection {
   background-color: black;
   color: white;
