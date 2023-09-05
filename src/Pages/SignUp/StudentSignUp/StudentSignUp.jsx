@@ -1,9 +1,12 @@
+import bcrypt from 'bcryptjs';
 import { updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import UploadImage from "../../../APIs/UploadImage";
+import StudentRequest from "../../../APIs/studentRequest";
 import Loader from "../../../Components/Loader/Loader";
 import SubmitBtn from "../../../Components/SubmitBtn/SubmitBtn";
 import { providerContext } from "../../../Provider/Provider";
@@ -19,28 +22,41 @@ const StudentSignUp = () => {
     const [phoneError, setPhoneError] = useState('');
     const navigate = useNavigate();
 
-    const {user, userLoading, createUser} = useContext(providerContext);
- 
+    const { createUser } = useContext(providerContext);
+
     const handleSignUp = (data) => {
         if (passError) {
             setFocus('password');
             return;
         }
-        if(phoneError) {
+        if (phoneError) {
             setFocus('phone');
             return;
         }
-        const  {name, email, password, className, year, address, fatherName, phone, dateOfBirth, roll, photo} = data;
-
-        data.photo = photoURL;
+        if (photoLoading) {
+            toast.error('Wait Photo is Uploading...');
+            return;
+        }
+        const { name, email, password, className, year, address, fatherName, phone, dateOfBirth, roll, photo } = data;
 
         createUser(email, password)
-        .then(res => {
-            updateProfile(res.user, {displayName: name, photoURL: photoURL});
-            reset();
-            navigate('/');
-        })
-        .catch(err => {console.log(err)});
+            .then(res => {
+                updateProfile(res.user, { displayName: name, photoURL: photoURL });
+                const hashedPass = bcrypt.hashSync(data.password, 10);
+                const studentInfo = {
+                    ...data,
+                    password: hashedPass,
+                    photo: photoURL
+                }
+                StudentRequest(studentInfo)
+                    .then(() => {
+                        toast.success('Request Sent.');
+                        reset();
+                        navigate('/');
+                    }).catch(err => console.log(err));
+
+            })
+            .catch(err => { console.log(err) });
     }
 
     function handlePassChange(e) {
@@ -87,7 +103,7 @@ const StudentSignUp = () => {
             })
             .catch(() => { setPhotoLoading(false) });
     };
-    console.log(user);
+
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -182,7 +198,7 @@ const StudentSignUp = () => {
                                             {
                                                 required: true,
                                                 validate: {
-                                                    minLength: (v) => v.length === 3,
+                                                    minLength: (v) => v.length >= 3,
                                                 },
                                             }
                                         )}
@@ -195,13 +211,13 @@ const StudentSignUp = () => {
                                 </div>
                                 {/* Year Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
-                                    <input type="text" autoComplete="off"
+                                    <input type="number" autoComplete="off"
                                         className={styles.inputField}
                                         {...register('year',
                                             {
                                                 required: true,
                                                 validate: {
-                                                    minLength: (v) => v.length >= 3,
+                                                    length: (v) => v.length === 4
                                                 },
                                             }
                                         )}
@@ -232,7 +248,6 @@ const StudentSignUp = () => {
                                     <span className={styles.inputTitle}>Address</span>
                                 </div>
                             </article>
-
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">
                                 {/* Father's name Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
@@ -261,10 +276,10 @@ const StudentSignUp = () => {
                                                 required: true,
                                                 onChange: (e) => {
                                                     const num = e.target.value;
-                                                    if(num.length < 1) {
+                                                    if (num.length < 1) {
                                                         setPhoneError('');
                                                     }
-                                                    else if(!/^(?:\+?880|0)1[3-9]\d{8}$/.test(num)) {
+                                                    else if (!/^(?:\+?880|0)1[3-9]\d{8}$/.test(num)) {
                                                         setPhoneError('Number is not valid.')
                                                     }
                                                     else {
@@ -316,7 +331,7 @@ const StudentSignUp = () => {
                                 {/* Image Field */}
                                 {
                                     photoLoading ?
-                                        <div className=" border-2 border-white border-dashed  w-full h-[120px] lg:h-[140px] rounded flex justify-center items-center"><Loader size={20}/></div>
+                                        <div className=" border-2 border-white border-dashed  w-full h-[120px] lg:h-[140px] rounded flex justify-center items-center"><Loader size={20} /></div>
                                         :
                                         <>
                                             {

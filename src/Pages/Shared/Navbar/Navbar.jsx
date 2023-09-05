@@ -13,7 +13,7 @@ const Navbar = () => {
     // Theme related code --------------------
     useEffect(() => {
         if (localStorage.getItem('theme') === null) {
-            localStorage.setItem('theme', 'light');
+            localStorage.setItem('theme', 'dark');
         }
     }, []);
 
@@ -66,7 +66,12 @@ const Navbar = () => {
                         </button>
                         {
                             user ?
-                                ''
+                                <Link to={'/dashboard'}>
+                                    <div className={`${styles.nav_menu} flex items-center gap-1`}>
+                                        <BiSolidDashboard size={20} />
+                                        <h1>Dashboard</h1>
+                                    </div>
+                                </Link>
                                 :
                                 <>
                                     <Link to={'/user/signUp'} className={`${styles.nav_menu}`}>
@@ -77,12 +82,6 @@ const Navbar = () => {
                                     </Link>
                                 </>
                         }
-                        <Link to={'/dashboard'}>
-                            <div className={`${styles.nav_menu} flex items-center gap-1`}>
-                                <BiSolidDashboard size={20} />
-                                <h1>Dashboard</h1>
-                            </div>
-                        </Link>
                     </div>
                 </section>
             </Container>

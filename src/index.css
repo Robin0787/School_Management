@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --scrollbar-bg: white;
+  --scrollbar-bg: #0f172a;
   --scrollbar-color: #01c001;
 }
 

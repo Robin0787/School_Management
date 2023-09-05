@@ -1,20 +1,27 @@
-import { useState } from "react";
+import bcrypt from 'bcryptjs';
+import { updateProfile } from "firebase/auth";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import InstructorRequest from "../../../APIs/InstructorRequest";
 import UploadImage from "../../../APIs/UploadImage";
 import Loader from "../../../Components/Loader/Loader";
 import SubmitBtn from "../../../Components/SubmitBtn/SubmitBtn";
+import { providerContext } from "../../../Provider/Provider";
 import styles from "../SignUp.module.css";
 
 const InstructorSignUp = () => {
-    const { register, handleSubmit, formState: { errors }, setError, clearErrors, setFocus } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset, clearErrors, setFocus } = useForm();
     const [showPass, setShowPass] = useState(false);
     const [passError, setPassError] = useState('');
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
     const [phoneError, setPhoneError] = useState('');
-
+    const {createUser} = useContext(providerContext);
+    const navigate = useNavigate();
 
     const handleSignUp = (data) => {
         if (passError) {
@@ -25,7 +32,29 @@ const InstructorSignUp = () => {
             setFocus('phone');
             return;
         }
-        console.log(data);
+        if(photoLoading) {
+            toast.error('Wait Photo is Uploading...');
+            return;
+        }
+        const { firstName, lastName, email, phone, password, position, photo } = data;
+        createUser(email, password)
+        .then(res => {
+            updateProfile(res.user, {displayName: `${firstName} ${lastName}`, photoURL: photoURL});
+            const hashedPass = bcrypt.hashSync(data.password, 10);
+            const instructorInfo = {
+                ...data,
+                password: hashedPass,
+                photo : photoURL,
+                status: 'pending'
+            }
+            InstructorRequest(instructorInfo)
+            .then(() => {
+                toast.success('Request Sent.');
+                reset();
+                navigate('/');
+            })
+        })
+        .catch(err => {console.log(err)});
     }
 
     function handlePassChange(e) {
@@ -68,12 +97,12 @@ const InstructorSignUp = () => {
         setPhotoLoading(true);
         UploadImage(image)
             .then(data => {
-                console.log(data);
                 setPhotoURL(data.display_url);
                 setPhotoLoading(false);
             })
             .catch(() => { setPhotoLoading(false) });
     };
+
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -205,9 +234,6 @@ const InstructorSignUp = () => {
                                         {...register('phone',
                                             {
                                                 required: true,
-                                                validate: {
-                                                    length: (v) => v.length === 11,
-                                                },
                                                 onChange: (e) => {
                                                     const num = e.target.value;
                                                     if(num.length < 1) {
@@ -272,7 +298,6 @@ const InstructorSignUp = () => {
                                             }
                                         </>
                                 }
-
                             </article>
                         </section>
                         <div className={`text-white`}>
