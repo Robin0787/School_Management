@@ -9,9 +9,9 @@ const Banner = () => {
             flex justify-center ">
                 <section className="w-full flex justify-start items-center
                 bg-gradient-to-r from-[#000000] to-[#00000030]">
-                    <section className="w-[95%] xl:w-[90%] 2xl:w-[85%] mx-auto flex flex-col md:flex-row justify-between items-center border">
-                        <section className="w-full md:w-1/2 lg:pt-5 border">
-                            <div className="text-4xl sm:text-5xl lg:text-6xl text-left font-bold uppercase flex flex-col justify-start items-start gap-4 md:gap-5 lg:gap-7 xl:gap-8">
+                    <section className="w-[95%] xl:w-[90%] 2xl:w-[85%] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+                        <section className="w-full md:w-1/2 lg:pt-5">
+                            <div className="text-5xl lg:text-6xl text-left font-bold uppercase flex flex-col justify-start items-start gap-4 md:gap-7 xl:gap-8">
                                 <h1 className="banner-title-1">Nasirnagar </h1>
                                 <h1 className="banner-title-2">Ashutosh</h1>
                                 <h1 className="banner-title-1">Pilot</h1>
@@ -28,7 +28,7 @@ const Banner = () => {
                                 <p className="text-sm">Established In 1934</p>
                             </div>
                         </section>
-                        <section className="w-full md:w-1/2 flex justify-center items-center">
+                        <section className="w-full md:w-1/2">
                             <Banner_Slider />
                         </section>
                     </section>

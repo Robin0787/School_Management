@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { EffectCreative } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import img1 from "../../assets/Home/Banner/img-1.jpg";
 import img2 from "../../assets/Home/Banner/img-2.jpg";
@@ -11,40 +12,65 @@ import img6 from "../../assets/Home/Banner/img-6.jpg";
 
 
 const Banner_Slider = () => {
+    const [slidesOnView, setSlidesOnView] = useState(2);
+    
+    function changeSlidesOnView () {
+        const width = window.innerWidth;
+        if(width >= 1600) {
+            setSlidesOnView(3);
+        }
+        else if(width >= 950 && width < 1600) {
+            setSlidesOnView(2);
+        }
+        else if (width >= 768 && width < 950) {
+            setSlidesOnView(1);
+        }
+        else if (width > 550 && width < 768) {
+            setSlidesOnView(2);
+        }
+        else {
+            setSlidesOnView(1);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', changeSlidesOnView);
+        return () => window.removeEventListener('resize', changeSlidesOnView);
+    })
 
     return (
         <Swiper
-            grabCursor={true}
-            effect={'creative'}
-            creativeEffect={{
-                prev: {
-                    shadow: true,
-                    translate: [0, 0, -400],
-                },
-                next: {
-                    translate: ['100%', 0, 0],
-                },
-            }}
-            modules={[EffectCreative]}
-            className="h-full w-full cursor-grab"
+        slidesPerView={slidesOnView}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className='h-[240px] md:h-[360px] w-full rounded-lg overflow-hidden'
         >
-            <SwiperSlide>
-                <img src={img1} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing text-center">
+                <img src={img1} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={img2} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing">
+                <img src={img2} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={img3} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing">
+                <img src={img3} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={img4} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing">
+                <img src={img4} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={img5} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing">
+                <img src={img5} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
-            <SwiperSlide>
-                <img src={img6} alt="image-6" className='h-full' />
+            <SwiperSlide className="h-full relative group cursor-grabbing">
+                <img src={img6} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
+                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
         </Swiper>
     )
