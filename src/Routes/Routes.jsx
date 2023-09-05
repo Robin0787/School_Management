@@ -12,6 +12,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import StudentSignUp from "../Pages/SignUp/StudentSignUp/StudentSignUp";
 import Subjects from "../Pages/Subjects/Subjects";
 import Teachers from "../Pages/Teachers/Teachers";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 
 const routes = createBrowserRouter([
@@ -46,11 +47,11 @@ const routes = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
-                element: <DashboardHome />
+                element: <PrivateRoute><DashboardHome /></PrivateRoute>
             }
         ]
     },

@@ -46,7 +46,9 @@ const StudentSignUp = () => {
                 const studentInfo = {
                     ...data,
                     password: hashedPass,
-                    photo: photoURL
+                    photo: photoURL,
+                    role:'student',
+                    status: 'pending'
                 }
                 StudentRequest(studentInfo)
                     .then(() => {
