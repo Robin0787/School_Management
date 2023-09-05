@@ -8,12 +8,12 @@ import styles from "../SignUp.module.css";
 
 const InstructorSignUp = () => {
     const { register, handleSubmit, formState: { errors }, setError, clearErrors, setFocus } = useForm();
-    const [uploadButtonText, setUploadButtonText] = useState('SVG, PNG, or JPG');
     const [showPass, setShowPass] = useState(false);
     const [passError, setPassError] = useState('');
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
+    const [phoneError, setPhoneError] = useState('');
 
 
     const handleSignUp = (data) => {
@@ -26,7 +26,7 @@ const InstructorSignUp = () => {
 
     function handlePassChange(e) {
         const pass = e.target.value;
-        handleEyeIcon(pass);
+        
         if (!/(?=.*[A-Z])/.test(pass)) {
             setPassError('Password must have an uppercase letter.');
         }
@@ -46,11 +46,13 @@ const InstructorSignUp = () => {
             setPassError(false);
             clearErrors('password');
         }
+        handleEyeIcon(pass);
     }
 
     function handleEyeIcon(pass) {
         if (pass.length < 1) {
             setShowEyeIcon(false);
+            setPassError('');
         }
         else {
             setShowEyeIcon(true);
@@ -60,15 +62,14 @@ const InstructorSignUp = () => {
     // Changing the name of image input field based on image name;
     const handleImageChange = image => {
         setPhotoLoading(true);
-        console.log(image.name);
         UploadImage(image)
             .then(data => {
+                console.log(data);
                 setPhotoURL(data.display_url);
                 setPhotoLoading(false);
             })
             .catch(() => { setPhotoLoading(false) });
     };
-    console.log(photoURL);
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -154,11 +155,11 @@ const InstructorSignUp = () => {
                                         </div>
                                     }
                                 </div>
-                                {/* Role Field */}
+                                {/* Position Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
                                     <input type="text" autoComplete="off"
                                         className={styles.inputField}
-                                        {...register('role',
+                                        {...register('position',
                                             {
                                                 required: true,
                                                 validate: {
@@ -168,10 +169,10 @@ const InstructorSignUp = () => {
                                         )}
                                     />
                                     {
-                                        errors.role && <span className="absolute -top-2 
-                                        left-[66px] text-red-500 z-10">*</span>
+                                        errors.position && <span className="absolute -top-2 
+                                        left-[98px] text-red-500 z-10">*</span>
                                     }
-                                    <span className={styles.inputTitle}>Role</span>
+                                    <span className={styles.inputTitle}>Position</span>
                                 </div>
                             </article>
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">
@@ -203,6 +204,15 @@ const InstructorSignUp = () => {
                                                 validate: {
                                                     length: (v) => v.length === 11,
                                                 },
+                                                onChange: (e) => {
+                                                    const num = e.target.value;
+                                                    if(num.length === 11 || num.length < 1) {
+                                                        setPhoneError('');
+                                                    }else {
+                                                        setPhoneError(`Must have 11 digit. (${num.length})`);
+                                                    }
+
+                                                }
                                             }
                                         )}
                                     />
@@ -211,6 +221,12 @@ const InstructorSignUp = () => {
                                         left-[78px] text-red-500 z-10">*</span>
                                     }
                                     <span className={styles.inputTitle}>Phone</span>
+                                    {
+                                        phoneError &&
+                                        <span className="text-red-500 text-[11px] absolute -bottom-6 left-0">
+                                            {phoneError}
+                                        </span>
+                                    }
                                 </div>
                                 {/* Image Field */}
                                 {
@@ -225,9 +241,9 @@ const InstructorSignUp = () => {
                                                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <svg aria-hidden="true" className="w-8 h-8 mb-3 text-white duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                                                                 <p className="mb-2 text-sm text-gray-200 group-hover:text-white duration-300"><span className="font-semibold ">Click to upload</span> or drag and drop</p>
-                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">{uploadButtonText}</p>
+                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">SVG, PNG, or JPG</p>
                                                                 {
-                                                                    errors.photo && <span className="text-red-500 text-[11px] absolute bottom-2 left-1/2 -translate-x-1/2">
+                                                                    errors.photo && <span className="text-red-500 text-[11px] absolute bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2">
                                                                         {'Image is required'}
                                                                     </span>
                                                                 }
@@ -244,7 +260,7 @@ const InstructorSignUp = () => {
                                                     :
                                                     <div className="overflow-hidden border-2 border-white w-full h-[120px] lg:h-[140px] rounded">
                                                         <img src={photoURL} alt="photo"
-                                                            className="w-full h-full object-cover rounded  hover:scale-110 duration-700" />
+                                                            className="w-full h-full object-cover object-center rounded  hover:scale-110 duration-700" />
                                                     </div>
                                             }
                                         </>

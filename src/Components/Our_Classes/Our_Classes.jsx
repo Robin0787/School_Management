@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from '../Container';
 
 
-
 const Our_Classes = () => {
     const [slidesOnView, setSlidesOnView] = useState(3);
 
@@ -40,7 +39,8 @@ const Our_Classes = () => {
                 <Swiper navigation={true} autoplay={true} spaceBetween={50}
                     slidesPerView={slidesOnView} modules={[Navigation]} className="px-12 h-[100px] md:h-[140px]">
                     <SwiperSlide className="h-full">
-                        <Link to={'/subjects/class/6'} className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
+                        <Link to={'/subjects/class/6'}
+                                className={`flex justify-center items-center gap-4 border border-gray-300 px-6 py-3 rounded h-full 
                                     hover:bg-[#22c55e10] hover:border-[#22c55e] duration-300 `}>
                             <div
                                 className={`bg-green-500 text-white rounded-full p-3`}>
