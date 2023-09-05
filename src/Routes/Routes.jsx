@@ -4,6 +4,7 @@ import Main from "../Layouts/Main/Main";
 import SubjectsLayout from "../Layouts/SubjectsLayout/SubjectsLayout";
 import UserLayout from "../Layouts/UserLayout/UserLayout";
 import Classes from "../Pages/Classes/Classes";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import Home from "../Pages/Home/Home";
 import SignIn from "../Pages/SignIn/SignIn";
 import InstructorSignUp from "../Pages/SignUp/InstructorSignUp/InstructorSignUp";
@@ -48,8 +49,8 @@ const routes = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
             {
-                path: 'test',
-                element: <h1>Test</h1>
+                path: '/dashboard',
+                element: <DashboardHome />
             }
         ]
     },

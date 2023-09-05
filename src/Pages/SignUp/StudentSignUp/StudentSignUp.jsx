@@ -1,26 +1,46 @@
-import { useState } from "react";
+import { updateProfile } from "firebase/auth";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import UploadImage from "../../../APIs/UploadImage";
 import Loader from "../../../Components/Loader/Loader";
 import SubmitBtn from "../../../Components/SubmitBtn/SubmitBtn";
+import { providerContext } from "../../../Provider/Provider";
 import styles from "../SignUp.module.css";
 
 const StudentSignUp = () => {
-    const { register, handleSubmit, formState: { errors }, setError, clearErrors, setFocus } = useForm();
+    const { register, handleSubmit, formState: { errors }, clearErrors, setFocus, reset } = useForm();
     const [showPass, setShowPass] = useState(false);
     const [passError, setPassError] = useState('');
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
     const [phoneError, setPhoneError] = useState('');
-    
+    const navigate = useNavigate();
+
+    const {user, userLoading, createUser} = useContext(providerContext);
+ 
     const handleSignUp = (data) => {
         if (passError) {
             setFocus('password');
             return;
         }
-        console.log(data);
+        if(phoneError) {
+            setFocus('phone');
+            return;
+        }
+        const  {name, email, password, className, year, address, fatherName, phone, dateOfBirth, roll, photo} = data;
+
+        data.photo = photoURL;
+
+        createUser(email, password)
+        .then(res => {
+            updateProfile(res.user, {displayName: name, photoURL: photoURL});
+            reset();
+            navigate('/');
+        })
+        .catch(err => {console.log(err)});
     }
 
     function handlePassChange(e) {
@@ -62,13 +82,12 @@ const StudentSignUp = () => {
         setPhotoLoading(true);
         UploadImage(image)
             .then(data => {
-                console.log(data);
                 setPhotoURL(data.display_url);
                 setPhotoLoading(false);
             })
             .catch(() => { setPhotoLoading(false) });
     };
-
+    console.log(user);
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -77,6 +96,7 @@ const StudentSignUp = () => {
                         className="text-gray-200 text-2xl md:text-3xl text-center tracking-[2px] uppercase md:whitespace-nowrap pb-10 md:pb-16">Student SignUp Form</h1>
                     <form onSubmit={handleSubmit(handleSignUp)} >
                         <section className="flex flex-col sm:flex-row items-center gap-5 lg:gap-10 w-full">
+
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">
                                 {/* First Name Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
@@ -158,7 +178,26 @@ const StudentSignUp = () => {
                                 <div className={`relative bg-[#0f172a] text-white`}>
                                     <input type="text" autoComplete="off"
                                         className={styles.inputField}
-                                        {...register('class',
+                                        {...register('className',
+                                            {
+                                                required: true,
+                                                validate: {
+                                                    minLength: (v) => v.length === 3,
+                                                },
+                                            }
+                                        )}
+                                    />
+                                    {
+                                        errors.className && <span className="absolute -top-2 
+                                        left-[76px] text-red-500 z-10">*</span>
+                                    }
+                                    <span className={styles.inputTitle}>Class</span>
+                                </div>
+                                {/* Year Field */}
+                                <div className={`relative bg-[#0f172a] text-white`}>
+                                    <input type="text" autoComplete="off"
+                                        className={styles.inputField}
+                                        {...register('year',
                                             {
                                                 required: true,
                                                 validate: {
@@ -168,28 +207,32 @@ const StudentSignUp = () => {
                                         )}
                                     />
                                     {
-                                        errors.class && <span className="absolute -top-2 
-                                        left-[76px] text-red-500 z-10">*</span>
+                                        errors.year && <span className="absolute -top-2 
+                                        left-[70px] text-red-500 z-10">*</span>
                                     }
-                                    <span className={styles.inputTitle}>Class</span>
+                                    <span className={styles.inputTitle}>Year</span>
                                 </div>
-                                {/* Roll Number Field */}
+                                {/* Address Number Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
-                                    <input type="number" autoComplete="off"
+                                    <input type="text" autoComplete="off"
                                         className={styles.inputField}
-                                        {...register('roll',
+                                        {...register('address',
                                             {
                                                 required: true,
+                                                validate: {
+                                                    minLength: (v) => v.length >= 5,
+                                                },
                                             }
                                         )}
                                     />
                                     {
-                                        errors.roll && <span className="absolute -top-2 
-                                        left-[131px] text-red-500 z-10">*</span>
+                                        errors.address && <span className="absolute -top-2 
+                                        left-[94px] text-red-500 z-10">*</span>
                                     }
-                                    <span className={styles.inputTitle}>Roll Number</span>
+                                    <span className={styles.inputTitle}>Address</span>
                                 </div>
                             </article>
+
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">
                                 {/* Father's name Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
@@ -216,17 +259,17 @@ const StudentSignUp = () => {
                                         {...register('phone',
                                             {
                                                 required: true,
-                                                validate: {
-                                                    length: (v) => v.length === 11,
-                                                },
                                                 onChange: (e) => {
                                                     const num = e.target.value;
-                                                    if(num.length === 11 || num.length < 1) {
+                                                    if(num.length < 1) {
                                                         setPhoneError('');
-                                                    }else {
-                                                        setPhoneError(`Must have 11 digit. (${num.length})`);
                                                     }
-
+                                                    else if(!/^(?:\+?880|0)1[3-9]\d{8}$/.test(num)) {
+                                                        setPhoneError('Number is not valid.')
+                                                    }
+                                                    else {
+                                                        setPhoneError('');
+                                                    }
                                                 }
                                             }
                                         )}
@@ -243,6 +286,33 @@ const StudentSignUp = () => {
                                         </span>
                                     }
                                 </div>
+                                {/* Date Of Birth Field */}
+                                <div className={`relative bg-[#0f172a] text-white`}>
+                                    <input type="date" autoComplete="off"
+                                        className={styles.inputField}
+                                        {...register('dateOfBirth',
+                                            {
+                                                required: true,
+                                                validate: {
+                                                    minLength: (v) => v.length >= 5,
+                                                },
+                                            }
+                                        )}
+                                    />
+                                    {
+                                        errors.dateOfBirth && <span className="absolute -top-2 
+                                        left-[138px] text-red-500 z-10">*</span>
+                                    }
+                                    <span className={styles.inputTitle}>Date Of Birth</span>
+                                </div>
+                                {/* Roll Number Field */}
+                                <div className={`relative bg-[#0f172a] text-white`}>
+                                    <input type="number" autoComplete="off"
+                                        className={styles.inputField}
+                                        {...register('roll')}
+                                    />
+                                    <span className={styles.inputTitle}>Roll Number</span>
+                                </div>
                                 {/* Image Field */}
                                 {
                                     photoLoading ?
@@ -256,14 +326,14 @@ const StudentSignUp = () => {
                                                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <svg aria-hidden="true" className="w-8 h-8 mb-3 text-white duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                                                                 <p className="mb-2 text-sm text-gray-200 group-hover:text-white duration-300"><span className="font-semibold ">Click to upload</span> or drag and drop</p>
-                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">SVG, PNG, or JPG</p>
+                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">PNG, JPG, Or WEBP</p>
                                                                 {
                                                                     errors.photo && <span className="text-red-500 text-[11px] absolute bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2">
                                                                         {'Image is required'}
                                                                     </span>
                                                                 }
                                                             </div>
-                                                            <input id="dropzone-file" type="file" accept={['.png', '.jpg', '.svg']} className="hidden"
+                                                            <input id="dropzone-file" type="file" accept={['.png', '.jpg', '.webp']} className="hidden"
                                                                 {...register('photo',
                                                                     {
                                                                         required: true,
@@ -280,26 +350,8 @@ const StudentSignUp = () => {
                                             }
                                         </>
                                 }
-                                {/* Address Number Field */}
-                                <div className={`relative bg-[#0f172a] text-white`}>
-                                    <input type="text" autoComplete="off"
-                                        className={styles.inputField}
-                                        {...register('address',
-                                            {
-                                                required: true,
-                                                validate: {
-                                                    minLength: (v) => v.length >= 5,
-                                                },
-                                            }
-                                        )}
-                                    />
-                                    {
-                                        errors.address && <span className="absolute -top-2 
-                                        left-[94px] text-red-500 z-10">*</span>
-                                    }
-                                    <span className={styles.inputTitle}>Address</span>
-                                </div>
                             </article>
+
                         </section>
                         <div className={`text-white`}>
                             <SubmitBtn text={'Sign Up'} />

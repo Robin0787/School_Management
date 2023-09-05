@@ -21,6 +21,10 @@ const InstructorSignUp = () => {
             setFocus('password');
             return;
         }
+        if(phoneError) {
+            setFocus('phone');
+            return;
+        }
         console.log(data);
     }
 
@@ -206,12 +210,15 @@ const InstructorSignUp = () => {
                                                 },
                                                 onChange: (e) => {
                                                     const num = e.target.value;
-                                                    if(num.length === 11 || num.length < 1) {
+                                                    if(num.length < 1) {
                                                         setPhoneError('');
-                                                    }else {
-                                                        setPhoneError(`Must have 11 digit. (${num.length})`);
                                                     }
-
+                                                    else if(!/^(?:\+?880|0)1[3-9]\d{8}$/.test(num)) {
+                                                        setPhoneError('Number is not valid.')
+                                                    }
+                                                    else {
+                                                        setPhoneError('');
+                                                    }
                                                 }
                                             }
                                         )}
@@ -241,14 +248,14 @@ const InstructorSignUp = () => {
                                                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                                                 <svg aria-hidden="true" className="w-8 h-8 mb-3 text-white duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                                                                 <p className="mb-2 text-sm text-gray-200 group-hover:text-white duration-300"><span className="font-semibold ">Click to upload</span> or drag and drop</p>
-                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">SVG, PNG, or JPG</p>
+                                                                <p className="text-xs text-gray-300 group-hover:text-white duration-300">PNG, JPG, Or WEBP</p>
                                                                 {
                                                                     errors.photo && <span className="text-red-500 text-[11px] absolute bottom-1 sm:bottom-2 left-1/2 -translate-x-1/2">
                                                                         {'Image is required'}
                                                                     </span>
                                                                 }
                                                             </div>
-                                                            <input id="dropzone-file" type="file" accept={['.png', '.jpg', '.svg']} className="hidden"
+                                                            <input id="dropzone-file" type="file" accept={['.png', '.jpg', '.webp']} className="hidden"
                                                                 {...register('photo',
                                                                     {
                                                                         required: true,

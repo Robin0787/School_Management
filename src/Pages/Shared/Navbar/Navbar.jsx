@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { GoBook } from 'react-icons/go';
 import { Link } from "react-router-dom";
 import Container from "../../../Components/Container";
+import { providerContext } from "../../../Provider/Provider";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-    // theme state
-    const [theme, setTheme] = useState('dark');
+    const { user, theme, setTheme } = useContext(providerContext);
 
-    // if local storage is empty save theme as light
+    // Theme related code --------------------
     useEffect(() => {
         if (localStorage.getItem('theme') === null) {
             localStorage.setItem('theme', 'light');
@@ -29,7 +30,6 @@ const Navbar = () => {
         }
     }, [theme]);
 
-    // handle switch theme
     const handleThemeSwitch = () => {
         if (localStorage.getItem('theme') === 'light') {
             setTheme('dark');
@@ -64,11 +64,24 @@ const Navbar = () => {
                                 <BsFillSunFill size={20} /> :
                                 <BsFillMoonStarsFill size={20} />}
                         </button>
-                        <Link to={'/user/signUp'} className={`${styles.nav_menu}`}>
-                            Sign Up
-                        </Link>
-                        <Link to={'/user/signIn'} className={`${styles.nav_menu}`}>
-                            Sign In
+                        {
+                            user ?
+                                ''
+                                :
+                                <>
+                                    <Link to={'/user/signUp'} className={`${styles.nav_menu}`}>
+                                        Sign Up
+                                    </Link>
+                                    <Link to={'/user/signIn'} className={`${styles.nav_menu}`}>
+                                        Sign In
+                                    </Link>
+                                </>
+                        }
+                        <Link to={'/dashboard'}>
+                            <div className={`${styles.nav_menu} flex items-center gap-1`}>
+                                <BiSolidDashboard size={20} />
+                                <h1>Dashboard</h1>
+                            </div>
                         </Link>
                     </div>
                 </section>
