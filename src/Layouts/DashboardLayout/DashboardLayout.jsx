@@ -4,11 +4,11 @@ import SideMenu from "../../Components/SideMenu/SideMenu";
 
 const DashboardLayout = () => {
     return (
-        <section className="flex relative w-full h-screen">
-            <section className="fixed top-0">
+        <section className="relative w-full overflow-hidden">
+            <section className="hidden lg:block w-[20%] fixed top-0">
                 <SideMenu />
             </section>
-            <section className="relative left-16 lg:left-60 w-[calc(100vw-64px)]  lg:w-[calc(100vw-240px)] duration-300">
+            <section className="relative w-full lg:w-[80%] bg-blue-600 lg:left-[20%] p-5">
                 <Outlet />
             </section>
         </section>

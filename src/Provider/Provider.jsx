@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import GetUserInfo from "../APIs/GetUserInfo";
 import app from "../Firebase/firebase.init";
@@ -16,6 +16,9 @@ const Provider = ({children}) => {
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
+    }
+    const signInUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
     }
     const logOutUser = () => {
         return signOut(auth);
@@ -49,7 +52,41 @@ const Provider = ({children}) => {
     }, []);
 
 
-    const values = {theme, setTheme , user, userRole, userLoading, createUser, logOutUser};
+    // Theme related code --------------------
+    useEffect(() => {
+        if (localStorage.getItem('theme') === null) {
+            localStorage.setItem('theme', 'dark');
+        }
+    }, []);
+
+    useEffect(() => {
+        // select html elem
+        const html = document.querySelector('html');
+        //add or remove class dark in html elem according to theme in localstorage.
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+            setTheme('dark');
+        } else {
+            html.classList.remove('dark');
+            setTheme('light');
+        }
+    }, [theme, setTheme]);
+
+    const handleThemeSwitch = () => {
+        if (localStorage.getItem('theme') === 'light') {
+            setTheme('dark');
+            document.documentElement.style.setProperty('--scrollbar-bg', '#0f172a');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            setTheme('light');
+            document.documentElement.style.setProperty('--scrollbar-bg', '#ffffff');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+
+
+    const values = {theme, setTheme , user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch};
     return (
         <providerContext.Provider value={values}>
             {children}

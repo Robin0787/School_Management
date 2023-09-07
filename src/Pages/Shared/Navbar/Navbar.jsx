@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { GoBook } from 'react-icons/go';
@@ -8,39 +8,7 @@ import { providerContext } from "../../../Provider/Provider";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-    const { user, theme, setTheme } = useContext(providerContext);
-
-    // Theme related code --------------------
-    useEffect(() => {
-        if (localStorage.getItem('theme') === null) {
-            localStorage.setItem('theme', 'dark');
-        }
-    }, []);
-
-    useEffect(() => {
-        // select html elem
-        const html = document.querySelector('html');
-        //add or remove class dark in html elem according to theme in localstorage.
-        if (localStorage.getItem('theme') === 'dark') {
-            html.classList.add('dark');
-            setTheme('dark');
-        } else {
-            html.classList.remove('dark');
-            setTheme('light');
-        }
-    }, [theme]);
-
-    const handleThemeSwitch = () => {
-        if (localStorage.getItem('theme') === 'light') {
-            setTheme('dark');
-            document.documentElement.style.setProperty('--scrollbar-bg', '#0f172a');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            setTheme('light');
-            document.documentElement.style.setProperty('--scrollbar-bg', '#ffffff');
-            localStorage.setItem('theme', 'light');
-        }
-    };
+    const { user, theme, handleThemeSwitch } = useContext(providerContext);
 
     return (
         <>
@@ -81,6 +49,13 @@ const Navbar = () => {
                                         Sign In
                                     </Link>
                                 </>
+                        }
+                        {
+                            user && (
+                                <div>
+                                    <img src={user?.photoURL} alt="" className="h-[28px] w-[28px] rounded-lg outline outline-2 outline-white hover:outline-green-500 duration-500"/>
+                                </div>
+                            )
                         }
                     </div>
                 </section>

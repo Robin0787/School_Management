@@ -7,8 +7,8 @@ import { providerContext } from '../../Provider/Provider';
 const PrivateRoute = ({children}) => {
     const {user, userLoading} = useContext(providerContext);
     const location = useLocation();
-    
-    if(userLoading){
+    console.log(userLoading);
+    if(userLoading || !user){
         return <Loader2 />
     }
     if(user) {
