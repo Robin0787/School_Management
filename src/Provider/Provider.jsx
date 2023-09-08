@@ -7,8 +7,8 @@ import app from "../Firebase/firebase.init";
 
 export const providerContext = createContext(null);
 
-const Provider = ({children}) => {
-    const [userLoading, setUserLoading] = useState(false);
+const Provider = ({ children }) => {
+    const [userLoading, setUserLoading] = useState(true);
     const [theme, setTheme] = useState('dark');
     const [user, setUser] = useState(null);
     const [userRole, setUserRole] = useState('');
@@ -27,24 +27,21 @@ const Provider = ({children}) => {
 
 
     useEffect(() => {
-        setUserLoading(true);
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if(currentUser) {
+            if (currentUser) {
                 setUser(currentUser);
                 setUserLoading(false);
                 GetUserInfo(currentUser.email)
-                .then(res => {
-                    if(!res) {
-                        setUserRole('');
-                    }
-                    else if(res.data) {
-                        setUserRole(res.role);
-
-                    }
-                    console.log(res);
-                })
-            }else {
+                    .then(res => {
+                        if(!res) {
+                            setUserRole('');
+                        } else {
+                            setUserRole(res.role);
+                        }
+                    }).catch(err => console.log(err));
+            } else {
                 setUser(null);
+                setUserLoading(false);
             }
         });
 
@@ -85,8 +82,7 @@ const Provider = ({children}) => {
     };
 
 
-
-    const values = {theme, setTheme , user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch};
+    const values = { theme, setTheme, user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch };
     return (
         <providerContext.Provider value={values}>
             {children}

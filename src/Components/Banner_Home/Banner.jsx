@@ -1,7 +1,7 @@
 import { MdDateRange } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import img from "../../assets/Home/Banner/img-1.jpg";
-import Banner_Slider from "../Banner_Slider/Banner_Slider";
+// import Banner_Slider from "../Banner_Slider/Banner_Slider";
 const Banner = () => {
     return (
         <section className="h-[calc(100vh-0px)] bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
@@ -29,7 +29,7 @@ const Banner = () => {
                             </div>
                         </section>
                         <section className="w-full md:w-1/2">
-                            <Banner_Slider />
+                            {/* <Banner_Slider /> */}
                         </section>
                     </section>
                 </section>

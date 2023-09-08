@@ -12,7 +12,10 @@ import SignUp from "../Pages/SignUp/SignUp";
 import StudentSignUp from "../Pages/SignUp/StudentSignUp/StudentSignUp";
 import Subjects from "../Pages/Subjects/Subjects";
 import Teachers from "../Pages/Teachers/Teachers";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import InstructorRoute from "./InstructorRoute/InstructorRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import StudentRoute from "./StudentRoute/StudentRoute";
 
 
 const routes = createBrowserRouter([
@@ -41,7 +44,7 @@ const routes = createBrowserRouter([
             {
                 path: 'class/:class_num',
                 element: <Subjects />,
-                loader: ({params}) => params.class_num
+                loader: ({ params }) => params.class_num
             }
         ]
     },
@@ -52,6 +55,22 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><DashboardHome /></PrivateRoute>
+            },
+            {
+                path: 'home',
+                element: <DashboardHome />
+            },
+            {
+                path: "instructors",
+                element: <AdminRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">All Instructors</h1></AdminRoute>
+            },
+            {
+                path: "students",
+                element: <InstructorRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">All Students</h1></InstructorRoute>
+            },
+            {
+                path: "my-info",
+                element: <StudentRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">My Info</h1></StudentRoute>
             }
         ]
     },
