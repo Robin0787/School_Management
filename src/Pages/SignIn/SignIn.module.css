@@ -43,26 +43,3 @@
 .inputField:disabled {
   cursor: not-allowed;
 }
-
-@media screen and (min-width: 1028px) {
-  .inputField {
-    width: 400px;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 1027px) {
-  .inputField {
-    width: 340px;
-  }
-}
-
-@media screen and (min-width: 401px) and (max-width: 639px) {
-  .inputField {
-    width: 300px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .inputField {
-    width: 100%;
-  }
-}

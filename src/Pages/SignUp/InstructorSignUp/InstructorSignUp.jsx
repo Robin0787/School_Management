@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { updateProfile } from "firebase/auth";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -20,7 +20,7 @@ const InstructorSignUp = () => {
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
     const [phoneError, setPhoneError] = useState('');
-    const {createUser} = useContext(providerContext);
+    const {createUser, setUserBannerText} = useContext(providerContext);
     const [formLoading, setFormLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -107,7 +107,11 @@ const InstructorSignUp = () => {
             })
             .catch(() => { setPhotoLoading(false) });
     };
-
+    // Changing banner text
+    useEffect(() => {
+        setUserBannerText('Sign Up Dear!');
+    }, [setUserBannerText]);
+    
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -305,7 +309,7 @@ const InstructorSignUp = () => {
                                 }
                             </article>
                         </section>
-                        <div className={`text-white`}>
+                        <div className={`text-white mt-10`}>
                             <SubmitBtn text={'Sign Up'} loading={formLoading}/>
                         </div>
                     </form>

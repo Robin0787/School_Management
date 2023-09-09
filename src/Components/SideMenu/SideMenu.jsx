@@ -11,8 +11,8 @@ import GetRouteLinks from "../../Routes/GetRouteLinks/GetRouteLinks";
 const SideMenu = ({ setOpenMenu }) => {
     const { user, logOutUser, theme, handleThemeSwitch } = useContext(providerContext);
     
-    const active = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded shadow-[0px_0px_2px] shadow-white duration-300 group';
-    const notActive = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_1px] shadow-black duration-300 group';
+    const active = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded shadow-[0px_0px_4px] shadow-white duration-300 group';
+    const notActive = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_4px] hover:shadow-gray-400 duration-300 group';
 
     useEffect(() => {
         if (setOpenMenu) {
@@ -43,7 +43,7 @@ const SideMenu = ({ setOpenMenu }) => {
                     </NavLink>
                     <GetRouteLinks />
                 </div>
-                <div className="px-4 mt-10 flex-grow">
+                <div className="px-4 mt-8 flex-grow">
                     <hr className="border-gray-700" />
                 </div>
                 {/* Default Routes */}

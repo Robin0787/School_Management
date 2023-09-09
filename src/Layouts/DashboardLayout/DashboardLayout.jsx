@@ -30,7 +30,7 @@ const DashboardLayout = () => {
                     <SideMenu setOpenMenu={setOpenMenu} />
                 </section>
             </section>
-            <section className="relative p-5 w-full lg:w-[80%] lg:left-[20%] bg-white text-black dark:bg-[#0f172a] dark:text-white h-full">
+            <section className="relative w-full lg:w-[80%] lg:left-[20%] bg-white text-black dark:bg-[#0f172a] dark:text-white h-full">
                 <Outlet />
             </section>
         </section>

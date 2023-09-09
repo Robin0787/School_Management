@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { updateProfile } from "firebase/auth";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -22,7 +22,7 @@ const StudentSignUp = () => {
     const [phoneError, setPhoneError] = useState('');
     const navigate = useNavigate();
 
-    const { createUser } = useContext(providerContext);
+    const { createUser, setUserBannerText } = useContext(providerContext);
 
     const handleSignUp = (data) => {
         if (passError) {
@@ -106,6 +106,10 @@ const StudentSignUp = () => {
             .catch(() => { setPhotoLoading(false) });
     };
 
+    // Changing banner text
+    useEffect(() => {
+        setUserBannerText('Sign Up Dear!');
+    }, [setUserBannerText]);
     return (
         <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
@@ -370,7 +374,7 @@ const StudentSignUp = () => {
                             </article>
 
                         </section>
-                        <div className={`text-white`}>
+                        <div className={`text-white mt-10`}>
                             <SubmitBtn text={'Sign Up'} />
                         </div>
                     </form>

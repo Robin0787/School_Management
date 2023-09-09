@@ -13,6 +13,7 @@ const Provider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [userRole, setUserRole] = useState('');
     const auth = new getAuth(app);
+    const [userBannerText, setUserBannerText] = useState('Welcome Dear!');
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -82,7 +83,7 @@ const Provider = ({ children }) => {
     };
 
 
-    const values = { theme, setTheme, user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch };
+    const values = { theme, setTheme, user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch, userBannerText, setUserBannerText };
     return (
         <providerContext.Provider value={values}>
             {children}

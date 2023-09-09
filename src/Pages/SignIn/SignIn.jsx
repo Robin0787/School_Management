@@ -1,27 +1,28 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn";
 import { providerContext } from "../../Provider/Provider";
+import banner from "../../assets/SignIn.jpg";
 import styles from "./SignIn.module.css";
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPass, setShowPass] = useState(false);
     const [showEyeIcon, setShowEyeIcon] = useState(false);
-    const {signInUser} = useContext(providerContext);
+    const { signInUser, setUserBannerText } = useContext(providerContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from || '/';
 
     const handleSignUp = (data) => {
-        const {email, password} = data;
+        const { email, password } = data;
         signInUser(email, password)
-        .then(() => {
-            navigate(from);
-        }).catch((err) => {toast.error(err.message.slice(22,-2).replace('-', ' '))});
+            .then(() => {
+                navigate(from);
+            }).catch((err) => { toast.error(err.message.slice(22, -2).replace('-', ' ')) });
     }
 
     function handleEyeIcon(pass) {
@@ -32,14 +33,19 @@ const SignIn = () => {
             setShowEyeIcon(true);
         }
     }
+    useEffect(() => {
+        setUserBannerText('Sign In Dear!');
+    }, [setUserBannerText]);
+    
     return (
-        <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20">
-            <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded ">
-                <article className={`px-5 py-10 sm:px-10 sm:py-16 lg:px-16 lg:py-20`}>
-                    <h1
-                        className="text-gray-200 text-2xl md:text-3xl text-center tracking-[2px] uppercase md:whitespace-nowrap pb-10 md:pb-16">SignIn Form</h1>
-                    <form onSubmit={handleSubmit(handleSignUp)} >
-                        <section className="flex  items-center gap-5 lg:gap-10 w-full">
+        <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20 ">
+            <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded flex flex-col md:flex-row gap-10 md:gap-0 lg:gap-10 items-center w-[95%] md:w-4/5">
+                <article className="w-full md:w-1/2">
+                    <img src={banner} alt="" className="h-full w-full object-cover rounded-t md:rounded-l md:rounded-tr-none" />
+                </article>
+                <article className="w-full md:w-1/2 flex justify-center items-center">
+                    <article className={`px-3 sm:px-10 lg:px-10 w-full`}>
+                        <form onSubmit={handleSubmit(handleSignUp)} className="py-5 space-y-5 lg:space-y-10">
                             <article className="w-full  flex flex-col gap-5 lg:gap-10">
                                 {/* Email Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
@@ -55,7 +61,7 @@ const SignIn = () => {
                                 {/* Password Name Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
                                     <input type={showPass ? 'text' : "password"} autoComplete="off" className={styles.inputField}
-                                        {...register('password', { required: true, onChange: (e) => {handleEyeIcon(e.target.value)} })}
+                                        {...register('password', { required: true, onChange: (e) => { handleEyeIcon(e.target.value) } })}
                                     />
                                     {
                                         errors.password && <span className="absolute -top-2 
@@ -81,11 +87,12 @@ const SignIn = () => {
                                     }
                                 </div>
                             </article>
-                        </section>
-                        <div className={`text-white`}>
-                            <SubmitBtn text={'Sign In'} />
-                        </div>
-                    </form>
+                            <div className={`text-white`}>
+                                <SubmitBtn text={'Sign In'} />
+                                <p className="text-center mx-auto text-sm mt-3">Don't have an account? <Link to={'/user/signUp'} className="text-green-500">Sign Up</Link></p>
+                            </div>
+                        </form>
+                    </article>
                 </article>
             </section>
         </section>

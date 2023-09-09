@@ -2,17 +2,25 @@ import {
     useQuery,
 } from '@tanstack/react-query';
 import axios from 'axios';
+import { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Container from '../../Components/Container';
 import HeaderTitle from '../../Components/HeaderTitle/HeaderTitle';
 import Loader2 from '../../Components/Loader2/Loader2';
 import SingleBook from '../../Components/SingleBook/SingleBook';
 import SingleBookCard from '../../Components/SingleBook/SingleBookCard';
+import { providerContext } from '../../Provider/Provider';
 
 
 const Subjects = () => {
     const class_num = useLoaderData();
+    const {setUserBannerText} = useContext(providerContext);
     const base = import.meta.env.VITE_BASE_URL;
+
+    useEffect(() => {
+        setUserBannerText(`Subjects of Class : ${class_num}`);
+    }, [class_num, setUserBannerText]);
+
     const { data: class_info = {}, isLoading } = useQuery({
         queryKey: ['class_data'],
         queryFn: async () => {
@@ -24,7 +32,7 @@ const Subjects = () => {
     
     return (
         <section>
-            <HeaderTitle text={`Subjects of Class : ${class_num}`}/>
+            <HeaderTitle />
             <section className='bg-white text-black dark:bg-[#0f172a] dark:text-white duration-200 '>
                     <Container>
                             <section className="pb-20">

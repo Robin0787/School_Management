@@ -4,7 +4,12 @@ import Main from "../Layouts/Main/Main";
 import SubjectsLayout from "../Layouts/SubjectsLayout/SubjectsLayout";
 import UserLayout from "../Layouts/UserLayout/UserLayout";
 import Classes from "../Pages/Classes/Classes";
+import AllInstructors from "../Pages/Dashboard/Admin/AllInstructors/AllInstructors";
+import InstructorsRequest from "../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import AllStudents from "../Pages/Dashboard/Instructor/AllStudents/AllStudents";
+import StudentsRequest from "../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest";
+import MyInfo from "../Pages/Dashboard/Student/MyInfo/MyInfo";
 import Home from "../Pages/Home/Home";
 import SignIn from "../Pages/SignIn/SignIn";
 import InstructorSignUp from "../Pages/SignUp/InstructorSignUp/InstructorSignUp";
@@ -62,15 +67,23 @@ const routes = createBrowserRouter([
             },
             {
                 path: "instructors",
-                element: <AdminRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">All Instructors</h1></AdminRoute>
+                element: <AdminRoute><AllInstructors /></AdminRoute>
+            },
+            {
+                path: "instructors-request",
+                element: <AdminRoute><InstructorsRequest /></AdminRoute>
             },
             {
                 path: "students",
-                element: <InstructorRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">All Students</h1></InstructorRoute>
+                element: <InstructorRoute><AllStudents /></InstructorRoute>
+            },
+            {
+                path: "students-request",
+                element: <InstructorRoute><StudentsRequest /></InstructorRoute>
             },
             {
                 path: "my-info",
-                element: <StudentRoute><h1 className="text-4xl bg-blue-500 p-20 text-center">My Info</h1></StudentRoute>
+                element: <StudentRoute><MyInfo /></StudentRoute>
             }
         ]
     },
