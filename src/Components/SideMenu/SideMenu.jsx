@@ -54,13 +54,13 @@ const SideMenu = ({ setOpenMenu }) => {
                         <span className={`whitespace-pre`}>Home</span>
                     </Link>
                     <button
-                        className="link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_1px] shadow-black duration-300group" onClick={handleThemeSwitch}>
+                        className="link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_4px] hover:shadow-gray-400 duration-300 group" onClick={handleThemeSwitch}>
                         {
                             theme === 'dark' ?
                                 <BsFillSunFill size={20} /> :
                                 <BsFillMoonStarsFill size={20} />
                         }
-                        <span className={`whitespace-pre duration-500 capitalize delay-300`}>{theme}</span>
+                        <span className={`whitespace-pre capitalize `}>{theme}</span>
                     </button>
                     <Link
                         className={notActive}>

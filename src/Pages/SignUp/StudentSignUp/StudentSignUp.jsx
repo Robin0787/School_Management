@@ -21,6 +21,7 @@ const StudentSignUp = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [phoneError, setPhoneError] = useState('');
     const navigate = useNavigate();
+    const [formLoading, setFormLoading] = useState(false);
 
     const { createUser, setUserBannerText } = useContext(providerContext);
 
@@ -37,6 +38,7 @@ const StudentSignUp = () => {
             toast.error('Wait Photo is Uploading...');
             return;
         }
+        setFormLoading(true);
         const { name, email, password, className, year, address, fatherName, phone, dateOfBirth, roll, photo } = data;
 
         createUser(email, password)
@@ -53,12 +55,13 @@ const StudentSignUp = () => {
                 StudentRequest(studentInfo)
                     .then(() => {
                         toast.success('Request Sent.');
+                        setFormLoading(false);
                         reset();
                         navigate('/');
-                    }).catch(err => console.log(err));
+                    }).catch(err => {console.log(err); setFormLoading(false)});
 
             })
-            .catch(err => { console.log(err) });
+            .catch(err => { console.log(err); setFormLoading(false); });
     }
 
     function handlePassChange(e) {
@@ -375,7 +378,7 @@ const StudentSignUp = () => {
 
                         </section>
                         <div className={`text-white mt-10`}>
-                            <SubmitBtn text={'Sign Up'} />
+                            <SubmitBtn text={'Sign Up'} loading={formLoading}/>
                         </div>
                     </form>
                 </article>

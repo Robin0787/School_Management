@@ -13,16 +13,19 @@ const SignIn = () => {
     const [showPass, setShowPass] = useState(false);
     const [showEyeIcon, setShowEyeIcon] = useState(false);
     const { signInUser, setUserBannerText } = useContext(providerContext);
+    const [formLoading, setFormLoading] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from || '/';
 
     const handleSignUp = (data) => {
+        setFormLoading(true);
         const { email, password } = data;
         signInUser(email, password)
             .then(() => {
+                setFormLoading(false);
                 navigate(from);
-            }).catch((err) => { toast.error(err.message.slice(22, -2).replace('-', ' ')) });
+            }).catch((err) => { setFormLoading(false); toast.error(err.message.slice(22, -2).replace('-', ' ')) });
     }
 
     function handleEyeIcon(pass) {
@@ -88,7 +91,7 @@ const SignIn = () => {
                                 </div>
                             </article>
                             <div className={`text-white`}>
-                                <SubmitBtn text={'Sign In'} />
+                                <SubmitBtn text={'Sign In'} loading={formLoading}/>
                                 <p className="text-center mx-auto text-sm mt-3">Don't have an account? <Link to={'/user/signUp'} className="text-green-500">Sign Up</Link></p>
                             </div>
                         </form>
