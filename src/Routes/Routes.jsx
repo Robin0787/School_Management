@@ -8,6 +8,7 @@ import AllInstructors from "../Pages/Dashboard/Admin/AllInstructors/AllInstructo
 import InstructorsRequest from "../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import AllStudents from "../Pages/Dashboard/Instructor/AllStudents/AllStudents";
+import ApprovedStudents from "../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents";
 import StudentsRequest from "../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest";
 import MyInfo from "../Pages/Dashboard/Student/MyInfo/MyInfo";
 import Home from "../Pages/Home/Home";
@@ -76,6 +77,10 @@ const routes = createBrowserRouter([
             {
                 path: "students",
                 element: <InstructorRoute><AllStudents /></InstructorRoute>
+            },
+            {
+                path: "approved-students",
+                element: <InstructorRoute><ApprovedStudents /></InstructorRoute>
             },
             {
                 path: "students-request",

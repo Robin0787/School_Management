@@ -3,32 +3,32 @@ import axios from "axios";
 import { useContext, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ApprovedStudentCard from "../../../../Components/ApprovedStudentCard/ApprovedStudentCard";
 import HeaderTitle from "../../../../Components/HeaderTitle/HeaderTitle";
 import Loader2 from "../../../../Components/Loader2/Loader2";
-import StudentRequestCard from "../../../../Components/StudentRequestCard/StudentRequestCard";
 import { providerContext } from "../../../../Provider/Provider";
 
 
-const StudentsRequest = () => {
+const ApprovedStudents = () => {
     const { setUserBannerText, userLoading } = useContext(providerContext);
 
-    const { data: requests = {}, isLoading, refetch } = useQuery({
+    const { data: approved = {}, isLoading } = useQuery({
         queryKey: ['students-request'],
         disabled: !userLoading,
         queryFn: async () => {
-            const url = `${import.meta.env.VITE_BASE_URL}/students-request`
+            const url = `${import.meta.env.VITE_BASE_URL}/approved-students`
             const res = await axios.get(url);
-            return res.data
+            return res.data;
         }
     });
 
-
+    console.log(approved);
 
     // Changing Banner Text;
     useEffect(() => {
         setUserBannerText('Students Request!');
     }, [setUserBannerText]);
-
+    
     return (
         <section className="bg-white text-black dark:bg-[#0f172a] dark:text-white">
             <HeaderTitle h="lg:h-[35vh]" />
@@ -49,7 +49,7 @@ const StudentsRequest = () => {
                                 (
                                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                         {
-                                            requests?.six?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
+                                            approved?.six?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
                                         }
                                     </section>
                                 )
@@ -63,7 +63,7 @@ const StudentsRequest = () => {
                                 (
                                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
                                         {
-                                            requests?.seven?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
+                                            approved?.seven?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
                                         }
                                     </section>
                                 )
@@ -77,7 +77,7 @@ const StudentsRequest = () => {
                                 (
                                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
                                         {
-                                           requests?.eight?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
+                                           approved?.eight?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
                                         }
                                     </section>
                                 )
@@ -91,7 +91,7 @@ const StudentsRequest = () => {
                                 (
                                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
                                         {
-                                            requests?.nine?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
+                                            approved?.nine?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
                                         }
                                     </section>
                                 )
@@ -105,7 +105,7 @@ const StudentsRequest = () => {
                                 (
                                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
                                         {
-                                            requests?.ten?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
+                                            approved?.ten?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
                                         }
                                     </section>
                                 )
@@ -117,4 +117,4 @@ const StudentsRequest = () => {
     );
 };
 
-export default StudentsRequest;
+export default ApprovedStudents;

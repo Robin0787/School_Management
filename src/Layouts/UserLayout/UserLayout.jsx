@@ -9,7 +9,7 @@ const UserLayout = () => {
             <section className='absolute top-0 left-0 w-full'>
                 <Navbar />
             </section>
-            <HeaderTitle/>
+            <HeaderTitle />
             <Outlet />
         </section>
     );

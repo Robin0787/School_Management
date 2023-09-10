@@ -11,7 +11,7 @@ const InstructorRequests = () => {
     
     return (
         <section>
-            <HeaderTitle h="35vh"/>
+            <HeaderTitle h="lg:h-[35vh]"/>
         </section>
     );
 };
