@@ -28,7 +28,6 @@ const ApprovedStudents = () => {
     useEffect(() => {
         setUserBannerText('Students Request!');
     }, [setUserBannerText]);
-    
     return (
         <section className="bg-white text-black dark:bg-[#0f172a] dark:text-white">
             <HeaderTitle h="lg:h-[35vh]" />
@@ -42,72 +41,107 @@ const ApprovedStudents = () => {
                         <Tab><h1 className="px-1 md:px-5 text-lg xl:text-xl">Ten</h1></Tab>
                     </TabList>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
-                                        {
-                                            approved?.six?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
-                                        }
-                                    </section>
+                                    (
+                                        approved.six ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    approved?.six?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            approved?.seven?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
-                                        }
-                                    </section>
+                                    (
+                                        approved.seven ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    approved?.seven?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                           approved?.eight?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
-                                        }
-                                    </section>
+                                    (
+                                        approved.eight ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    approved?.eight?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            approved?.nine?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
-                                        }
-                                    </section>
+                                    (
+                                        approved.nine ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    approved?.nine?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            approved?.ten?.map((item) => <ApprovedStudentCard item={item} key={item._id}/>)
-                                        }
-                                    </section>
+                                    (
+                                        approved.ten ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    approved?.ten?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>

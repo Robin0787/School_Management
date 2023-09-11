@@ -12,7 +12,7 @@ import { providerContext } from "../../../../Provider/Provider";
 const StudentsRequest = () => {
     const { setUserBannerText, userLoading } = useContext(providerContext);
 
-    const { data: requests = {}, isLoading, refetch } = useQuery({
+    const { data: requests = {}, isLoading } = useQuery({
         queryKey: ['students-request'],
         disabled: !userLoading,
         queryFn: async () => {
@@ -42,72 +42,107 @@ const StudentsRequest = () => {
                         <Tab><h1 className="px-1 md:px-5 text-lg xl:text-xl">Ten</h1></Tab>
                     </TabList>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
-                                        {
-                                            requests?.six?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
-                                        }
-                                    </section>
+                                    (
+                                        requests.six ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    requests?.six?.map((item) => <StudentRequestCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            requests?.seven?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
-                                        }
-                                    </section>
+                                    (
+                                        requests.seven ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    requests?.seven?.map((item) => <StudentRequestCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                           requests?.eight?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
-                                        }
-                                    </section>
+                                    (
+                                        requests.eight ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    requests?.eight?.map((item) => <StudentRequestCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            requests?.nine?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
-                                        }
-                                    </section>
+                                    (
+                                        requests.nine ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    requests?.nine?.map((item) => <StudentRequestCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
                     <TabPanel>
-                        {
+                    {
                             isLoading ?
                                 <Loader2 />
                                 :
                                 (
-                                    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 p-5 pb-8">
-                                        {
-                                            requests?.ten?.map((item) => <StudentRequestCard item={item} key={item._id} refetch={refetch}/>)
-                                        }
-                                    </section>
+                                    (
+                                        requests.ten ?
+                                            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
+                                                {
+                                                    requests?.ten?.map((item) => <StudentRequestCard item={item} key={item._id} />)
+                                                }
+                                            </section>
+                                            :
+                                            <section className="flex justify-center items-center h-[35vh]">
+                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                            </section>
+                                    )
                                 )
                         }
                     </TabPanel>
