@@ -13,7 +13,7 @@ const ApprovedStudents = () => {
     const { setUserBannerText, userLoading } = useContext(providerContext);
 
     const { data: approved = {}, isLoading } = useQuery({
-        queryKey: ['students-request'],
+        queryKey: ['approved-students'],
         disabled: !userLoading,
         queryFn: async () => {
             const url = `${import.meta.env.VITE_BASE_URL}/approved-students`

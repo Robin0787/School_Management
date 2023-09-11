@@ -1,16 +1,38 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+const reject = async (_id) => {
+    const url = `${import.meta.env.VITE_BASE_URL}/reject-student-request/${_id}`;
+    const res = await axios.delete(url);
+    return res.data;
+}
 
 const StudentRequestCard = ({ item, refetch }) => {
     const [loading, setLoading] = useState(false);
     const { _id } = item;
+    const queryCLient = useQueryClient();
     
+    const { mutate } = useMutation({
+        mutationFn: reject,
+        onSuccess: () => {
+            toast.success('Rejected');
+            queryCLient.invalidateQueries(['students-request']);
+            setLoading(false);
+        },
+        onError: (err) => {
+            toast.error('Error');
+            console.log(err);
+            setLoading(false);
+        }
+    });
+
     async function accept() {
         setLoading(true);
         const url = `${import.meta.env.VITE_BASE_URL}/store-approved-student/${_id}`;
         const res = await axios.post(url);
+        // return res.data;
         if(res.data.deletedCount){
             setLoading(false);
             refetch();
@@ -20,6 +42,7 @@ const StudentRequestCard = ({ item, refetch }) => {
             toast.error('Something Wrong Happened. Try Again!');
         }
     }
+    
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
             <img src={item?.photo} alt="" className="h-32 w-32 rounded-full mx-auto object-cover object-center my-5" />
@@ -72,7 +95,9 @@ const StudentRequestCard = ({ item, refetch }) => {
             <div 
             disabled={loading}
             className="bg-[#141d31] flex justify-between items-center gap-8 px-4 py-2">
-                <button className="w-1/2 text-center text-xs
+                <button
+                onClick={() => {setLoading(true);mutate(_id)}}
+                className="w-1/2 text-center text-xs
                  bg-red-500 bg-opacity-10 border-red-500 py-2 border rounded hover:bg-opacity-30 
                  hover:shadow-[0px_0px_7px] hover:shadow-red-600 duration-300 disabled:cursor-wait"
                 >
