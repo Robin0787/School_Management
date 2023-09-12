@@ -47,7 +47,7 @@ const Banner_Slider = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className='h-[240px] md:h-[360px] 2xl:h-[420px] w-full rounded-lg overflow-hidden'
+        className='h-[240px] md:h-[360px] xl:h-[390px] 2xl:h-[420px] w-full rounded-lg overflow-hidden'
         >
             <SwiperSlide className="h-full relative group cursor-grabbing text-center">
                 <img src={img1} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
