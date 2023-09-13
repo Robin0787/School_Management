@@ -1,37 +1,21 @@
 import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
-// import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
-// import Main from "../Layouts/Main/Main";
-// import SubjectsLayout from "../Layouts/SubjectsLayout/SubjectsLayout";
-// import UserLayout from "../Layouts/UserLayout/UserLayout";
-const SubjectsLayout = lazy(() => import('../Layouts/SubjectsLayout/SubjectsLayout'));
-const UserLayout = lazy(() => import('../Layouts/UserLayout/UserLayout'));
-// import Classes from "../Pages/Classes/Classes";
-// import AllInstructors from "../Pages/Dashboard/Admin/AllInstructors/AllInstructors";
-// import InstructorsRequest from "../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest";
-// import DashboardHome from "../Pages/Dashboard/DashboardHome";
-import Loader2 from "../Components/Loader2/Loader2";
-// import AllStudents from "../Pages/Dashboard/Instructor/AllStudents/AllStudents";
-// import ApprovedStudents from "../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents";
-// import StudentsRequest from "../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest";
-// import MyInfo from "../Pages/Dashboard/Student/MyInfo/MyInfo";
-import Home from "../Pages/Home/Home";
-// import SignIn from "../Pages/SignIn/SignIn";
-// import InstructorSignUp from "../Pages/SignUp/InstructorSignUp/InstructorSignUp";
-// import SignUp from "../Pages/SignUp/SignUp";
-// import StudentSignUp from "../Pages/SignUp/StudentSignUp/StudentSignUp";
-// import Subjects from "../Pages/Subjects/Subjects";
-// import Teachers from "../Pages/Teachers/Teachers";
-// import AdminRoute from "./AdminRoute/AdminRoute";
-// import InstructorRoute from "./InstructorRoute/InstructorRoute";
-// import PrivateRoute from "./PrivateRoute/PrivateRoute";
-// import StudentRoute from "./StudentRoute/StudentRoute";
+import PageLoader from "../Components/PageLoader/PageLoader";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
-const AdminRoute = lazy(() => import('./AdminRoute/AdminRoute'));
-const InstructorRoute = lazy(() => import('./InstructorRoute/InstructorRoute'));
-const PrivateRoute = lazy(() => import('./PrivateRoute/PrivateRoute'));
-const StudentRoute = lazy(() => import('./StudentRoute/StudentRoute'));
+import DashboardLayout from '../Layouts/DashboardLayout/DashboardLayout';
 
+import Main from '../Layouts/Main/Main';
+import SubjectsLayout from '../Layouts/SubjectsLayout/SubjectsLayout';
+import UserLayout from '../Layouts/UserLayout/UserLayout';
+
+import AdminRoute from "./AdminRoute/AdminRoute";
+import InstructorRoute from "./InstructorRoute/InstructorRoute";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import StudentRoute from "./StudentRoute/StudentRoute";
+
+
+const Home = lazy(() => import('../Pages/Home/Home'));
 
 const SignUp = lazy(() => import('../Pages/SignUp/SignUp'));
 const SignIn = lazy(() => import('../Pages/SignIn/SignIn'));
@@ -39,12 +23,9 @@ const StudentSignUp = lazy(() => import('../Pages/SignUp/StudentSignUp/StudentSi
 const InstructorSignUp = lazy(() => import('../Pages/SignUp/InstructorSignUp/InstructorSignUp'));
 
 
-const Main = lazy(() => import('../Layouts/Main/Main'));
 const Classes = lazy(() => import('../Pages/Classes/Classes'));
 const Subjects = lazy(() => import('../Pages/Subjects/Subjects'));
 const Teachers = lazy(() => import('../Pages/Teachers/Teachers'));
-const DashboardLayout = lazy(() => import('../Layouts/DashboardLayout/DashboardLayout'));
-const DashboardHome = lazy(() => import('../Pages/Dashboard/DashboardHome'));
 const AllInstructors = lazy(() => import('../Pages/Dashboard/Admin/AllInstructors/AllInstructors'));
 const InstructorsRequest = lazy(() => import('../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest'));
 const AllStudents = lazy(() => import('../Pages/Dashboard/Instructor/AllStudents/AllStudents'));
@@ -55,90 +36,90 @@ const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
 const routes = createBrowserRouter([
     {
         path: '/',
-        element: <Suspense fallback={<Loader2 />}><Main /></Suspense>,
+        element: <Main />,
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Suspense fallback={<PageLoader />}><Home /></Suspense>
             },
             {
                 path: 'classes',
-                element: <Suspense fallback={<Loader2 />}><Classes /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><Classes /></Suspense>
             },
             {
                 path: 'teachers',
-                element:  <Suspense fallback={<Loader2 />}><Teachers /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
             }
         ]
     },
     {
         path: '/subjects',
-        element: <Suspense fallback={<Loader2 />}><SubjectsLayout /></Suspense>,
+        element: <SubjectsLayout />,
         children: [
             {
                 path: 'class/:class_num',
-                element: <Suspense fallback={<Loader2 />}><Subjects /></Suspense>,
+                element: <Suspense fallback={<PageLoader />}><Subjects /></Suspense>,
                 loader: ({ params }) => params.class_num
             }
         ]
     },
     {
         path: "/dashboard",
-        element: <PrivateRoute><Suspense fallback={<Loader2 />}><DashboardLayout /></Suspense></PrivateRoute>,
+        element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardLayout /> </Suspense></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Suspense fallback={<Loader2 />}><DashboardHome /></Suspense></PrivateRoute>
+                element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardHome /> </Suspense></PrivateRoute>
             },
             {
                 path: 'home',
-                element:<Suspense fallback={<Loader2 />}><DashboardHome /></Suspense>
+                element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardHome /> </Suspense></PrivateRoute>
             },
             {
                 path: "instructors",
-                element: <AdminRoute><Suspense fallback={<Loader2 />}><AllInstructors /></Suspense></AdminRoute>
+                element: <AdminRoute><Suspense fallback={<PageLoader />}><AllInstructors /></Suspense></AdminRoute>
             },
             {
                 path: "instructors-request",
-                element: <AdminRoute><Suspense fallback={<Loader2 />}><InstructorsRequest /></Suspense></AdminRoute>
+                element: <AdminRoute><Suspense fallback={<PageLoader />}><InstructorsRequest /></Suspense></AdminRoute>
             },
             {
                 path: "students",
-                element: <InstructorRoute><Suspense fallback={<Loader2 />}><AllStudents /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<PageLoader />}><AllStudents /></Suspense></InstructorRoute>
             },
             {
                 path: "approved-students",
-                element: <InstructorRoute><Suspense fallback={<Loader2 />}><ApprovedStudents /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<PageLoader />}><ApprovedStudents /></Suspense></InstructorRoute>
             },
             {
                 path: "students-request",
-                element: <InstructorRoute><Suspense fallback={<Loader2 />}><StudentsRequest /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<PageLoader />}><StudentsRequest /></Suspense></InstructorRoute>
             },
             {
                 path: "my-info",
-                element: <StudentRoute><Suspense fallback={<Loader2 />}><MyInfo /></Suspense></StudentRoute>
+                element: <StudentRoute><Suspense fallback={<PageLoader />}><MyInfo /></Suspense></StudentRoute>
             }
         ]
     },
     {
         path: '/user',
-        element: <Suspense fallback={<Loader2 />}><UserLayout /></Suspense>,
+        element: <UserLayout />,
         children: [
             {
                 path: 'signUp',
-                element: <Suspense fallback={<Loader2 />}><SignUp /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><SignUp /></Suspense>
             },
             {
                 path: 'signIn',
-                element: <Suspense fallback={<Loader2 />}><SignIn /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><SignIn /></Suspense>
             },
             {
                 path: 'signUp/instructor',
-                element: <Suspense fallback={<Loader2 />}><InstructorSignUp /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><InstructorSignUp /></Suspense>
             },
             {
                 path: 'signUp/student',
-                element: <Suspense fallback={<Loader2 />}><StudentSignUp /></Suspense>
+                element: <Suspense fallback={<PageLoader />}><StudentSignUp /></Suspense>
             }
         ]
     }

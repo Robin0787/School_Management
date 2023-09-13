@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FaUserGraduate } from "react-icons/fa";
-import { LuUserCheck2 } from "react-icons/lu";
+import { LuUserCheck } from "react-icons/lu";
 import { TbUsers, TbUsersPlus } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
@@ -45,7 +45,7 @@ const GetRouteLinks = () => {
                 <NavLink
                     to={'approved-students'}
                     className={({ isActive }) => isActive ? active : notActive}>
-                    <div>{React.createElement(LuUserCheck2, { size: '20' })}</div>
+                    <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Approved Students</span>
                 </NavLink>
                 <NavLink

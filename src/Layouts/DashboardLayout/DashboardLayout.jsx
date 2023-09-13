@@ -3,6 +3,7 @@ import { AiOutlineMenuFold } from "react-icons/ai";
 import { GoBook } from "react-icons/go";
 import { Link, Outlet } from "react-router-dom";
 import Container from "../../Components/Container";
+import HeaderTitle from "../../Components/HeaderTitle/HeaderTitle";
 import SideMenu from "../../Components/SideMenu/SideMenu";
 import styles from "../../Pages/Shared/Navbar/Navbar.module.css";
 
@@ -31,6 +32,7 @@ const DashboardLayout = () => {
                 </section>
             </section>
             <section className="relative w-full lg:w-[80%] lg:left-[20%] bg-white text-black dark:bg-[#0f172a] dark:text-white h-full">
+                <HeaderTitle h="lg:h-[35vh]"/>
                 <Outlet />
             </section>
         </section>

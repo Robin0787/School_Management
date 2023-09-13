@@ -12,6 +12,7 @@ const Provider = ({ children }) => {
     const [theme, setTheme] = useState('dark');
     const [user, setUser] = useState(null);
     const [userRole, setUserRole] = useState('');
+    const [userStatus, setUserStatus] = useState('pending');
     const auth = new getAuth(app);
     const [userBannerText, setUserBannerText] = useState('Welcome Dear!');
 
@@ -36,8 +37,10 @@ const Provider = ({ children }) => {
                     .then(res => {
                         if(!res) {
                             setUserRole('');
+                            setUserStatus('pending');
                         } else {
                             setUserRole(res.role);
+                            setUserStatus(res.status);
                         }
                     }).catch(err => console.log(err));
             } else {
@@ -83,7 +86,7 @@ const Provider = ({ children }) => {
     };
 
 
-    const values = { theme, setTheme, user, userRole, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch, userBannerText, setUserBannerText };
+    const values = { theme, setTheme, user, userRole, userStatus, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch, userBannerText, setUserBannerText };
     return (
         <providerContext.Provider value={values}>
             {children}

@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import HeaderTitle from "../../../../Components/HeaderTitle/HeaderTitle";
 import { providerContext } from "../../../../Provider/Provider";
 
 
@@ -11,8 +10,8 @@ const MyInfo = () => {
     }, [setUserBannerText]);
 
     return (
-        <section>
-            <HeaderTitle h="lg:h-[35vh]"/>
+        <section className="bg-white text-black pt-10">
+            <h1 className="text-center text-3xl">My Info Page</h1>
         </section>
     );
 };

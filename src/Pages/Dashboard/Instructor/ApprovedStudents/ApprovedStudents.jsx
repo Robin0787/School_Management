@@ -4,7 +4,6 @@ import { useContext, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ApprovedStudentCard from "../../../../Components/ApprovedStudentCard/ApprovedStudentCard";
-import HeaderTitle from "../../../../Components/HeaderTitle/HeaderTitle";
 import Loader2 from "../../../../Components/Loader2/Loader2";
 import { providerContext } from "../../../../Provider/Provider";
 
@@ -22,15 +21,13 @@ const ApprovedStudents = () => {
         }
     });
 
-    console.log(approved);
 
     // Changing Banner Text;
     useEffect(() => {
         setUserBannerText('Students Request!');
     }, [setUserBannerText]);
+
     return (
-        <section className="bg-white text-black dark:bg-[#0f172a] dark:text-white">
-            <HeaderTitle h="lg:h-[35vh]" />
             <section className="bg-white text-black pt-10">
                 <Tabs className={`text-center`}>
                     <TabList>
@@ -147,7 +144,6 @@ const ApprovedStudents = () => {
                     </TabPanel>
                 </Tabs>
             </section>
-        </section>
     );
 };
 
