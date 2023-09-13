@@ -49,29 +49,23 @@ const Banner_Slider = () => {
         modules={[Pagination]}
         className='h-[240px] md:h-[360px] xl:h-[390px] 2xl:h-[420px] w-full rounded-lg overflow-hidden'
         >
-            <SwiperSlide className="h-full relative group cursor-grabbing text-center">
+            <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img1} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
             <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img2} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
             <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img3} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
             <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img4} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
             <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img5} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
             <SwiperSlide className="h-full relative group cursor-grabbing">
                 <img src={img6} alt="image-6" className='h-full object-cover rounded-lg mx-auto w-full' />
-                <div className='absolute top-0 left-0 h-full w-full bg-black bg-opacity-20 rounded-lg group-hover:bg-opacity-10 duration-500'></div>
             </SwiperSlide>
         </Swiper>
     )

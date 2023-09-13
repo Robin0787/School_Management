@@ -1,8 +1,8 @@
 import { InfinitySpin } from 'react-loader-spinner';
 
-const PageLoader = () => {
+const ContentLoader = ({h = 'h-[50vh]'}) => {
     return (
-        <section className="h-screen flex justify-center items-center bg-white dark:bg-[#0f172a]">
+        <section className={`${h} flex justify-center items-center bg-white`}>
             <InfinitySpin
                 width='200'
                 color="#4fa94d"
@@ -11,4 +11,4 @@ const PageLoader = () => {
     );
 };
 
-export default PageLoader;
+export default ContentLoader;

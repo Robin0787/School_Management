@@ -9,6 +9,7 @@ import Main from '../Layouts/Main/Main';
 import SubjectsLayout from '../Layouts/SubjectsLayout/SubjectsLayout';
 import UserLayout from '../Layouts/UserLayout/UserLayout';
 
+import ContentLoader from "../Components/ContentLoader/ContentLoader";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import InstructorRoute from "./InstructorRoute/InstructorRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -69,35 +70,35 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardHome /> </Suspense></PrivateRoute>
+                element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'}/>}><DashboardHome /> </Suspense></PrivateRoute>
             },
             {
                 path: 'home',
-                element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardHome /> </Suspense></PrivateRoute>
+                element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><DashboardHome /> </Suspense></PrivateRoute>
             },
             {
                 path: "instructors",
-                element: <AdminRoute><Suspense fallback={<PageLoader />}><AllInstructors /></Suspense></AdminRoute>
+                element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AllInstructors /></Suspense></AdminRoute>
             },
             {
                 path: "instructors-request",
-                element: <AdminRoute><Suspense fallback={<PageLoader />}><InstructorsRequest /></Suspense></AdminRoute>
+                element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><InstructorsRequest /></Suspense></AdminRoute>
             },
             {
                 path: "students",
-                element: <InstructorRoute><Suspense fallback={<PageLoader />}><AllStudents /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AllStudents /></Suspense></InstructorRoute>
             },
             {
                 path: "approved-students",
-                element: <InstructorRoute><Suspense fallback={<PageLoader />}><ApprovedStudents /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><ApprovedStudents /></Suspense></InstructorRoute>
             },
             {
                 path: "students-request",
-                element: <InstructorRoute><Suspense fallback={<PageLoader />}><StudentsRequest /></Suspense></InstructorRoute>
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><StudentsRequest /></Suspense></InstructorRoute>
             },
             {
                 path: "my-info",
-                element: <StudentRoute><Suspense fallback={<PageLoader />}><MyInfo /></Suspense></StudentRoute>
+                element: <StudentRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><MyInfo /></Suspense></StudentRoute>
             }
         ]
     },

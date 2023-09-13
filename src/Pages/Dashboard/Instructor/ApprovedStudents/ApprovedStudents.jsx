@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ApprovedStudentCard from "../../../../Components/ApprovedStudentCard/ApprovedStudentCard";
-import Loader2 from "../../../../Components/Loader2/Loader2";
+import ContentLoader from "../../../../Components/ContentLoader/ContentLoader";
 import { providerContext } from "../../../../Provider/Provider";
 
 
@@ -40,7 +40,7 @@ const ApprovedStudents = () => {
                     <TabPanel>
                     {
                             isLoading ?
-                                <Loader2 />
+                                <ContentLoader />
                                 :
                                 (
                                     (
@@ -61,7 +61,7 @@ const ApprovedStudents = () => {
                     <TabPanel>
                     {
                             isLoading ?
-                                <Loader2 />
+                                <ContentLoader />
                                 :
                                 (
                                     (
@@ -82,7 +82,7 @@ const ApprovedStudents = () => {
                     <TabPanel>
                     {
                             isLoading ?
-                                <Loader2 />
+                                <ContentLoader />
                                 :
                                 (
                                     (
@@ -103,7 +103,7 @@ const ApprovedStudents = () => {
                     <TabPanel>
                     {
                             isLoading ?
-                                <Loader2 />
+                                <ContentLoader />
                                 :
                                 (
                                     (
@@ -124,7 +124,7 @@ const ApprovedStudents = () => {
                     <TabPanel>
                     {
                             isLoading ?
-                                <Loader2 />
+                                <ContentLoader />
                                 :
                                 (
                                     (

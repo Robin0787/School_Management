@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Container from '../../Components/Container';
+import ContentLoader from '../../Components/ContentLoader/ContentLoader';
 import HeaderTitle from '../../Components/HeaderTitle/HeaderTitle';
-import Loader2 from '../../Components/Loader2/Loader2';
 import SingleBook from '../../Components/SingleBook/SingleBook';
 import SingleBookCard from '../../Components/SingleBook/SingleBookCard';
 import { providerContext } from '../../Provider/Provider';
@@ -35,10 +35,10 @@ const Subjects = () => {
             <HeaderTitle />
             <section className='bg-white text-black dark:bg-[#0f172a] dark:text-white duration-200 '>
                     <Container>
-                            <section className="pb-20">
+                            <section className={isLoading ? '' : 'pb-20'}>
                                 {
                                     isLoading ?
-                                    <section className='h-[45vh]'><Loader2 /></section>
+                                    <ContentLoader h={'h-[50vh] dark:bg-[#0f172a]'}/>
                                     :
                                     <section className="pt-14">
                                     <h1 className='text-2xl md:text-3xl font-bold pb-6'>Subjects</h1>
