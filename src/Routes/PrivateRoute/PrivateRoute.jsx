@@ -8,7 +8,7 @@ import { providerContext } from '../../Provider/Provider';
 const PrivateRoute = ({ children }) => {
     const { user, userLoading, userRole, userStatus } = useContext(providerContext);
     const location = useLocation();
-    console.log(userStatus);
+    
     if (userLoading) {
         return <PageLoader />
     }

@@ -25,8 +25,8 @@ const SideMenu = ({ setOpenMenu }) => {
     }, [setOpenMenu]);
 
     return (
-        <section className={`bg-gradient-to-r from-[#0f172a] to-[#0f1c3a] text-gray-100 
-                h-screen w-full duration-500`}>
+        <section id="sideMenu" className={`bg-gradient-to-r from-[#0f172a] to-[#0f1c3a] text-gray-100 
+                h-screen overflow-y-scroll w-full duration-500 `}>
             <article className="flex flex-col h-full py-3">
                 <div className="flex justify-center items-center my-5 link">
                     <Link className="relative flex items-center gap-2 text-green-400">

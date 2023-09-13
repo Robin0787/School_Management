@@ -16,6 +16,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import StudentRoute from "./StudentRoute/StudentRoute";
 
 
+
 const Home = lazy(() => import('../Pages/Home/Home'));
 
 const SignUp = lazy(() => import('../Pages/SignUp/SignUp'));
@@ -30,6 +31,7 @@ const Teachers = lazy(() => import('../Pages/Teachers/Teachers'));
 const AllInstructors = lazy(() => import('../Pages/Dashboard/Admin/AllInstructors/AllInstructors'));
 const InstructorsRequest = lazy(() => import('../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest'));
 const AllStudents = lazy(() => import('../Pages/Dashboard/Instructor/AllStudents/AllStudents'));
+const AddStudent = lazy(() => import("../Pages/Dashboard/Instructor/AddStudent/AddStudent"));
 const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
 const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest'));
 const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
@@ -53,6 +55,7 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    // Subjects Routes
     {
         path: '/subjects',
         element: <SubjectsLayout />,
@@ -64,6 +67,7 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    // Dashboard Routes
     {
         path: "/dashboard",
         element: <PrivateRoute><Suspense fallback={<PageLoader />}><DashboardLayout /> </Suspense></PrivateRoute>,
@@ -89,6 +93,10 @@ const routes = createBrowserRouter([
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AllStudents /></Suspense></InstructorRoute>
             },
             {
+                path: "add-student",
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AddStudent /></Suspense></InstructorRoute>
+            },
+            {
                 path: "approved-students",
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><ApprovedStudents /></Suspense></InstructorRoute>
             },
@@ -102,6 +110,7 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    // SignIn & SignUp Routes
     {
         path: '/user',
         element: <UserLayout />,

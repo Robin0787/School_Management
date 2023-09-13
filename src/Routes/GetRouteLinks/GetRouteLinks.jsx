@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FaUserGraduate } from "react-icons/fa";
+import { FiUserPlus } from "react-icons/fi";
 import { LuUserCheck } from "react-icons/lu";
 import { TbUsers, TbUsersPlus } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
@@ -41,6 +42,12 @@ const GetRouteLinks = () => {
                     className={({ isActive }) => isActive ? active : notActive}>
                     <div>{React.createElement(TbUsers, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>All Students</span>
+                </NavLink>
+                <NavLink
+                    to={'add-student'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(FiUserPlus, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Add Student</span>
                 </NavLink>
                 <NavLink
                     to={'approved-students'}

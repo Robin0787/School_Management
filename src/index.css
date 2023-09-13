@@ -76,3 +76,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 3px;
   cursor: pointer;
 }
+
+#sideMenu::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}

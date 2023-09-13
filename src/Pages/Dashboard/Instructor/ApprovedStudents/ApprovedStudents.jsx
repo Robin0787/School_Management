@@ -24,7 +24,7 @@ const ApprovedStudents = () => {
 
     // Changing Banner Text;
     useEffect(() => {
-        setUserBannerText('Students Request!');
+        setUserBannerText('Approved Students');
     }, [setUserBannerText]);
 
     return (
