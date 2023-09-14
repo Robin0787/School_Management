@@ -18,7 +18,7 @@ const Subjects = () => {
     const base = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
-        setUserBannerText(`Subjects of Class : ${class_num}`);
+        setUserBannerText(`Subjects For Class : ${class_num}`);
     }, [class_num, setUserBannerText]);
 
     const { data: class_info = {}, isLoading } = useQuery({
