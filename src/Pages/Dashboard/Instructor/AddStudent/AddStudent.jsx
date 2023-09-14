@@ -4,6 +4,9 @@ import { providerContext } from "../../../../Provider/Provider";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import StoreCurrentStudent from "../../../../APIs/StoreCurrentStudent";
 import ListDropdown from "../../../../Components/ListDropdown/ListDropdown";
 import styles from "./AddStudent.module.css";
 
@@ -16,11 +19,10 @@ const AddStudent = () => {
     const [selectedGender, setSelectedGender] = useState('');
     const [selectedGroup, setSelectedGroup] = useState('');
     const [showGroup, setShowGroup] = useState(false);
-
+    const navigate = useNavigate();
     const { setUserBannerText } = useContext(providerContext);
     const [formLoading, setFormLoading] = useState(false);
-    const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
-
+    const { register, handleSubmit, formState: { errors }, setError, clearErrors, reset } = useForm();
 
 
     function handleAddStudent(data) {
@@ -45,11 +47,18 @@ const AddStudent = () => {
             gender: selectedGender,
             group: showGroup && selectedGroup
         }
+        StoreCurrentStudent(studentInfo)
+        .then(() => {
+            setFormLoading(false);
+            reset();
+            toast.success('Student Added', {
+                icon: '👏',
+                position: "bottom-center"
+            });
+            navigate('/dashboard/students');
+        })
+        .catch(err => { console.log(err); setFormLoading(false)});
 
-        console.log(studentInfo);
-
-
-        setFormLoading(false);
     }
 
     const handleClassList = (selectedItem) => {
@@ -112,7 +121,7 @@ const AddStudent = () => {
                                 {/* Class Name Dropdown */}
                                 <div className="w-full md:w-1/2 relative">
                                     <ListDropdown selected={selectedClass} items={classes}
-                                        handleList={handleClassList} title={"Class"} zIndex={3}/>
+                                        handleList={handleClassList} title={"Class"} zIndex={11}/>
                                     <span className={`text-white text-[0.7em] tracking-[2px] absolute top-0 p-[0_18px_0_14px] z-60 translate-x-[10px] -translate-y-[7px] bg-[#0f172a] border-x border-[#808080] uppercase`}>Class</span>
                                     {
                                         errors.class && <span className="absolute -top-2 
