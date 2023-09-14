@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AiOutlineLogout, AiOutlineMenuUnfold } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
-import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { GoBook } from "react-icons/go";
 import { LiaHomeSolid } from "react-icons/lia";
 import { Link, NavLink } from "react-router-dom";
@@ -10,7 +9,7 @@ import { providerContext } from "../../Provider/Provider";
 import GetRouteLinks from "../../Routes/GetRouteLinks/GetRouteLinks";
 
 const SideMenu = ({ setOpenMenu }) => {
-    const { user, logOutUser, theme, handleThemeSwitch } = useContext(providerContext);
+    const { user, logOutUser} = useContext(providerContext);
     
     const active = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded shadow-[0px_0px_4px] shadow-white duration-300 group';
     const notActive = 'link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_4px] hover:shadow-gray-400 duration-300 group';
@@ -54,7 +53,8 @@ const SideMenu = ({ setOpenMenu }) => {
                         <div>{React.createElement(LiaHomeSolid, { size: '20' })}</div>
                         <span className={`whitespace-pre`}>Home</span>
                     </Link>
-                    <button
+                    {/* Dark White Theme Button */}
+                    {/* <button
                         className="link flex gap-3.5 items-center text-sm font-medium py-3 px-4 rounded hover:shadow-[0px_0px_4px] hover:shadow-gray-400 duration-300 group" onClick={handleThemeSwitch}>
                         {
                             theme === 'dark' ?
@@ -62,7 +62,7 @@ const SideMenu = ({ setOpenMenu }) => {
                                 <BsFillMoonStarsFill size={20} />
                         }
                         <span className={`whitespace-pre capitalize `}>{theme}</span>
-                    </button>
+                    </button> */}
                     <Link
                         className={notActive}>
                         {

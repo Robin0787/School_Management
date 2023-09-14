@@ -8,21 +8,24 @@ import { providerContext } from '../../Provider/Provider';
 const PrivateRoute = ({ children }) => {
     const { user, userLoading, userRole, userStatus } = useContext(providerContext);
     const location = useLocation();
+
     
     if (userLoading) {
         return <PageLoader />
     }
-    else if (user) {
+    if (user) {
         if (userRole && userStatus === 'approved') {
             return children;
         }
         if (userStatus === 'pending') {
+            if(!userRole){
+                return <NotAuthorized />
+            }
             return <PageLoader />
         }
-        else {
-            return <NotAuthorized />
-        }
+        return <PageLoader />
     }
+    
     toast('Sign in to see Dashboard!');
     return <Navigate to={'/user/signIn'} state={{ from: location }} replace />
 };

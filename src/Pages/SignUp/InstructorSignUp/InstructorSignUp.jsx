@@ -38,7 +38,7 @@ const InstructorSignUp = () => {
             return;
         }
         setFormLoading(true);
-        const { firstName, lastName, email, phone, password, position, photo } = data;
+        const { firstName, lastName, email, password, } = data;
         createUser(email, password)
         .then(res => {
             updateProfile(res.user, {displayName: `${firstName} ${lastName}`, photoURL: photoURL});
@@ -197,11 +197,11 @@ const InstructorSignUp = () => {
                                         </div>
                                     }
                                 </div>
-                                {/* Position Field */}
+                                {/* Subject Field */}
                                 <div className={`relative bg-[#0f172a] text-white`}>
                                     <input type="text" autoComplete="off"
                                         className={styles.inputField}
-                                        {...register('position',
+                                        {...register('subject',
                                             {
                                                 required: true,
                                                 validate: {
@@ -211,10 +211,10 @@ const InstructorSignUp = () => {
                                         )}
                                     />
                                     {
-                                        errors.position && <span className="absolute -top-2 
+                                        errors.subject && <span className="absolute -top-2 
                                         left-[98px] text-red-500 z-10">*</span>
                                     }
-                                    <span className={styles.inputTitle}>Position</span>
+                                    <span className={styles.inputTitle}>Subject</span>
                                 </div>
                             </article>
                             <article className="w-full sm:w-1/2 flex flex-col gap-5 lg:gap-10">

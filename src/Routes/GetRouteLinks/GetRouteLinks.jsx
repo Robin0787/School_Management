@@ -50,16 +50,16 @@ const GetRouteLinks = () => {
                     <span className={`whitespace-pre`}>Add Student</span>
                 </NavLink>
                 <NavLink
-                    to={'approved-students'}
-                    className={({ isActive }) => isActive ? active : notActive}>
-                    <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
-                    <span className={`whitespace-pre`}>Approved Students</span>
-                </NavLink>
-                <NavLink
                     to={'students-request'}
                     className={({ isActive }) => isActive ? active : notActive}>
                     <div>{React.createElement(TbUsersPlus, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Students Request</span>
+                </NavLink>
+                <NavLink
+                    to={'approved-students'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Approved Students</span>
                 </NavLink>
             </>
         )

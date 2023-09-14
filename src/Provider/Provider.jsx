@@ -12,7 +12,7 @@ const Provider = ({ children }) => {
     const [theme, setTheme] = useState('dark');
     const [user, setUser] = useState(null);
     const [userRole, setUserRole] = useState('');
-    const [userStatus, setUserStatus] = useState('pending');
+    const [userStatus, setUserStatus] = useState('');
     const auth = new getAuth(app);
     const [userBannerText, setUserBannerText] = useState('Welcome Dear!');
 
@@ -38,7 +38,8 @@ const Provider = ({ children }) => {
                         if(!res) {
                             setUserRole('');
                             setUserStatus('pending');
-                        } else {
+                        } 
+                        else {
                             setUserRole(res.role);
                             setUserStatus(res.status);
                         }

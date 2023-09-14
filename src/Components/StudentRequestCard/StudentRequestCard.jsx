@@ -105,7 +105,7 @@ const StudentRequestCard = ({ item }) => {
                     disabled={rejectLoading || acceptLoading}
                     onClick={() => { setRejectLoading(true); rejectStudent.mutate(_id); }}
                     className="w-1/2 text-center text-xs flex justify-center items-center
-                 bg-red-500 bg-opacity-10 border-red-500 py-2 border rounded hover:bg-opacity-30 
+                 bg-red-500 bg-opacity-10 border-red-500 py-[6px] border rounded hover:bg-opacity-30 
                  hover:shadow-[0px_0px_7px] hover:shadow-red-600 duration-300 disabled:cursor-wait
                  "
                 >
@@ -119,7 +119,7 @@ const StudentRequestCard = ({ item }) => {
                 <button
                     disabled={acceptLoading || rejectLoading}
                     className="w-1/2 text-center text-xs flex justify-center items-center
-                 bg-green-500 bg-opacity-10 border-green-500 py-2 border rounded hover:bg-opacity-30 hover:shadow-[0px_0px_7px] hover:shadow-green-600 duration-300 disabled:cursor-wait "
+                 bg-green-500 bg-opacity-10 border-green-500 py-[6px] border rounded hover:bg-opacity-30 hover:shadow-[0px_0px_7px] hover:shadow-green-600 duration-300 disabled:cursor-wait "
                     onClick={() => { setAcceptLoading(true); acceptStudent.mutate(_id) }}>
                     {
                         acceptLoading ?
