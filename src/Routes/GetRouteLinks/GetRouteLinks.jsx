@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FaUserGraduate } from "react-icons/fa";
+import { FaUserGraduate, FaUsersSlash } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 import { LuUserCheck } from "react-icons/lu";
 import { TbUsers, TbUsersPlus } from "react-icons/tb";
@@ -36,6 +36,12 @@ const GetRouteLinks = () => {
                     className={({ isActive }) => isActive ? active : notActive}>
                     <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Approved Instructors</span>
+                </NavLink>
+                <NavLink
+                    to={'rejected-instructors'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(FaUsersSlash, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Rejected Instructors</span>
                 </NavLink>
             </>
         )

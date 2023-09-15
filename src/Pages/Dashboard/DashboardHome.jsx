@@ -24,10 +24,12 @@ const DashboardHome = () => {
         setUserBannerText('Dashboard Home!');
     }, [setUserBannerText]);
 
+    const cardStyle = `px-8 py-6 text-white rounded-md`;
+
     return (
         <section className="bg-white text-black p-10">
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
-                <article className="px-8 py-6 bg-blue-500 text-white rounded-md">
+                <article className={`${cardStyle} bg-blue-500 ring-2 ring-blue-300`}>
                     <div className="flex flex-col justify-center items-center gap-3">
                         <div className="flex justify-center items-center gap-5">
                             <TbUsers size={50} />
@@ -40,7 +42,7 @@ const DashboardHome = () => {
                         </div>
                     </div>
                 </article>
-                <article className="px-8 py-6 bg-green-500 text-white rounded-md">
+                <article className={`${cardStyle} bg-green-500 ring-2 ring-green-300`}>
                     <div className="flex flex-col justify-center items-center gap-3">
                         <div className="flex justify-center items-center gap-5">
                             <TbUsersPlus size={50} />
@@ -53,7 +55,7 @@ const DashboardHome = () => {
                         </div>
                     </div>
                 </article>
-                <article className="px-8 py-6 bg-purple-500 text-white rounded-md">
+                <article className={`${cardStyle} bg-purple-500 ring-2 ring-purple-300`}>
                     <div className="flex flex-col justify-center items-center gap-3">
                         <div className="flex justify-center items-center gap-5">
                             <LuUserCheck size={50} />
@@ -66,7 +68,7 @@ const DashboardHome = () => {
                         </div>
                     </div>
                 </article>
-                <article className="px-8 py-6 bg-red-500 text-white rounded-md">
+                <article className={`${cardStyle} bg-red-500 ring-2 ring-red-300`}>
                     <div className="flex flex-col justify-center items-center gap-3">
                         <div className="flex justify-center items-center gap-5">
                             <FaUsersSlash size={50} />

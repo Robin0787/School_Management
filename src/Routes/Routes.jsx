@@ -15,10 +15,11 @@ import InstructorRoute from "./InstructorRoute/InstructorRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import StudentRoute from "./StudentRoute/StudentRoute";
 
-const ApprovedInstructors = lazy(() => import("../Pages/Dashboard/Admin/AllInstructors/ApprovedInstructors/ApprovedInstructors"));
+
 
 
 const Home = lazy(() => import('../Pages/Home/Home'));
+const Profile = lazy(() => import("../Pages/Profile/Profile"));
 
 const SignUp = lazy(() => import('../Pages/SignUp/SignUp'));
 const SignIn = lazy(() => import('../Pages/SignIn/SignIn'));
@@ -29,12 +30,17 @@ const InstructorSignUp = lazy(() => import('../Pages/SignUp/InstructorSignUp/Ins
 const Classes = lazy(() => import('../Pages/Classes/Classes'));
 const Subjects = lazy(() => import('../Pages/Subjects/Subjects'));
 const Teachers = lazy(() => import('../Pages/Teachers/Teachers'));
+
 const AllInstructors = lazy(() => import('../Pages/Dashboard/Admin/AllInstructors/AllInstructors'));
 const InstructorsRequest = lazy(() => import('../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest'));
+const RejectedInstructors = lazy(() => import("../Pages/Dashboard/Admin/RejectedInstructors/RejectedInstructors"));
+const ApprovedInstructors = lazy(() => import("../Pages/Dashboard/Admin/ApprovedInstructors/ApprovedInstructors"));
+
 const AllStudents = lazy(() => import('../Pages/Dashboard/Instructor/AllStudents/AllStudents'));
 const AddStudent = lazy(() => import("../Pages/Dashboard/Instructor/AddStudent/AddStudent"));
 const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
 const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest'));
+
 const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
 
 const routes = createBrowserRouter([
@@ -53,6 +59,10 @@ const routes = createBrowserRouter([
             {
                 path: 'teachers',
                 element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
+            },
+            {
+                path: '/profile',
+                element: <Suspense fallback={<PageLoader />}><Profile /></Suspense>
             }
         ]
     },
@@ -92,6 +102,10 @@ const routes = createBrowserRouter([
             {
                 path: "approved-instructors",
                 element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><ApprovedInstructors /></Suspense></AdminRoute>
+            },
+            {
+                path: "rejected-instructors",
+                element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><RejectedInstructors /></Suspense></AdminRoute>
             },
             {
                 path: "students",

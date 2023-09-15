@@ -1,9 +1,7 @@
-import { BsCheck2All } from "react-icons/bs";
+import { MdOutlineCancel } from "react-icons/md";
 
-
-const ApprovedInstructorCard = ({ item }) => {
+const RejectedInstructorCard = ({item}) => {
     const { _id, firstName, lastName, photo, email, phone, subject } = item;
-
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
             <img src={photo} alt="" className="h-32 w-[80%] rounded-lg mx-auto object-cover object-center my-5" />
@@ -35,22 +33,22 @@ const ApprovedInstructorCard = ({ item }) => {
                             <td>:</td>
                             <td className={`md:text-start md:pl-5`}>
                                 <span className={`py-1 px-3 rounded-full 
-                                ${true ? 'bg-green-500 text-green-500' : "bg-red-500 text-red-500"} bg-opacity-20`}>{'True'}</span>
+                                ${false ? 'bg-green-500 text-green-500' : "bg-red-500 text-red-500"} bg-opacity-20`}>{'Not Verified'}</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div className="bg-blue-500 bg-opacity-90 py-2">
+            <div className="bg-red-500 bg-opacity-90 py-2">
                 <button
                     className="w-full text-center text-xs flex justify-center items-center gap-2"
                 >
-                    <BsCheck2All size={20}/>
-                    <span>Approved</span>
+                    <MdOutlineCancel size={20}/>
+                    <span>Rejected</span>
                 </button>
             </div>
         </div>
     );
 };
 
-export default ApprovedInstructorCard;
+export default RejectedInstructorCard;
