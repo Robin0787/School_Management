@@ -31,6 +31,12 @@ const GetRouteLinks = () => {
                     <div>{React.createElement(TbUsersPlus, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Instructors Request</span>
                 </NavLink>
+                <NavLink
+                    to={'approved-instructors'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Approved Instructors</span>
+                </NavLink>
             </>
         )
     }

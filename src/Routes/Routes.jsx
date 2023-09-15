@@ -15,6 +15,7 @@ import InstructorRoute from "./InstructorRoute/InstructorRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import StudentRoute from "./StudentRoute/StudentRoute";
 
+const ApprovedInstructors = lazy(() => import("../Pages/Dashboard/Admin/AllInstructors/ApprovedInstructors/ApprovedInstructors"));
 
 
 const Home = lazy(() => import('../Pages/Home/Home'));
@@ -74,7 +75,7 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'}/>}><DashboardHome /> </Suspense></PrivateRoute>
+                element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><DashboardHome /> </Suspense></PrivateRoute>
             },
             {
                 path: 'home',
@@ -87,6 +88,10 @@ const routes = createBrowserRouter([
             {
                 path: "instructors-request",
                 element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><InstructorsRequest /></Suspense></AdminRoute>
+            },
+            {
+                path: "approved-instructors",
+                element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><ApprovedInstructors /></Suspense></AdminRoute>
             },
             {
                 path: "students",
