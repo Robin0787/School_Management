@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { BiSolidDashboard, BiSolidUser } from 'react-icons/bi';
+import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { CgMenu } from 'react-icons/cg';
 import { GoBook } from 'react-icons/go';
@@ -27,7 +27,7 @@ const Navbar = () => {
                         <Link className={`${styles.nav_menu}`}>
                             Gallery
                         </Link>
-                        <Link className={`${styles.nav_menu}`}>
+                        <Link to={'/about-us'} className={`${styles.nav_menu}`}>
                             About Us
                         </Link>
                         <button
@@ -45,18 +45,12 @@ const Navbar = () => {
                                         <img src={user?.photoURL} alt="" className="h-[28px] w-[28px] rounded-full" />
                                         <h1 className="text-sm">{user?.displayName}</h1>
                                     </div>
-                                    <div className={`w-full ${showDropdown ? "h-20" : "h-0"} absolute top-full bg-[#0f172a] text-white rounded-b-md overflow-hidden duration-500`}>
-                                        <div className="space-y-2 px-4 py-2">
+                                    <div className={`w-full ${showDropdown ? "h-10" : "h-0"} absolute top-full bg-[#0f172a] text-white rounded-b-md overflow-hidden duration-500`}>
+                                        <div className="px-4 py-1">
                                             <Link to={'/dashboard'}>
                                                 <div className={`${styles.nav_menu} flex items-center gap-3`}>
                                                     <BiSolidDashboard size={20} />
                                                     <h1>Dashboard</h1>
-                                                </div>
-                                            </Link>
-                                            <Link to={'/profile'}>
-                                                <div className={`${styles.nav_menu} flex items-center gap-3`}>
-                                                    <BiSolidUser size={20} />
-                                                    <h1>Profile</h1>
                                                 </div>
                                             </Link>
                                         </div>
@@ -102,20 +96,12 @@ const Navbar = () => {
                                 </Link>
                                 {
                                     user ?
-                                        <>
-                                        <Link to={'/profile'}>
-                                                <div className={`${styles.nav_menu} flex items-center gap-3`}>
-                                                    <BiSolidUser size={20} />
-                                                    <h1>Profile</h1>
-                                                </div>
-                                            </Link>
-                                            <Link to={'/dashboard'}>
-                                                <div className={`${styles.nav_menu} flex items-center gap-3`}>
-                                                    <BiSolidDashboard size={20} />
-                                                    <h1>Dashboard</h1>
-                                                </div>
-                                            </Link>
-                                        </>
+                                        <Link to={'/dashboard'}>
+                                            <div className={`${styles.nav_menu} flex items-center gap-3`}>
+                                                <BiSolidDashboard size={20} />
+                                                <h1>Dashboard</h1>
+                                            </div>
+                                        </Link>
                                         :
                                         <>
                                             <Link to={'/user/signUp'} className={`${styles.nav_menu}`}>

@@ -17,9 +17,8 @@ import StudentRoute from "./StudentRoute/StudentRoute";
 
 
 
-
 const Home = lazy(() => import('../Pages/Home/Home'));
-const Profile = lazy(() => import("../Pages/Profile/Profile"));
+const AboutUs = lazy(() => import("../Pages/AboutUs/AboutUs"));
 
 const SignUp = lazy(() => import('../Pages/SignUp/SignUp'));
 const SignIn = lazy(() => import('../Pages/SignIn/SignIn'));
@@ -30,6 +29,8 @@ const InstructorSignUp = lazy(() => import('../Pages/SignUp/InstructorSignUp/Ins
 const Classes = lazy(() => import('../Pages/Classes/Classes'));
 const Subjects = lazy(() => import('../Pages/Subjects/Subjects'));
 const Teachers = lazy(() => import('../Pages/Teachers/Teachers'));
+
+const Profile = lazy(() => import("../Pages/Profile/Profile"));
 
 const AllInstructors = lazy(() => import('../Pages/Dashboard/Admin/AllInstructors/AllInstructors'));
 const InstructorsRequest = lazy(() => import('../Pages/Dashboard/Admin/InstructorsRequest/InstructorsRequest'));
@@ -44,6 +45,7 @@ const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/Student
 const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
 
 const routes = createBrowserRouter([
+    // Default Routes
     {
         path: '/',
         element: <Main />,
@@ -59,10 +61,6 @@ const routes = createBrowserRouter([
             {
                 path: 'teachers',
                 element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
-            },
-            {
-                path: '/profile',
-                element: <Suspense fallback={<PageLoader />}><Profile /></Suspense>
             }
         ]
     },
@@ -77,6 +75,10 @@ const routes = createBrowserRouter([
                 loader: ({ params }) => params.class_num
             }
         ]
+    },
+    {
+        path: '/about-us',
+        element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
     },
     // Dashboard Routes
     {
@@ -126,6 +128,10 @@ const routes = createBrowserRouter([
             {
                 path: "my-info",
                 element: <StudentRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><MyInfo /></Suspense></StudentRoute>
+            },
+            {
+                path: 'profile',
+                element: <Suspense fallback={<PageLoader />}><Profile /></Suspense>
             }
         ]
     },

@@ -63,7 +63,7 @@ const SideMenu = ({ setOpenMenu }) => {
                         }
                         <span className={`whitespace-pre capitalize `}>{theme}</span>
                     </button> */}
-                    <Link
+                    <Link to={'profile'}
                         className={notActive}>
                         {
                             user?.photoURL ?
