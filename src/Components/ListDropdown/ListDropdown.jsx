@@ -5,7 +5,7 @@ import { PiCaretUpDownLight } from 'react-icons/pi';
 
 
 
-const ListDropdown = ({ items, handleList, selected, title, zIndex }) => {
+const ListDropdown = ({ items, handleList, selected, title, zIndex=1 }) => {
 
     return (
         <div className="border  border-[#808080] rounded-[3px] py-[6px] cursor-pointer focus:border-white"  style={{ zIndex }}>
