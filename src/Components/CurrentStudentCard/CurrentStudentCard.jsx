@@ -3,7 +3,7 @@
 const CurrentStudentCard = ({ item }) => {
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
-            <div className="h-24 w-24 mx-auto my-5 rounded-full flex justify-center items-center bg-green-500 bg-opacity-30">
+            <div className="h-24 w-24 mx-auto my-5 rounded-full flex justify-center items-center bg-green-500 bg-opacity-80">
                 <h1 className="text-3xl text-center">{item.roll}</h1>
             </div>
             <div className="overflow-auto">
