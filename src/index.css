@@ -4,6 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.class-six {
+  @apply py-5 rounded flex flex-col justify-center items-center gap-3
+  bg-indigo-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-indigo-500 dark:shadow-[0_0_10px] dark:shadow-indigo-400 dark:hover:shadow-indigo-600 text-black dark:text-white duration-300;
+}
+.class-seven {
+  @apply py-5 rounded flex flex-col justify-center items-center gap-3
+  bg-orange-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-orange-500 dark:shadow-[0_0_10px] dark:shadow-orange-400 dark:hover:shadow-orange-600 text-black dark:text-white duration-300;
+}
+.class-eight {
+  @apply py-5 rounded flex flex-col justify-center items-center gap-3
+  bg-blue-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-blue-500 dark:shadow-[0_0_10px] dark:shadow-blue-400 dark:hover:shadow-blue-600 text-black dark:text-white duration-300;
+}
+.class-nine {
+  @apply py-5 rounded flex flex-col justify-center items-center gap-3
+  bg-purple-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-purple-500 dark:shadow-[0_0_10px] dark:shadow-purple-400 dark:hover:shadow-purple-600 text-black dark:text-white duration-300;
+}
+.class-ten {
+  @apply py-5 rounded flex flex-col justify-center items-center gap-3
+  bg-pink-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-pink-500 dark:shadow-[0_0_10px] dark:shadow-pink-400 dark:hover:shadow-pink-600 text-black dark:text-white duration-300;
+}
+
 :root {
   --scrollbar-bg: #0f172a;
   --scrollbar-color: #01c001;
