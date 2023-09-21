@@ -11,8 +11,8 @@ const client = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={client}>
-    <Provider >
-      <RouterProvider router={routes} />
+    <Provider>
+        <RouterProvider router={routes} />
     </Provider>
     <Toaster />
   </QueryClientProvider>,

@@ -2,6 +2,7 @@ import Banner from "../../Components/Banner_Home/Banner";
 import Give_Space from "../../Components/Give_Space";
 import Classes from "./Classes/Classes";
 import Introduction from "./Introduction/Introduction";
+import Students from "./Students_Calender_Section/Students";
 
 const Home = () => {
     return (
@@ -10,6 +11,9 @@ const Home = () => {
             <Classes />
             <Give_Space />
             <Introduction />
+            <Give_Space />
+            <Students />
+            <Give_Space />
             <section className="pb-10"></section>
         </section>
     );

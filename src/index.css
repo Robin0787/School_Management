@@ -25,6 +25,14 @@
   bg-pink-500 bg-opacity-40 dark:bg-opacity-30 hover:bg-opacity-80 dark:hover:bg-opacity-50 border dark:border-pink-500 dark:shadow-[0_0_10px] dark:shadow-pink-400 dark:hover:shadow-pink-600 text-black dark:text-white duration-300;
 }
 
+.tab-default {
+  @apply bg-white dark:bg-transparent text-sm text-black dark:text-white px-5 py-3 text-center w-full uppercase;
+}
+
+.tab-active {
+  @apply bg-blue-500 text-sm text-white px-5 py-3 text-center w-full uppercase ring rounded;
+}
+
 :root {
   --scrollbar-bg: #0f172a;
   --scrollbar-color: #01c001;
