@@ -26,11 +26,11 @@
 }
 
 .tab-default {
-  @apply bg-white dark:bg-transparent text-sm text-black dark:text-white px-5 py-3 text-center w-full uppercase;
+  @apply bg-white dark:bg-transparent text-sm text-black dark:text-white px-5 py-3 text-center w-full uppercase border-b dark:border-gray-600;
 }
 
 .tab-active {
-  @apply bg-blue-500 text-sm text-white px-5 py-3 text-center w-full uppercase ring rounded;
+  @apply bg-blue-500 text-sm text-white px-5 py-3 text-center w-full uppercase border-b border-blue-500;
 }
 
 :root {
@@ -111,4 +111,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #tabList::-webkit-scrollbar-track {
   width: 0;
   display: none;
+}
+
+#studentsTable::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+
+#studentsTable::-webkit-scrollbar-track {
+  background: white;
+  transition-duration: 0.3s;
+  border-radius: 5px;
+}
+
+#studentsTable::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 5px;
 }

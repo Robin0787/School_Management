@@ -10,10 +10,9 @@ const Home = () => {
             <Banner />
             <Classes />
             <Give_Space />
-            <Introduction />
-            <Give_Space />
             <Students />
             <Give_Space />
+            <Introduction />
             <section className="pb-10"></section>
         </section>
     );
