@@ -8,7 +8,7 @@ import book1 from "../../../assets/Home/book.png";
 
 const Classes = () => {
     return (
-        <section  id='students' className="pt-16">
+        <section  className="pt-16">
             <Container>
                 <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 capitalize">
                     <Link to={'/subjects/class/6'}

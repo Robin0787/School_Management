@@ -30,7 +30,7 @@
 }
 
 .tab-active {
-  @apply bg-blue-500 text-sm text-white px-5 py-3 text-center w-full uppercase border-b border-blue-500;
+  @apply bg-green-500 text-sm text-white px-5 py-3 text-center w-full uppercase border-b border-green-500;
 }
 
 :root {

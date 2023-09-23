@@ -11,7 +11,6 @@ const Home = () => {
             <Classes />
             <Give_Space />
             <Students />
-            <Give_Space />
             <Introduction />
             <section className="pb-10"></section>
         </section>

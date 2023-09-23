@@ -5,19 +5,19 @@ import { PiCaretUpDownLight } from 'react-icons/pi';
 
 
 
-const ListDropdown = ({ items, handleList, selected, title, zIndex=1 }) => {
+const ListDropdown = ({ items, handleList, selected, title, zIndex=1, border='border', align="text-left" }) => {
 
     return (
-        <div className="border  border-[#808080] rounded-[3px] py-[6px] cursor-pointer focus:border-white"  style={{ zIndex }}>
+        <div className={`${border} dark:border-gray-600 rounded-[3px] py-[6px] cursor-pointer focus:border-white`}  style={{ zIndex }}>
             <Listbox value={selected} onChange={handleList}>
                 <div className="relative h-full z-40"  style={{ zIndex }}>
                     <Listbox.Button 
-                     className="relative w-full py-2 pl-3 pr-10 text-left shadow-md  sm:text-sm">
-                        <span className="block truncate text-white ">
+                     className={`relative w-full ${align} py-2 pl-3 pr-10  sm:text-sm`}>
+                        <span className="block truncate text-black dark:text-white ">
                             {selected ? selected : `Select ${title}`}</span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <PiCaretUpDownLight
-                                className="h-5 w-5 text-white"
+                                className="h-5 w-5 text-black dark:text-white"
                                 aria-hidden="true"
                             />
                         </span>
