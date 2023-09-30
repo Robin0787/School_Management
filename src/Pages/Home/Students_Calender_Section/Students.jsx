@@ -51,7 +51,7 @@ const Students = () => {
                 <section className="pt-10 grid grid-cols-1 md:grid-cols-[1fr_4fr] 
                 lg:grid-cols-[1fr_4fr_2fr] gap-5 lg:gap-1 justify-start ">
                     <Tab.Group >
-                        
+
                         <Tab.List className={'bg-transparent flex flex-col justify-start items-center border dark:border-gray-600 rounded md:mt-1 lg:mr-5'}>
                             <Tab
                                 onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
@@ -99,10 +99,10 @@ const Students = () => {
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
                                     isLoading ?
-                                        <ContentLoader />
+                                        <section className="w-full"><ContentLoader /></section>
                                         :
                                         (
-                                            students?.six.length > 0 ?
+                                            students?.six?.length > 0 ?
                                                 <StudentsTable items={students.six} query={'gender'} value={selectedGender} />
                                                 :
                                                 <section className='flex justify-center items-center h-full w-full'>
@@ -114,10 +114,10 @@ const Students = () => {
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
                                     isLoading ?
-                                        <ContentLoader />
+                                        <section className="w-full"><ContentLoader /></section>
                                         :
                                         (
-                                            students?.seven.length > 0 ?
+                                            students?.seven?.length > 0 ?
                                                 <StudentsTable items={students.seven} query={'gender'} value={selectedGender} />
                                                 :
                                                 <section className='flex justify-center items-center h-full w-full'>
@@ -129,10 +129,10 @@ const Students = () => {
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
                                     isLoading ?
-                                        <ContentLoader />
+                                        <section className="w-full"><ContentLoader /></section>
                                         :
                                         (
-                                            students?.eight.length > 0 ?
+                                            students?.eight?.length > 0 ?
                                                 <StudentsTable items={students.eight} query={'gender'} value={selectedGender} />
                                                 :
                                                 <section className='flex justify-center items-center h-full w-full'>
@@ -144,10 +144,10 @@ const Students = () => {
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
                                     isLoading ?
-                                        <ContentLoader />
+                                        <section className="w-full"><ContentLoader /></section>
                                         :
                                         (
-                                            students?.nine.length > 0 ?
+                                            students?.nine?.length > 0 ?
                                                 <StudentsTable items={students.nine} query={'group'} value={selectedGroup} />
                                                 :
                                                 <section className='flex justify-center items-center h-full w-full'>
@@ -159,10 +159,10 @@ const Students = () => {
                             <Tab.Panel className={'flex justify-center items-center h-full w-full'}>
                                 {
                                     isLoading ?
-                                        <ContentLoader />
+                                        <section className="w-full"><ContentLoader /></section>
                                         :
                                         (
-                                            students?.ten.length > 0 ?
+                                            students?.ten?.length > 0 ?
                                                 <StudentsTable items={students.ten} query={'group'} value={selectedGroup} />
                                                 :
                                                 <section className='flex justify-center items-center h-full w-full'>
@@ -172,7 +172,6 @@ const Students = () => {
                                 }
                             </Tab.Panel>
                         </Tab.Panels>
-
                         <div className="hidden lg:flex flex-col justify-start items-center h-full w-full">
                             <Calender />
                         </div>
