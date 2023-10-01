@@ -1,5 +1,6 @@
 import { Tab } from '@headlessui/react';
 import { useQuery } from "@tanstack/react-query";
+import AOS from 'aos';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import Calender from "../../../Components/Calender/Calender";
@@ -12,7 +13,7 @@ const groups = ['Science', 'Arts', 'Commerce'];
 const genders = ['Male', 'Female'];
 
 const Students = () => {
-
+    AOS.init();
     const [selectedGroup, setSelectedGroup] = useState(groups[0]);
     const [showGroupFilter, setGroupFilter] = useState(false);
     const [showGenderFilter, setGenderFilter] = useState(true);
@@ -39,9 +40,9 @@ const Students = () => {
     }, []);
 
     return (
-        <section id='students' className='py-10 md:py-20'>
+        <section id='students' className='py-10 md:py-20 overflow-hidden'>
             <Container>
-                <section className=''>
+                <section data-aos="zoom-in-up" data-aos-delay="0" data-aos-once="true" data-aos-mirror="false">
                     <h1 className="text-5xl font-bold leading-snug text-center uppercase md:whitespace-nowrap">
                         Current <span className="text-[#00db50]">Student</span> Directory
                     </h1>
@@ -52,7 +53,9 @@ const Students = () => {
                 lg:grid-cols-[1fr_4fr_2fr] gap-5 lg:gap-1 justify-start ">
                     <Tab.Group >
 
-                        <Tab.List className={'bg-transparent flex flex-col justify-start items-center border dark:border-gray-600 rounded md:mt-1 lg:mr-5'}>
+                        <Tab.List data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true"
+                            data-aos-mirror="false"
+                            className={'bg-transparent flex flex-col justify-start items-center border dark:border-gray-600 rounded md:mt-1 lg:mr-5'}>
                             <Tab
                                 onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
                                 Six
@@ -95,7 +98,8 @@ const Students = () => {
                             }
                         </Tab.List>
 
-                        <Tab.Panels className={"md:mt-1 h-full"}>
+                        <Tab.Panels data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true" data-aos-mirror="false"
+                            className={"md:mt-1 h-full"}>
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
                                     isLoading ?
@@ -172,7 +176,8 @@ const Students = () => {
                                 }
                             </Tab.Panel>
                         </Tab.Panels>
-                        <div className="hidden lg:flex flex-col justify-start items-center h-full w-full">
+                        <div data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true" data-aos-mirror="false"
+                            className="hidden lg:flex flex-col justify-start items-center h-full w-full">
                             <Calender />
                         </div>
                     </Tab.Group>

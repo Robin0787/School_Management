@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { AiOutlineClose } from 'react-icons/ai';
 import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 import { CgMenu } from 'react-icons/cg';
@@ -24,8 +25,8 @@ const Navbar = () => {
                     </Link>
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
-                    <a href={'#students'} className={`${styles.nav_menu}`}>
-                            Our Students
+                        <a href={'/teachers'} className={`${styles.nav_menu}`}>
+                            Instructors
                         </a>
                         <Link className={`${styles.nav_menu}`}>
                             Gallery
@@ -71,17 +72,20 @@ const Navbar = () => {
                         }
                     </section>
                     {/* Navbar for small devices */}
-                    <section className="md:hidden text-white ">
-                        <div className="cursor-pointer" onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                    <section className="md:hidden text-white overflow-hidden">
+                        <div className="cursor-pointer text-green-400 hover:text-green-500  duration-300" onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                             <CgMenu size={35} />
                         </div>
                         <div
-                            className={`w-full  overflow-hidden absolute top-[68px] left-0 right-4 ${openMobileMenu ? "h-[216px]" : "h-0"} 
-                            flex justify-center items-center
-                             rounded-md 
-                            duration-500 `}
+                            className={`w-[100vw] overflow-hidden absolute -top-0 -left-[13px] ${openMobileMenu ? "h-[300px]" : "h-0"} 
+                            flex justify-center items-center duration-500 border-b border-gray-700`}
                         >
-                            <div className="w-full bg-[#0f172a] flex flex-col gap-2 items-center py-4 border border-[#b1b1b1]">
+                            <div className="w-full bg-[#0f172a] flex flex-col gap-3 items-center py-4">
+
+                                <div className="bg-[#0f172a] text-green-400 hover:text-green-500 duration-300 cursor-pointer">
+                                <AiOutlineClose onClick={() => { setOpenMobileMenu(prev => !prev) }}
+                                 size={30} />
+                                 </div>
                                 <button
                                     className=""
                                     onClick={handleThemeSwitch}>
@@ -91,15 +95,21 @@ const Navbar = () => {
                                             <BsFillMoonStarsFill size={20} />
                                     }
                                 </button>
-                                <Link className={`${styles.nav_menu}`}>
+                                <Link to="/" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                                    Home
+                                </Link>
+                                <Link to="/teachers" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                                    Teachers
+                                </Link>
+                                <Link className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Gallery
                                 </Link>
-                                <Link className={`${styles.nav_menu}`}>
+                                <Link to="/about-us" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     About Us
                                 </Link>
                                 {
                                     user ?
-                                        <Link to={'/dashboard'}>
+                                        <Link to={'/dashboard'} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                             <div className={`${styles.nav_menu} flex items-center gap-3`}>
                                                 <BiSolidDashboard size={20} />
                                                 <h1>Dashboard</h1>
