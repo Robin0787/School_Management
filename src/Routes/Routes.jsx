@@ -17,6 +17,8 @@ import StudentRoute from "./StudentRoute/StudentRoute";
 
 
 
+
+
 const Home = lazy(() => import('../Pages/Home/Home'));
 const AboutUs = lazy(() => import("../Pages/AboutUs/AboutUs"));
 
@@ -39,8 +41,9 @@ const ApprovedInstructors = lazy(() => import("../Pages/Dashboard/Admin/Approved
 
 const AllStudents = lazy(() => import('../Pages/Dashboard/Instructor/AllStudents/AllStudents'));
 const AddStudent = lazy(() => import("../Pages/Dashboard/Instructor/AddStudent/AddStudent"));
-const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
 const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest'));
+const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
+const RejectedStudents  = lazy(() => import("../Pages/Dashboard/Instructor/RejectedStudents/RejectedStudents"));
 
 const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
 
@@ -57,10 +60,6 @@ const routes = createBrowserRouter([
             {
                 path: 'classes',
                 element: <Suspense fallback={<PageLoader />}><Classes /></Suspense>
-            },
-            {
-                path: 'teachers',
-                element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
             }
         ]
     },
@@ -76,9 +75,14 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    // Individual routes
     {
         path: '/about-us',
         element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
+    },
+    {
+        path: '/teachers',
+        element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
     },
     // Dashboard Routes
     {
@@ -118,12 +122,16 @@ const routes = createBrowserRouter([
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AddStudent /></Suspense></InstructorRoute>
             },
             {
+                path: "students-request",
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><StudentsRequest /></Suspense></InstructorRoute>
+            },
+            {
                 path: "approved-students",
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><ApprovedStudents /></Suspense></InstructorRoute>
             },
             {
-                path: "students-request",
-                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><StudentsRequest /></Suspense></InstructorRoute>
+                path: "rejected-students",
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><RejectedStudents /></Suspense></InstructorRoute>
             },
             {
                 path: "my-info",

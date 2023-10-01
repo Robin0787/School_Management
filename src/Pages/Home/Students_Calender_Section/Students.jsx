@@ -43,10 +43,10 @@ const Students = () => {
         <section id='students' className='py-10 md:py-20 overflow-hidden'>
             <Container>
                 <section data-aos="zoom-in-up" data-aos-delay="0" data-aos-once="true" data-aos-mirror="false">
-                    <h1 className="text-5xl font-bold leading-snug text-center uppercase md:whitespace-nowrap">
+                    <h1 className="text-3xl sm:text-5xl font-bold leading-snug text-center uppercase md:whitespace-nowrap">
                         Current <span className="text-[#00db50]">Student</span> Directory
                     </h1>
-                    <p className='mt-3 md:w-[90%] mx-auto text-center text-gray-600 dark:text-gray-300'>Welcome to our Current Student Directory, where you can find information about the talented individuals currently pursuing their education at our institution. Our students are the heart of our school. Get to know the bright minds who shape the future within our halls of learning.</p>
+                    <p className='mt-3 md:w-[90%] mx-auto text-justify sm:text-center text-gray-600 dark:text-gray-300'>Welcome to our Current Student Directory, where you can find information about the talented individuals currently pursuing their education at our institution. Our students are the heart of our school. Get to know the bright minds who shape the future within our halls of learning.</p>
                 </section>
 
                 <section className="pt-10 grid grid-cols-1 md:grid-cols-[1fr_4fr] 
@@ -80,7 +80,7 @@ const Students = () => {
                                 showGroupFilter
                                     ?
                                     <div className='w-full'>
-                                        <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-b" align="text-center" />
+                                        <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-b" align="text-center" zIndex={'10'}/>
                                     </div>
                                     :
                                     ''
@@ -91,7 +91,7 @@ const Students = () => {
                                     <div className='w-full'>
                                         <ListDropdown items={genders}
                                             handleList={handleGenderList} selected={selectedGender}
-                                            title={'Gender'} border="border-b" align="text-center" />
+                                            title={'Gender'} border="border-b" align="text-center" zIndex={'10'}/>
                                     </div>
                                     :
                                     ''

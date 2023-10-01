@@ -7,6 +7,7 @@ import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn";
 import { providerContext } from "../../Provider/Provider";
 import banner from "../../assets/SignIn.jpg";
 import styles from "./SignIn.module.css";
+import TestLogin from "./TestLogin";
 
 const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -98,6 +99,7 @@ const SignIn = () => {
                     </article>
                 </article>
             </section>
+            <TestLogin />
         </section>
     );
 };

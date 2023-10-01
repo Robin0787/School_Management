@@ -2,31 +2,25 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsTrash } from "react-icons/bs";
-import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import Loader from "../Loader/Loader";
 
-const ApprovedStudentCard = ({item, refetch}) => {
+const RejectedStudentCard = ({item, refetch}) => {
     const [loading, setLoading] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
 
-    async function handleDelete (email) {
-        const url = `${import.meta.env.VITE_BASE_URL}/delete-approved-student/${email}`;
+    async function handleDelete (id) {
+        setLoading(true);
+        const url = `${import.meta.env.VITE_BASE_URL}/delete-rejected-student/${id}`;
         const res = await axios.delete(url);
         if(res.data?.deletedCount) {
+            setLoading(false);
             refetch();
-            toast.success('Deleted');
         } else {
+            setLoading(false);
             toast.error('Something Wrong!!');
             console.log(res.data);
         }
     }
-    
-    function modalHandler (email) {
-        setLoading(true);
-        setOpenModal(false);
-        handleDelete(email);
-    }
-    
+
     return (
         <div className="border relative rounded-md bg-[#0f172a] text-white">
             <img src={item?.photo} alt="" className="h-32 w-32 rounded-full mx-auto object-cover object-center my-5" />
@@ -78,7 +72,7 @@ const ApprovedStudentCard = ({item, refetch}) => {
             </div>
             <div className="absolute top-3 left-3">
                 <button 
-                onClick={() => {setOpenModal(true)}}
+                onClick={() => {handleDelete(item._id)}}
                 className="bg-red-500 text-white p-2 rounded-full ring-2 ring-transparent hover:ring-red-500 duration-300">
                     {
                         loading ?
@@ -88,9 +82,8 @@ const ApprovedStudentCard = ({item, refetch}) => {
                     }
                 </button>
             </div>
-            <ConfirmModal email={item.email} openModal={openModal} setOpenModal={setOpenModal} modalHandler={modalHandler}/>
         </div>
     );
 };
 
-export default ApprovedStudentCard;
+export default RejectedStudentCard;

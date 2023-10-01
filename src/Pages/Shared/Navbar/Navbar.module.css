@@ -39,6 +39,6 @@
 }
 
 .nav_menu::selection {
-  color: rgb(34 197 94);
+  color: #22c55e;
   background-color: transparent;
 }

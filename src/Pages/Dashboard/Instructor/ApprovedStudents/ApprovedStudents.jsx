@@ -11,7 +11,7 @@ import { providerContext } from "../../../../Provider/Provider";
 const ApprovedStudents = () => {
     const { setUserBannerText, userLoading } = useContext(providerContext);
 
-    const { data: approved = {}, isLoading } = useQuery({
+    const { data: approved = {}, isLoading, refetch } = useQuery({
         queryKey: ['approved-students'],
         disabled: !userLoading,
         queryFn: async () => {
@@ -47,12 +47,12 @@ const ApprovedStudents = () => {
                                         approved.six ?
                                             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                                 {
-                                                    approved?.six?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                    approved?.six?.map((item) => <ApprovedStudentCard item={item} key={item._id} refetch={refetch} />)
                                                 }
                                             </section>
                                             :
                                             <section className="flex justify-center items-center h-[35vh]">
-                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                                <h1 className="text-xl font-bold">No Students Found!</h1>
                                             </section>
                                     )
                                 )
@@ -68,12 +68,12 @@ const ApprovedStudents = () => {
                                         approved.seven ?
                                             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                                 {
-                                                    approved?.seven?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                    approved?.seven?.map((item) => <ApprovedStudentCard item={item} key={item._id} refetch={refetch} />)
                                                 }
                                             </section>
                                             :
                                             <section className="flex justify-center items-center h-[35vh]">
-                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                                <h1 className="text-xl font-bold">No Students Found!</h1>
                                             </section>
                                     )
                                 )
@@ -89,12 +89,12 @@ const ApprovedStudents = () => {
                                         approved.eight ?
                                             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                                 {
-                                                    approved?.eight?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                    approved?.eight?.map((item) => <ApprovedStudentCard item={item} key={item._id} refetch={refetch} />)
                                                 }
                                             </section>
                                             :
                                             <section className="flex justify-center items-center h-[35vh]">
-                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                                <h1 className="text-xl font-bold">No Students Found!</h1>
                                             </section>
                                     )
                                 )
@@ -110,12 +110,12 @@ const ApprovedStudents = () => {
                                         approved.nine ?
                                             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                                 {
-                                                    approved?.nine?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                    approved?.nine?.map((item) => <ApprovedStudentCard item={item} key={item._id} refetch={refetch} />)
                                                 }
                                             </section>
                                             :
                                             <section className="flex justify-center items-center h-[35vh]">
-                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                                <h1 className="text-xl font-bold">No Students Found!</h1>
                                             </section>
                                     )
                                 )
@@ -131,12 +131,12 @@ const ApprovedStudents = () => {
                                         approved.ten ?
                                             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 p-5 pb-8">
                                                 {
-                                                    approved?.ten?.map((item) => <ApprovedStudentCard item={item} key={item._id} />)
+                                                    approved?.ten?.map((item) => <ApprovedStudentCard item={item} key={item._id} refetch={refetch} />)
                                                 }
                                             </section>
                                             :
                                             <section className="flex justify-center items-center h-[35vh]">
-                                                <h1 className="text-xl font-bold">No request is available!</h1>
+                                                <h1 className="text-xl font-bold">No Students Found!</h1>
                                             </section>
                                     )
                                 )

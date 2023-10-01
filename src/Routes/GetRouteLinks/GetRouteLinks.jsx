@@ -73,6 +73,12 @@ const GetRouteLinks = () => {
                     <div>{React.createElement(LuUserCheck, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Approved Students</span>
                 </NavLink>
+                <NavLink
+                    to={'rejected-students'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(FaUsersSlash, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Rejected Students</span>
+                </NavLink>
             </>
         )
     }

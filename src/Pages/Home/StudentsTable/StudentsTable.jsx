@@ -20,8 +20,8 @@ export default function StudentsTable({ items, query, value }) {
 
     return (
         <TableContainer component={Paper} id="studentsTable"
-            className='h-[336px] md:h-[383px] w-full overflow-auto rounded'>
-            <Table aria-label="simple table" className='relative'>
+            className='h-[336px] md:h-[383px] w-full overflow-auto rounded z-0'>
+            <Table aria-label="simple table" className='relative z-0'>
 
                 <TableHead className='sticky w-full top-0 bg-white'>
                     <TableRow className='bg-gray-500/20'>

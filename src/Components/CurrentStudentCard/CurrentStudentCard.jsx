@@ -1,9 +1,18 @@
+import { useCallback } from "react";
 
 
 const CurrentStudentCard = ({ item }) => {
+
+    const getRandomBg = useCallback(() => {
+        const backgrounds = ['bg-blue-500', 'bg-green-500', 'bg-orange-500', 'bg-yellow-500', 'bg-indigo-500', 'bg-purple-500', 'bg-sky-500', 'bg-red-500'];
+
+        const random_number = Math.floor(Math.random() * backgrounds.length) + 0;
+        return backgrounds[random_number];
+    }, []);
+
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
-            <div className="h-24 w-24 mx-auto my-5 rounded-full flex justify-center items-center bg-green-500 bg-opacity-80">
+            <div className={`h-24 w-24 mx-auto my-5 rounded-full flex justify-center items-center ${getRandomBg()} bg-opacity-80`}>
                 <h1 className="text-3xl text-center">{item.roll}</h1>
             </div>
             <div className="overflow-auto">

@@ -25,9 +25,9 @@ const Navbar = () => {
                     </Link>
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
-                        <a href={'/teachers'} className={`${styles.nav_menu}`}>
+                        <Link to={'/teachers'} className={`${styles.nav_menu}`}>
                             Instructors
-                        </a>
+                        </Link>
                         <Link className={`${styles.nav_menu}`}>
                             Gallery
                         </Link>
@@ -43,11 +43,11 @@ const Navbar = () => {
                         {
                             user ?
                                 <div className="relative">
-                                    <div className={`${showDropdown ? "rounded-t-md" : 'rounded-md'} flex items-center gap-3 px-3 py-1  bg-green-500 hover:shadow-[0_0_15px] hover:shadow-green-600 text-white cursor-pointer duration-200`}
+                                    <div className={`min-w-[145px] ${showDropdown ? "rounded-t-md" : 'rounded-md'} flex justify-center items-center gap-3 px-3 py-1  bg-green-500 hover:shadow-[0_0_15px] hover:shadow-green-600 text-white cursor-pointer duration-200`}
                                         onClick={() => { setShowDropdown((prev) => !prev) }}
                                     >
                                         <img src={user?.photoURL} alt="" className="h-[28px] w-[28px] rounded-full" />
-                                        <h1 className="text-sm">{user?.displayName}</h1>
+                                        <h1 className="">{user?.displayName}</h1>
                                     </div>
                                     <div className={`w-full ${showDropdown ? "h-10" : "h-0"} absolute top-full bg-[#0f172a] text-white rounded-b-md overflow-hidden duration-500`}>
                                         <div className="px-4 py-1">
