@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
-const ConfirmModal = ({ email, openModal, setOpenModal, modalHandler }) => {
+const ConfirmModal = ({ prop, openModal, setOpenModal, modalHandler }) => {
 
   return (
     <Transition appear show={openModal} as={Fragment}>
@@ -46,7 +46,7 @@ const ConfirmModal = ({ email, openModal, setOpenModal, modalHandler }) => {
                   <button
                     type='button'
                     className='inline-flex justify-center rounded border border-transparent bg-red-100 px-3 py-1 text-sm font-medium text-red-900 ring-2 ring-transparent hover:bg-red-200 hover:ring-red-500 duration-300'
-                    onClick={() => modalHandler(email)}
+                    onClick={() => modalHandler(prop)}
                   >
                     Delete
                   </button>

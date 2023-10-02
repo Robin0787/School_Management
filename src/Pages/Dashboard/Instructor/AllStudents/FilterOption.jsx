@@ -4,20 +4,18 @@ import { BsCheck2 } from 'react-icons/bs';
 import { PiCaretUpDownLight } from 'react-icons/pi';
 
 
-
-const ListDropdown = ({ items, handleList, selected, title, zIndex=1, border='border', align="text-left" }) => {
-
+const FilterOption = ({ items, handleList, selected, title, zIndex=1, border='border', align="text-left" }) => {
     return (
-        <div className={`${border} dark:border-gray-600 rounded-[3px] py-[6px] cursor-pointer focus:border-white`}  style={{ zIndex }}>
+        <div className={`${border} rounded-[3px] py-1 bg-[#0f172a]  cursor-pointer focus:border-white`}  style={{ zIndex }}>
             <Listbox value={selected} onChange={handleList}>
                 <div className="relative h-full z-40"  style={{ zIndex }}>
                     <Listbox.Button 
                      className={`relative w-full ${align} py-2 pl-3 pr-10  sm:text-sm`}>
-                        <span className="block truncate text-black dark:text-white">
-                            {selected ? selected : `Select ${title}`}</span>
+                        <span className="block truncate text-white ">
+                            {selected ? selected : `${selected}`}</span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <PiCaretUpDownLight
-                                className="h-5 w-5 text-black dark:text-white"
+                                className="h-5 w-5 text-white"
                                 aria-hidden="true"
                             />
                         </span>
@@ -66,4 +64,4 @@ const ListDropdown = ({ items, handleList, selected, title, zIndex=1, border='bo
     )
 };
 
-export default ListDropdown;
+export default FilterOption;

@@ -88,7 +88,7 @@ const ApprovedStudentCard = ({item, refetch}) => {
                     }
                 </button>
             </div>
-            <ConfirmModal email={item.email} openModal={openModal} setOpenModal={setOpenModal} modalHandler={modalHandler}/>
+            <ConfirmModal prop={item.email} openModal={openModal} setOpenModal={setOpenModal} modalHandler={modalHandler}/>
         </div>
     );
 };

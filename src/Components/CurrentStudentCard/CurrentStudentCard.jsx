@@ -1,7 +1,15 @@
-import { useCallback } from "react";
+import axios from "axios";
+import { useCallback, useState } from "react";
+import toast from "react-hot-toast";
+import { BiEdit, BiTrashAlt } from 'react-icons/bi';
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import Loader from "../Loader/Loader";
 
+// prop, openModal, setOpenModal, modalHandler
 
-const CurrentStudentCard = ({ item }) => {
+const CurrentStudentCard = ({ item, refetch }) => {
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [loading, setLoading] =  useState(false);
 
     const getRandomBg = useCallback(() => {
         const backgrounds = ['bg-blue-500', 'bg-green-500', 'bg-orange-500', 'bg-yellow-500', 'bg-indigo-500', 'bg-purple-500', 'bg-sky-500', 'bg-red-500'];
@@ -10,8 +18,28 @@ const CurrentStudentCard = ({ item }) => {
         return backgrounds[random_number];
     }, []);
 
+    const deleteStudent = async (id) => {
+        const url = `${import.meta.env.VITE_BASE_URL}/delete-current-student/${id}`;
+        const res = await axios.delete(url);
+        if(res.data?.deletedCount) {
+            refetch();
+            setLoading(false);
+            toast('Student Deleted');
+        }else {
+            setLoading(false);
+            toast.error('Error!');
+            console.log(res.data);
+        }
+    }
+
+    function handleDeleteModal (id) {
+        setLoading(true);
+        setOpenDeleteModal(false);
+        deleteStudent(id);
+    }
+
     return (
-        <div className="border rounded-md bg-[#0f172a] text-white">
+        <div className="relative rounded-md bg-[#0f172a] text-white">
             <div className={`h-24 w-24 mx-auto my-5 rounded-full flex justify-center items-center ${getRandomBg()} bg-opacity-80`}>
                 <h1 className="text-3xl text-center">{item.roll}</h1>
             </div>
@@ -60,6 +88,20 @@ const CurrentStudentCard = ({ item }) => {
                     </tbody>
                 </table>
             </div>
+            <button onClick={() => {setOpenDeleteModal(true)}}
+             className="absolute top-2 left-2 px-[10px] py-[6px] rounded text-red-500 hover:text-white bg-red-600 bg-opacity-20 hover:bg-opacity-100 border border-red-600 border-opacity-80 hover:border-opacity-100 duration-300">
+                {
+                    loading 
+                    ? <Loader size={18}/> 
+                    :
+                    <BiTrashAlt size={18}/>
+                }
+            </button>
+            <button className="absolute top-2 right-2 px-[10px] py-[6px] rounded text-white hover:text-green-500  bg-green-600 hover:bg-opacity-20 border border-green-600 border-opacity-100 hover:border-opacity-80 duration-300">
+                <BiEdit size={18}/>
+            </button>
+
+            <ConfirmModal prop={item._id} openModal={openDeleteModal} setOpenModal={setOpenDeleteModal} modalHandler={handleDeleteModal}/>
         </div>
     );
 };
