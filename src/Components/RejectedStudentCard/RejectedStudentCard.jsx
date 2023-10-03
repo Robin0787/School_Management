@@ -2,13 +2,14 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BsTrash } from "react-icons/bs";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import Loader from "../Loader/Loader";
 
 const RejectedStudentCard = ({item, refetch}) => {
+    const [openModal, setOpenModal] = useState(false);
     const [loading, setLoading] = useState(false);
 
     async function handleDelete (id) {
-        setLoading(true);
         const url = `${import.meta.env.VITE_BASE_URL}/delete-rejected-student/${id}`;
         const res = await axios.delete(url);
         if(res.data?.deletedCount) {
@@ -19,6 +20,12 @@ const RejectedStudentCard = ({item, refetch}) => {
             toast.error('Something Wrong!!');
             console.log(res.data);
         }
+    }
+
+    function modalHandler (id) {
+        setLoading(true);
+        setOpenModal(false);
+        handleDelete(id);
     }
 
     return (
@@ -72,7 +79,7 @@ const RejectedStudentCard = ({item, refetch}) => {
             </div>
             <div className="absolute top-3 left-3">
                 <button 
-                onClick={() => {handleDelete(item._id)}}
+                onClick={() => {setOpenModal(true)}}
                 className="bg-red-500 text-white p-2 rounded-full ring-2 ring-transparent hover:ring-red-500 duration-300">
                     {
                         loading ?
@@ -82,6 +89,7 @@ const RejectedStudentCard = ({item, refetch}) => {
                     }
                 </button>
             </div>
+            <ConfirmModal openModal={openModal} setOpenModal={setOpenModal} modalHandler={modalHandler} prop={item._id}/>
         </div>
     );
 };

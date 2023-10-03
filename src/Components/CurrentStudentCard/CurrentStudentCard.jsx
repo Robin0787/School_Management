@@ -3,12 +3,14 @@ import { useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import { BiEdit, BiTrashAlt } from 'react-icons/bi';
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import EditStudentModal from "../EditStudentModal/EditStudentModal";
 import Loader from "../Loader/Loader";
 
 // prop, openModal, setOpenModal, modalHandler
 
 const CurrentStudentCard = ({ item, refetch }) => {
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
     const [loading, setLoading] =  useState(false);
 
     const getRandomBg = useCallback(() => {
@@ -36,6 +38,10 @@ const CurrentStudentCard = ({ item, refetch }) => {
         setLoading(true);
         setOpenDeleteModal(false);
         deleteStudent(id);
+    }
+
+    function handleEditModal () {
+        toast('Successful');
     }
 
     return (
@@ -97,11 +103,14 @@ const CurrentStudentCard = ({ item, refetch }) => {
                     <BiTrashAlt size={18}/>
                 }
             </button>
-            <button className="absolute top-2 right-2 px-[10px] py-[6px] rounded text-white hover:text-green-500  bg-green-600 hover:bg-opacity-20 border border-green-600 border-opacity-100 hover:border-opacity-80 duration-300">
+            <button onClick={() => {setOpenEditModal(true)}}
+             className="absolute top-2 right-2 px-[10px] py-[6px] rounded text-white hover:text-green-500  bg-green-600 hover:bg-opacity-20 border border-green-600 border-opacity-100 hover:border-opacity-80 duration-300">
                 <BiEdit size={18}/>
             </button>
 
             <ConfirmModal prop={item._id} openModal={openDeleteModal} setOpenModal={setOpenDeleteModal} modalHandler={handleDeleteModal}/>
+            
+            <EditStudentModal prop={item._id} openModal={openEditModal} setOpenModal={setOpenEditModal} modalHandler={handleEditModal}/>
         </div>
     );
 };

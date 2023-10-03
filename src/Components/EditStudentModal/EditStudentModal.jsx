@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 
-const ConfirmModal = ({ prop, openModal, setOpenModal, modalHandler }) => {
+const EditStudentModal = ({ prop, openModal, setOpenModal, modalHandler }) => {
 
   return (
     <Transition appear show={openModal} as={Fragment}>
@@ -48,7 +48,7 @@ const ConfirmModal = ({ prop, openModal, setOpenModal, modalHandler }) => {
                     className='inline-flex justify-center rounded border border-transparent bg-red-100 px-3 py-1 text-sm font-medium text-red-900 ring-2 ring-transparent hover:bg-red-200 hover:ring-red-500 duration-300'
                     onClick={() => modalHandler(prop)}
                   >
-                    Delete
+                    Update
                   </button>
                 </div>
               </Dialog.Panel>
@@ -60,4 +60,4 @@ const ConfirmModal = ({ prop, openModal, setOpenModal, modalHandler }) => {
   )
 }
 
-export default ConfirmModal;
+export default EditStudentModal;
