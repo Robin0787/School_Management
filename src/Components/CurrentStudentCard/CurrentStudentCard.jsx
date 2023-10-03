@@ -40,9 +40,6 @@ const CurrentStudentCard = ({ item, refetch }) => {
         deleteStudent(id);
     }
 
-    function handleEditModal () {
-        toast('Successful');
-    }
 
     return (
         <div className="relative rounded-md bg-[#0f172a] text-white">
@@ -110,7 +107,8 @@ const CurrentStudentCard = ({ item, refetch }) => {
 
             <ConfirmModal prop={item._id} openModal={openDeleteModal} setOpenModal={setOpenDeleteModal} modalHandler={handleDeleteModal}/>
             
-            <EditStudentModal prop={item._id} openModal={openEditModal} setOpenModal={setOpenEditModal} modalHandler={handleEditModal}/>
+            <EditStudentModal prop={item} openModal={openEditModal} setOpenModal={setOpenEditModal}
+            refetch={refetch}/>
         </div>
     );
 };
