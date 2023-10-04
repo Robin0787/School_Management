@@ -19,7 +19,8 @@ const TeacherCard = ({ teacherInfo }) => {
                 <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-0 group-hover:bg-opacity-40 duration-700 rounded-md">
                 </div>
             </div>
-            <DetailsModal detailsModal={detailsModal} setDetailsModal={setDetailsModal}/>
+            <DetailsModal detailsModal={detailsModal} setDetailsModal={setDetailsModal} 
+            teacherInfo={teacherInfo}/>
         </>
     );
 };
