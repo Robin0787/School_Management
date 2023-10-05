@@ -26,7 +26,7 @@ const Navbar = () => {
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
                         <Link to={'/teachers'} className={`${styles.nav_menu}`}>
-                            Instructors
+                            Teachers
                         </Link>
                         <Link className={`${styles.nav_menu}`}>
                             Gallery
@@ -83,9 +83,9 @@ const Navbar = () => {
                             <div className="w-full bg-[#0f172a] flex flex-col gap-3 items-center py-4">
 
                                 <div className="bg-[#0f172a] text-green-400 hover:text-green-500 duration-300 cursor-pointer">
-                                <AiOutlineClose onClick={() => { setOpenMobileMenu(prev => !prev) }}
-                                 size={30} />
-                                 </div>
+                                    <AiOutlineClose onClick={() => { setOpenMobileMenu(prev => !prev) }}
+                                        size={30} />
+                                </div>
                                 <button
                                     className=""
                                     onClick={handleThemeSwitch}>
