@@ -104,18 +104,20 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 5px;
 }
 
-.testing {
+/* About section in the homepage --------------------  */
+.section_title {
   font-size: 34px;
   font-weight: bold;
   color: transparent;
   -webkit-text-stroke: 1px #b1b1b1;
 }
 
-/* About section in the homepage */
+.link {
+  @apply text-gray-700 hover:text-green-600 dark:text-[#cecece] dark:hover:text-green-500 duration-300;
+}
 
 .link {
   position: relative;
-  color: #cecece;
   font-size: 16px;
   line-height: 16px;
   cursor: pointer;
@@ -126,17 +128,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .link::before {
   content: "";
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   margin: 0 12px 0 0px;
   transform: rotate(45deg);
   background: #22c55e;
   display: inline-block;
   transition: all 0.3s ease-in-out 0s;
-}
-
-.link:hover {
-  color: white;
 }
 
 .link:hover::before {

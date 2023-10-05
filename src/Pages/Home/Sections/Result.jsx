@@ -1,0 +1,27 @@
+import AOS from "aos";
+import ResultImg from "../../../assets/Home/Sections/result.png";
+
+const Result = () => {
+    AOS.init();
+    return (
+        <div className="relative p-5 bg-white dark:bg-[#0f172a] text-black dark:text-white
+         ring-1 ring-green-400 dark:ring-green-600 rounded md:h-[232px] duration-300"
+         data-aos="flip-up" data-aos-delay="0" data-aos-once="false" data-aos-mirror="false">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-5 lg:gap-10">
+                <div className="w-full md:w-1/2">
+                    <h1 className="absolute top-3 left-4 section_title">Result</h1>
+                    <img src={ResultImg} alt="" className="relative top-7 md:top-12 w-1/3 md:w-[70%] mx-auto" />
+                </div>
+                <div className="w-full md:w-1/2">
+                    <div className="space-y-2 mt-2 relative md:top-2">
+                        <a href="#" className="link">Public Results</a>
+                        <a href="#book-list" className="link">School Results</a>
+                        <a href="#" className="link">Board Result Link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Result;

@@ -10,7 +10,7 @@ const TeacherCard = ({ teacherInfo }) => {
     return (
         <>
             <div className="relative overflow-hidden group cursor-pointer"
-                data-aos="zoom-out" data-aos-mirror="false" data-aos-once="true" data-aos-delay="100"
+                data-aos="zoom-out" data-aos-mirror="false" data-aos-once="false" data-aos-delay="100"
                 onClick={() => {setDetailsModal(true)}}>
                 <img src={img} alt="instructor" className="h-full w-full rounded-md" />
                 <div className="absolute bottom-1 -left-10 group-hover:left-1 opacity-0 group-hover:opacity-100 duration-500 delay-75 z-10">

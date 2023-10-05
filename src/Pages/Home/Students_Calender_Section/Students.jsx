@@ -40,9 +40,9 @@ const Students = () => {
     }, []);
 
     return (
-        <section id='students' className='py-10 md:py-20 overflow-hidden'>
+        <section id='current_students' className='py-10 md:py-20 overflow-hidden'>
             <Container>
-                <section data-aos="zoom-in-up" data-aos-delay="0" data-aos-once="true" data-aos-mirror="false">
+                <section data-aos="zoom-in-up" data-aos-delay="0" data-aos-once="false" data-aos-mirror="false">
                     <h1 className="text-3xl sm:text-5xl font-bold leading-snug text-center uppercase md:whitespace-nowrap">
                         Current <span className="text-[#00db50]">Student</span> Directory
                     </h1>
@@ -53,7 +53,7 @@ const Students = () => {
                 lg:grid-cols-[1fr_4fr_2fr] gap-5 lg:gap-1 justify-start ">
                     <Tab.Group >
 
-                        <Tab.List data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true"
+                        <Tab.List data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="false"
                             data-aos-mirror="false"
                             className={'bg-transparent flex flex-col justify-start items-center border dark:border-gray-600 rounded md:mt-1 lg:mr-5'}>
                             <Tab
@@ -98,7 +98,7 @@ const Students = () => {
                             }
                         </Tab.List>
 
-                        <Tab.Panels data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true" data-aos-mirror="false"
+                        <Tab.Panels data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false"
                             className={"md:mt-1 h-full"}>
                             <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                 {
@@ -176,7 +176,7 @@ const Students = () => {
                                 }
                             </Tab.Panel>
                         </Tab.Panels>
-                        <div data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="true" data-aos-mirror="false"
+                        <div data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false"
                             className="hidden lg:flex flex-col justify-start items-center h-full w-full">
                             <Calender />
                         </div>
