@@ -125,7 +125,7 @@ const data = [
       qualification: "Ph.D. in Computer Science",
       experience_years: 6
     }
-]
+];
   
 
 const Teachers = () => {

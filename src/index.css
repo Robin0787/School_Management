@@ -46,6 +46,10 @@
   scroll-behavior: smooth;
 }
 
+.font-themify {
+  font-family: "themify";
+}
+
 *::selection {
   background-color: #0f172a;
   color: white;
@@ -98,6 +102,45 @@ input[type="number"]::-webkit-outer-spin-button {
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-color);
   border-radius: 5px;
+}
+
+.testing {
+  font-size: 34px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px #b1b1b1;
+}
+
+/* About section in the homepage */
+
+.link {
+  position: relative;
+  color: #cecece;
+  font-size: 16px;
+  line-height: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  display: block;
+}
+
+.link::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin: 0 12px 0 0px;
+  transform: rotate(45deg);
+  background: #22c55e;
+  display: inline-block;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.link:hover {
+  color: white;
+}
+
+.link:hover::before {
+  transform: rotate(180deg);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
