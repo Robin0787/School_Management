@@ -1,4 +1,5 @@
 import AOS from "aos";
+import { Link } from "react-router-dom";
 import AcademicInfoImg from "../../../assets/Home/Sections/academic.png";
 
 const AcademicInfo = () => {
@@ -10,16 +11,16 @@ const AcademicInfo = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-5 lg:gap-10">
                 <div className="w-full md:w-1/2">
                     <h1 className="absolute top-3 left-4 section_title">Academic Info</h1>
-                    <img src={AcademicInfoImg} alt="" className="relative top-12 w-1/3 md:w-full mx-auto" />
+                    <img src={AcademicInfoImg} alt="" className="relative top-12 image-icon" />
                 </div>
                 <div className="w-full md:w-1/2">
                     <div className="space-y-2 mt-2 relative md:top-8">
-                        <a href="#" className="link">Academic Fee</a>
-                        <a href="#book-list" className="link">Book List</a>
-                        <a href="#" className="link">Syllabus</a>
-                        <a href="#" className="link">Holiday list</a>
-                        <a href="#" className="link">Notices</a>
-                        <a href="#" className="link">Academic Calender</a>
+                        <Link className="section-link">Academic Fee</Link>
+                        <a href="#book-list" className="section-link">Book List</a>
+                        <Link className="section-link">Syllabus</Link>
+                        <Link className="section-link">Holiday list</Link>
+                        <Link className="section-link">Notices</Link>
+                        <Link className="section-link">Academic Calender</Link>
                     </div>
                 </div>
             </div>

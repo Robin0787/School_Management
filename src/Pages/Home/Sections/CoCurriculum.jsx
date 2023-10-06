@@ -1,4 +1,5 @@
 import AOS from "aos";
+import { Link } from "react-router-dom";
 import CoCurriculumImg from "../../../assets/Home/Sections/curriculum.png";
 const CoCurriculum = () => {
     AOS.init();
@@ -9,20 +10,20 @@ const CoCurriculum = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-5 lg:gap-10">
                 <div className="w-full md:w-1/2">
                     <h1 className="absolute top-3 left-4 section_title">Co Curriculum</h1>
-                    <img src={CoCurriculumImg} alt="" className="relative top-12 md:top-6 w-1/3 md:w-full mx-auto" />
+                    <img src={CoCurriculumImg} alt="" className="relative top-12 md:top-6 image-icon " />
                 </div>
                 <div className="w-full md:w-1/2">
                     <div className="space-y-2 mt-2 relative top-2 md:top-8">
-                        <a href="#" className="link">Sports</a>
-                        <a href="#" className="link">Tours</a>
-                        <a href="#" className="link">Scout</a>
-                        <a href="#" className="link">BNCC</a>
-                        <a href="#" className="link">Computer Club</a>
-                        <a href="#" className="link">Cultural Club</a>
-                        <a href="#" className="link">Photography Club</a>
-                        <a href="#" className="link">Debate Club</a>
-                        <a href="#" className="link">Science Club</a>
-                        <a href="#" className="link">Language Club</a>
+                        <Link className="section-link">Sports</Link>
+                        <Link className="section-link">Tours</Link>
+                        <Link className="section-link">Scout</Link>
+                        <Link className="section-link">BNCC</Link>
+                        <Link className="section-link">Computer Club</Link>
+                        <Link className="section-link">Cultural Club</Link>
+                        <Link className="section-link">Photography Club</Link>
+                        <Link className="section-link">Debate Club</Link>
+                        <Link className="section-link">Science Club</Link>
+                        <Link className="section-link">Language Club</Link>
                     </div>
                 </div>
             </div>

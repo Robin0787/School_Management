@@ -1,4 +1,5 @@
 import AOS from "aos";
+import { Link } from "react-router-dom";
 import GalleryImg from "../../../assets/Home/Sections/gallery.png";
 
 const Gallery = () => {
@@ -10,13 +11,13 @@ const Gallery = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-5 lg:gap-10">
                 <div className="w-full md:w-1/2">
                     <h1 className="absolute top-3 left-4 section_title">Gallery</h1>
-                    <img src={GalleryImg} alt="" className="relative top-8 md:top-[70px] w-1/3 md:w-full mx-auto" />
+                    <img src={GalleryImg} alt="" className="relative top-8 md:top-[70px] image-icon" />
                 </div>
                 <div className="w-full md:w-1/2">
                     <div className="space-y-2 mt-2 relative md:top-10">
-                        <a href="#" className="link">Events</a>
-                        <a href="#book-list" className="link">General Photos</a>
-                        <a href="#book-list" className="link">General Videos</a>
+                        <Link className="section-link">Events</Link>
+                        <Link className="section-link">General Photos</Link>
+                        <Link className="section-link">General Videos</Link>
                     </div>
                 </div>
             </div>

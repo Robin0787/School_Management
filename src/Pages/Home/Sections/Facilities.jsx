@@ -1,4 +1,5 @@
 import AOS from "aos";
+import { Link } from "react-router-dom";
 import FacilitiesImg from "../../../assets/Home/Sections/facilities.png";
 
 const Facilities = () => {
@@ -11,16 +12,16 @@ const Facilities = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center gap-5 lg:gap-10">
                 <div className="w-full md:w-1/2">
                     <h1 className="absolute top-3 left-4 section_title">Facilities</h1>
-                    <img src={FacilitiesImg} alt="" className="relative top-12 w-1/3 md:w-[80%] mx-auto" />
+                    <img src={FacilitiesImg} alt="" className="relative top-12 image-icon xl:w-[70%]" />
                 </div>
                 <div className="w-full md:w-1/2">
                     <div className="space-y-2 mt-2 relative md:top-8">
-                        <a href="#" className="link">Science Lab</a>
-                        <a href="#" className="link">Computer Lab</a>
-                        <a href="#" className="link">Library</a>
-                        <a href="#" className="link">Play Ground</a>
-                        <a href="#" className="link">Transportation</a>
-                        <a href="#" className="link">Indoor Playground</a>
+                        <Link className="section-link">Science Lab</Link>
+                        <Link className="section-link">Computer Lab</Link>
+                        <Link className="section-link">Library</Link>
+                        <Link className="section-link">Play Ground</Link>
+                        <Link className="section-link">Transportation</Link>
+                        <Link className="section-link">Indoor Playground</Link>
                     </div>
                 </div>
             </div>
