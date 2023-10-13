@@ -12,7 +12,7 @@ const Home = () => {
             <Classes />
             <Give_Space />
             <Sections />
-            <Give_Space />
+            {/* <Give_Space /> */}
             <Students />
             <Introduction />
             <section className="pb-10"></section>

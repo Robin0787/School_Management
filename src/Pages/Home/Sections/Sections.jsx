@@ -6,6 +6,7 @@ import CoCurriculum from "./CoCurriculum";
 import Facilities from "./Facilities";
 import Gallery from "./Gallery";
 import HeadTeacher from "./HeadTeacher";
+import ImportantLinks from "./ImportantLinks";
 import NoticeBoard from "./NoticeBoard";
 import Result from "./Result";
 import StudentCorner from "./StudentCorner";
@@ -28,9 +29,10 @@ const Sections = () => {
                     </section>
                 </section>
                 <section className="w-full md:w-[30%]">
-                    <section className="bg-[#0c142410] dark:bg-[#121f3a] px-4 py-2">
+                    <section className="shadow-[0_0_15px] shadow-gray-200 dark:shadow-none dark:bg-[#121f3a] px-6 py-4">
                         <HeadTeacher />
                         <NoticeBoard />
+                        <ImportantLinks />
                     </section>
                 </section>
             </section>

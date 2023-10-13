@@ -15,8 +15,8 @@ const TestLogin = () => {
             </div>
             <div className="pb-2">
                 <h1 className='text-lg font-bold pb-2'>User/Student</h1>
-                <p className="text-base pb-1">Email: ahmed@gmail.com</p>
-                <p className="text-base">Password: Ahmed12@</p>
+                <p className="text-base pb-1">Email: mohammadrobin636@gmail.com</p>
+                <p className="text-base">Password: Robin12@</p>
             </div>
         </section>
     );

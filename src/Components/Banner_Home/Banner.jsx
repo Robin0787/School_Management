@@ -1,10 +1,10 @@
-// import { Suspense, lazy } from "react";
-import { MdDateRange } from "react-icons/md";
+import { Suspense, lazy } from "react";
+import { MdDateRange, MdSchool } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import img from "../../assets/Home/Banner/img-1.jpg";
-// import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader";
 
-// const Banner_Slider = lazy(() => import('../Banner_Slider/Banner_Slider'));
+const Banner_Slider = lazy(() => import('../Banner_Slider/Banner_Slider'));
 
 const Banner = () => {
     return (
@@ -29,11 +29,15 @@ const Banner = () => {
                                 <MdDateRange size={20} />
                                 <p className="text-sm">Established In 1934</p>
                             </div>
+                            <div className="text-green-500 flex justify-start items-center gap-2 uppercase mt-2">
+                                <MdSchool size={20}/>
+                                <h1>EIIN 103446</h1>
+                            </div>
                         </section>
                         <section className="w-full md:w-1/2">
-                            {/* <Suspense fallback={<section className="flex justify-center items-center h-full w-full text-green-500"><Loader size={30}/></section>}>
+                            <Suspense fallback={<section className="flex justify-center items-center h-full w-full text-green-500"><Loader size={30}/></section>}>
                             <Banner_Slider />
-                            </Suspense> */}
+                            </Suspense>
                         </section>
                     </section>
                 </section>

@@ -7,7 +7,7 @@ const HeadTeacher = () => {
                 <h1 className="font-Nunito text-2xl font-semibold text-black dark:text-white ">Head Teacher</h1>
                 <div className="bottom"></div>
             </div>
-            <div className="relative mt-6">
+            <div className="relative mt-10">
                 <img src={HeadTeacherImg} alt="" className="w-full rounded" />
                 <div className="flex justify-center items-center">
                     <h3

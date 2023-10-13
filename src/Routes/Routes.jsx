@@ -16,9 +16,6 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import StudentRoute from "./StudentRoute/StudentRoute";
 
 
-
-
-
 const Home = lazy(() => import('../Pages/Home/Home'));
 const AboutUs = lazy(() => import("../Pages/AboutUs/AboutUs"));
 
