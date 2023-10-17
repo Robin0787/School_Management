@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { AiOutlineNotification } from "react-icons/ai";
 import { FaUserGraduate, FaUsersSlash } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 import { LuUserCheck } from "react-icons/lu";
@@ -60,6 +61,12 @@ const GetRouteLinks = () => {
                     className={({ isActive }) => isActive ? active : notActive}>
                     <div>{React.createElement(FiUserPlus, { size: '20' })}</div>
                     <span className={`whitespace-pre`}>Add Student</span>
+                </NavLink>
+                <NavLink
+                    to={'add-notice'}
+                    className={({ isActive }) => isActive ? active : notActive}>
+                    <div>{React.createElement(AiOutlineNotification, { size: '20' })}</div>
+                    <span className={`whitespace-pre`}>Add Notice</span>
                 </NavLink>
                 <NavLink
                     to={'students-request'}

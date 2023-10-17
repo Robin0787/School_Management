@@ -39,6 +39,7 @@ const ApprovedInstructors = lazy(() => import("../Pages/Dashboard/Admin/Approved
 
 const AllStudents = lazy(() => import('../Pages/Dashboard/Instructor/AllStudents/AllStudents'));
 const AddStudent = lazy(() => import("../Pages/Dashboard/Instructor/AddStudent/AddStudent"));
+const AddNotice = lazy(() => import("../Pages/Dashboard/Instructor/AddNotice/AddNotice"));
 const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest'));
 const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
 const RejectedStudents  = lazy(() => import("../Pages/Dashboard/Instructor/RejectedStudents/RejectedStudents"));
@@ -95,6 +96,7 @@ const routes = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><DashboardHome /> </Suspense></PrivateRoute>
             },
+            // All Admin Dashboard Routes
             {
                 path: 'home',
                 element: <PrivateRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><DashboardHome /> </Suspense></PrivateRoute>
@@ -115,6 +117,7 @@ const routes = createBrowserRouter([
                 path: "rejected-instructors",
                 element: <AdminRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><RejectedInstructors /></Suspense></AdminRoute>
             },
+            // All Instructor Dashboard Routes
             {
                 path: "students",
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AllStudents /></Suspense></InstructorRoute>
@@ -122,6 +125,10 @@ const routes = createBrowserRouter([
             {
                 path: "add-student",
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AddStudent /></Suspense></InstructorRoute>
+            },
+            {
+                path: "add-notice",
+                element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><AddNotice /></Suspense></InstructorRoute>
             },
             {
                 path: "students-request",
@@ -135,6 +142,7 @@ const routes = createBrowserRouter([
                 path: "rejected-students",
                 element: <InstructorRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><RejectedStudents /></Suspense></InstructorRoute>
             },
+            // All Student Dashboard Routes
             {
                 path: "my-info",
                 element: <StudentRoute><Suspense fallback={<ContentLoader h={'h-[50vh] lg:h-[60vh]'} />}><MyInfo /></Suspense></StudentRoute>
