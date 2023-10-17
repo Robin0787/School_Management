@@ -25,6 +25,9 @@ const Navbar = () => {
                     </Link>
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
+                        <Link to={'/our-students'} className={`${styles.nav_menu}`}>
+                            Our Students
+                        </Link>
                         <Link to={'/teachers'} className={`${styles.nav_menu}`}>
                             Teachers
                         </Link>

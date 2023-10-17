@@ -28,6 +28,7 @@ const InstructorSignUp = lazy(() => import('../Pages/SignUp/InstructorSignUp/Ins
 const Classes = lazy(() => import('../Pages/Classes/Classes'));
 const Subjects = lazy(() => import('../Pages/Subjects/Subjects'));
 const Teachers = lazy(() => import('../Pages/Teachers/Teachers'));
+const OurStudents = lazy(() => import('../Pages/OurStudents/OurStudents'));
 
 const Profile = lazy(() => import("../Pages/Profile/Profile"));
 
@@ -80,6 +81,10 @@ const routes = createBrowserRouter([
     {
         path: '/teachers',
         element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
+    },
+    {
+        path: "/our-students",
+        element: <Suspense fallback={<PageLoader />}><OurStudents /></Suspense>
     },
     // Dashboard Routes
     {
