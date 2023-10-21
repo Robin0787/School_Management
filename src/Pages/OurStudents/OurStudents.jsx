@@ -39,65 +39,72 @@ const OurStudents = () => {
         setSelectedGender(gender);
     }, []);
 
+    const tabActive = `bg-black text-white dark:bg-white dark:text-black rounded text-sm px-5 py-3 text-center w-full uppercase`;
+
+    const tabDefault = `bg-white dark:bg-[#0b1427] rounded text-sm text-black dark:text-white px-5 py-3 text-center w-full uppercase`;
+
     return (
         <section className="min-h-screen">
             <section className="bg-[#0f172a] pb-2">
                 <Navbar />
             </section>
-            <section className='min-h-[calc(100vh-86px)] pt-14 bg-white textblack dark:bg-[#0f172a] dark:text-white duration-300'>
+            <section className='min-h-[calc(100vh-86px)] pt-14 bg-white text-black dark:bg-[#0f172a] dark:text-white duration-300'>
                 <Container>
-                    <section className="flex h-full flex-col lg:flex-row justify-between items-start">
+                    <section className="pb-20 overflow-hidden">
                         <Tab.Group >
+                            
+                            <section className='flex flex-col md:flex-row justify-between items-center gap-5 mb-7'>
+                                <Tab.List
+                                data-aos="fade-right" data-aos-delay="0" data-aos-once="false" data-aos-mirror="false"
+                                    className={'w-full md:w-1/2 bg-gray-200 dark:bg-[#121f3a] flex flex-col md:flex-row justify-start items-start gap-3 p-4 rounded'}>
+                                    <Tab
+                                        onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? tabActive : tabDefault}>
+                                        Six
+                                    </Tab>
+                                    <Tab
+                                        onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? tabActive : tabDefault}>
+                                        Seven
+                                    </Tab>
+                                    <Tab
+                                        onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? tabActive : tabDefault}>
+                                        Eight
+                                    </Tab>
+                                    <Tab
+                                        onClick={() => { setGroupFilter(true); setGenderFilter(false) }} className={({ selected }) => selected ? tabActive : tabDefault}>
+                                        Nine
+                                    </Tab>
+                                    <Tab
+                                        onClick={() => { setGroupFilter(true); setGenderFilter(false) }} className={({ selected }) => selected ? tabActive : tabDefault}>
+                                        Ten
+                                    </Tab>
+                                </Tab.List>
+                                <div
+                                data-aos="fade-left" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false" className='w-[120px]  bg-gray-200 text-black dark:bg-[#121f3a] dark:text-white rounded'>
+                                    {
+                                        showGenderFilter
+                                            ?
+                                            <div className='w-full'>
+                                                <ListDropdown items={genders}
+                                                    handleList={handleGenderList} selected={selectedGender}
+                                                    title={'Gender'} border="border-0" align="text-center" zIndex={'10'} />
+                                            </div>
+                                            :
+                                            ''
+                                    }
+                                    {
+                                        showGroupFilter
+                                            ?
+                                            <div className='w-full'>
+                                                <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-0" align="text-center" zIndex={'10'} />
+                                            </div>
+                                            :
+                                            ''
+                                    }
+                                </div>
+                            </section>
 
-                            <Tab.List data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="false"
-                                data-aos-mirror="false"
-                                className={'bg-transparent w-full lg:w-[15%] flex flex-col justify-start items-start border dark:border-gray-600 rounded md:mt-1 lg:mr-5'}>
-                                <Tab
-                                    onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
-                                    Six
-                                </Tab>
-                                <Tab
-                                    onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
-                                    Seven
-                                </Tab>
-                                <Tab
-                                    onClick={() => { setGroupFilter(false); setGenderFilter(true) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
-                                    Eight
-                                </Tab>
-                                <Tab
-                                    onClick={() => { setGroupFilter(true); setGenderFilter(false) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
-                                    Nine
-                                </Tab>
-                                <Tab
-                                    onClick={() => { setGroupFilter(true); setGenderFilter(false) }} className={({ selected }) => selected ? "tab-active" : "tab-default"}>
-                                    Ten
-                                </Tab>
-                                <>
-                                {
-                                    showGenderFilter
-                                        ?
-                                        <div className='w-full'>
-                                            <ListDropdown items={genders}
-                                                handleList={handleGenderList} selected={selectedGender}
-                                                title={'Gender'} border="border-0" align="text-center" zIndex={'10'} />
-                                        </div>
-                                        :
-                                        ''
-                                }
-                                {
-                                    showGroupFilter
-                                        ?
-                                        <div className='w-full'>
-                                            <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-0" align="text-center" zIndex={'10'} />
-                                        </div>
-                                        :
-                                        ''
-                                }
-                                </>
-                            </Tab.List>
-
-                            <Tab.Panels data-aos="zoom-in-up" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false"
-                                className={"md:mt-1 h-full w-full lg:w-[80%]"}>
+                            <Tab.Panels data-aos="zoom-in-up" data-aos-delay="100" data-aos-once="false" data-aos-mirror="false"
+                                className={"h-full w-full"}>
                                 <Tab.Panel className={'flex justify-start items-center h-full w-full'}>
                                     {
                                         isLoading ?
@@ -105,7 +112,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.six?.length > 0 ?
-                                                    <StudentsTable items={students.six} query={'gender'} value={selectedGender} h={"md:h-[480px]"}/>
+                                                    <StudentsTable items={students.six} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -120,7 +127,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.seven?.length > 0 ?
-                                                    <StudentsTable items={students.seven} query={'gender'} value={selectedGender} h={"md:h-[480px]"}/>
+                                                    <StudentsTable items={students.seven} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -135,7 +142,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.eight?.length > 0 ?
-                                                    <StudentsTable items={students.eight} query={'gender'} value={selectedGender} h={"md:h-[480px]"}/>
+                                                    <StudentsTable items={students.eight} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -150,7 +157,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.nine?.length > 0 ?
-                                                    <StudentsTable items={students.nine} query={'group'} value={selectedGroup} h={"md:h-[480px]"}/>
+                                                    <StudentsTable items={students.nine} query={'group'} value={selectedGroup} h={"md:h-[480px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -165,7 +172,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.ten?.length > 0 ?
-                                                    <StudentsTable items={students.ten} query={'group'} value={selectedGroup} h={"md:h-[480px]"}/>
+                                                    <StudentsTable items={students.ten} query={'group'} value={selectedGroup} h={"md:h-[480px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -174,7 +181,7 @@ const OurStudents = () => {
                                     }
                                 </Tab.Panel>
                             </Tab.Panels>
-                            
+
                         </Tab.Group>
                     </section>
                 </Container>

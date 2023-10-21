@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import ListDropdown from "../../../Components/ListDropdown/ListDropdown";
 import { providerContext } from "../../../Provider/Provider";
 import blueTik from "../../../assets/Dashboard/blueTik.png";
@@ -11,7 +12,7 @@ import styles from "./Profiles.module.css";
 const genderList = ["Male", 'Female'];
 
 const AdminProfile = () => {
-    const { user, userLoading } = useContext(providerContext);
+    const { user, userLoading, setUserBannerText } = useContext(providerContext);
     const [openEditBox, setOpenEditBox] = useState(false);
     const [selectedGender, setSelectedGender] = useState();
     const { register, handleSubmit, formState: { errors }, reset, setError, clearErrors } = useForm();
@@ -35,6 +36,8 @@ const AdminProfile = () => {
             ...data,
             gender: selectedGender
         };
+        toast.success('Profile Updated');
+        setOpenEditBox(false);
         console.log(updatedData);
     }
 
@@ -42,6 +45,10 @@ const AdminProfile = () => {
         setSelectedGender(gender);
         clearErrors('gender');
     }, [clearErrors]);
+
+    useEffect(() => {
+        setUserBannerText('Admin Profile');
+    }, [setUserBannerText]);
 
     return (
         <section className="w-full md:w-[80%] mx-auto flex flex-col md:flex-row justify-center items-center md:items-end gap-5 md:gap-10 h-full pb-10">

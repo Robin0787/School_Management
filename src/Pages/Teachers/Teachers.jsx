@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { v4 } from "uuid";
 import Container from "../../Components/Container";
 import instructor1 from "../../assets/Instructors/instructor-1.jpg";
 import instructor10 from "../../assets/Instructors/instructor-10.jpg";
@@ -138,7 +138,7 @@ const Teachers = () => {
                 <Container>
                     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-10">
                         {
-                            data.map((item) => <TeacherCard key={useId()} teacherInfo={item} />)
+                            data.map((item, index) => <TeacherCard key={v4()} teacherInfo={item} index={index}/>)
                         }
                     </section>
                 </Container>

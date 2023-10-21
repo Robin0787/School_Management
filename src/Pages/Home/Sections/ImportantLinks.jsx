@@ -1,3 +1,4 @@
+import AOS from "aos";
 import SingleLink from "../../../Components/SingleLink/SingleLink";
 
 const links = [
@@ -44,8 +45,9 @@ const links = [
 ]
 
 const ImportantLinks = () => {
+    AOS.init();
     return (
-        <section className="mt-10 w-full">
+        <section className="mt-10 w-full" data-aos="fade-left" data-aos-delay="0" data-aos-once="false" data-aos-mirror="false">
         <div className="relative">
                 <h1 className="font-Nunito text-2xl font-semibold text-black dark:text-white ">
                     Important Links

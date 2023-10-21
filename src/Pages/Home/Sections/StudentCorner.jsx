@@ -14,7 +14,7 @@ const StudentCorner = () => {
                 </div>
                 <div className="w-full md:w-1/2">
                     <div className="space-y-2 mt-2 relative md:top-10">
-                        <a href="#current_students" className="section-link">Our Student</a>
+                        <Link to="/our-students" className="section-link">Our Student</Link>
                         <Link className="section-link">Fees Payment</Link>
                         <Link className="section-link">Dress Info</Link>
                         <Link className="section-link">Class Routine</Link>

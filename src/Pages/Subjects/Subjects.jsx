@@ -44,7 +44,7 @@ const Subjects = () => {
                                     <h1 className='text-2xl md:text-3xl font-bold pb-6'>Subjects</h1>
                                     <article className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-5'>
                                         {
-                                            categories?.common?.map((subject) => <SingleBookCard key={subject.name} subject={subject} />)
+                                            categories?.common?.map((subject, index) => <SingleBookCard key={subject.name} subject={subject} index={index}/>)
                                         }
                                     </article>
                                     </section>
@@ -58,7 +58,7 @@ const Subjects = () => {
                                             <h1 className='text-2xl md:text-3xl font-bold pb-6'>Science</h1>
                                             <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
                                                 {
-                                                    categories?.science?.map((subject) => <SingleBook key={subject.name} subject={subject} />)
+                                                    categories?.science?.map((subject, index) => <SingleBook key={subject.name} subject={subject} index={index}/>)
                                                 }
                                             </article>
                                         </section>
@@ -73,7 +73,7 @@ const Subjects = () => {
                                         <h1 className='text-2xl md:text-3xl font-bold pb-6'>Arts</h1>
                                         <article className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-5'>
                                             {
-                                                categories?.arts?.map((subject) => <SingleBookCard key={subject.name} subject={subject} />)
+                                                categories?.arts?.map((subject, index) => <SingleBookCard key={subject.name} subject={subject} index={index}/>)
                                             }
                                         </article>
                                     </section>
@@ -88,7 +88,7 @@ const Subjects = () => {
                                         <h1 className='text-2xl md:text-3xl font-bold pb-6'>Commerce</h1>
                                         <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 items-center gap-5'>
                                             {
-                                                categories?.commerce?.map((subject) => <SingleBook key={subject.name} subject={subject} />)
+                                                categories?.commerce?.map((subject, index) => <SingleBook key={subject.name} subject={subject} index={index}/>)
                                             }
                                         </article>
                                     </section>

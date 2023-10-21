@@ -1,9 +1,33 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { BsTrash } from "react-icons/bs";
 import { MdOutlineCancel } from "react-icons/md";
+import DeleteRejectedInstructor from "../../APIs/DeleteRejectedInstructor";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
+import Loader from "../Loader/Loader";
 
-const RejectedInstructorCard = ({item}) => {
+const RejectedInstructorCard = ({item, refetch}) => {
     const { _id, firstName, lastName, photo, email, phone, subject } = item;
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    function modalHandler(id) {
+        setOpenDeleteModal(false);
+        setLoading(true);
+        DeleteRejectedInstructor(id)
+        .then( () => {
+            setLoading(false);
+            toast.success('Deleted');
+            refetch();
+        })
+        .catch( err => {
+            setLoading(false);
+            console.log(err);
+        })
+    }
+
     return (
-        <div className="border rounded-md bg-[#0f172a] text-white">
+        <div className="relative border rounded-md bg-[#0f172a] text-white">
             <img src={photo} alt="" className="h-32 w-[80%] rounded-lg mx-auto object-cover object-center my-5" />
             <div className="overflow-auto">
                 <table className="w-full">
@@ -47,6 +71,19 @@ const RejectedInstructorCard = ({item}) => {
                     <span>Rejected</span>
                 </button>
             </div>
+            <div className="absolute top-2 left-2">
+                <button 
+                onClick={() => {setOpenDeleteModal(true)}}
+                className="bg-red-500 text-white p-2 rounded-full ring-2 ring-transparent hover:ring-red-500 duration-300">
+                    {
+                        loading ?
+                        <Loader size={15}/>
+                        :
+                        <BsTrash size={15}/>
+                    }
+                </button>
+            </div>
+            <ConfirmModal openModal={openDeleteModal} setOpenModal={setOpenDeleteModal} modalHandler={modalHandler} prop={_id} />
         </div>
     );
 };

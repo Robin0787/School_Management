@@ -18,6 +18,7 @@ import StudentRoute from "./StudentRoute/StudentRoute";
 
 const Home = lazy(() => import('../Pages/Home/Home'));
 const AboutUs = lazy(() => import("../Pages/AboutUs/AboutUs"));
+const Gallery = lazy(() => import("../Pages/Gallery/Gallery"));
 
 const SignUp = lazy(() => import('../Pages/SignUp/SignUp'));
 const SignIn = lazy(() => import('../Pages/SignIn/SignIn'));
@@ -76,16 +77,20 @@ const routes = createBrowserRouter([
     },
     // Individual routes
     {
-        path: '/about-us',
-        element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
-    },
-    {
         path: '/teachers',
         element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
     },
     {
         path: "/our-students",
         element: <Suspense fallback={<PageLoader />}><OurStudents /></Suspense>
+    },
+    {
+        path: '/about-us',
+        element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
+    },
+    {
+        path: '/gallery',
+        element: <Suspense fallback={<PageLoader />}><Gallery /></Suspense>
     },
     // Dashboard Routes
     {

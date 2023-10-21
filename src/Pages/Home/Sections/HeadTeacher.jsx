@@ -1,8 +1,10 @@
+import AOS from "aos";
 import HeadTeacherImg from "../../../assets/Home/Sections/head.jpg";
 
 const HeadTeacher = () => {
+    AOS.init();
     return (
-        <section className="w-full">
+        <section className="w-full" data-aos="fade-up" data-aos-delay="0" data-aos-once="false" data-aos-mirror="false">
             <div className="relative">
                 <h1 className="font-Nunito text-2xl font-semibold text-black dark:text-white ">Head Teacher</h1>
                 <div className="bottom"></div>

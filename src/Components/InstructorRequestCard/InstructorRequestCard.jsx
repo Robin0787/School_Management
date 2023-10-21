@@ -2,12 +2,17 @@ import { useState } from "react";
 import { ImSpinner9 } from "react-icons/im";
 import DeleteInstructorRequest from "../../APIs/DeleteInstructorRequest";
 import StoreApprovedInstructor from "../../APIs/StoreApprovedInstructor";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 
 const InstructorRequestCard = ({ item, refetch }) => {
     const { _id, firstName, lastName, photo, email, phone, subject } = item;
     const [acceptLoading, setAcceptLoading] = useState(false);
     const [rejectLoading, setRejectLoading] = useState(false);
+    // Modal Related States
+    const [openAcceptModal, setOpenAcceptModal] = useState(false);
+    const [openRejectModal, setOpenRejectModal] = useState(false);
+
 
 
     function handleAccept (id) {
@@ -29,13 +34,22 @@ const InstructorRequestCard = ({ item, refetch }) => {
         })
         .catch(err => {console.log(err);setRejectLoading(false)});
     }
+
+    function acceptModalHandler () {
+        setOpenAcceptModal(false);
+        handleAccept(_id);
+    }
+    function rejectModalHandler () {
+        setOpenRejectModal(false);
+        handleReject(_id);
+    }
     
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
             <img src={photo} alt="" className="h-32 w-[80%] rounded-lg mx-auto object-cover object-center my-5" />
             <div className="overflow-auto">
                 <table className="w-full">
-                    <tbody className="w-full text-xs">
+                    <tbody className="w-full text-xs text-center">
                         <tr className="bg-[#141d31] border-b border-gray-800">
                             <td className="py-2 md:text-start md:pl-5">Name</td>
                             <td>:</td>
@@ -70,7 +84,7 @@ const InstructorRequestCard = ({ item, refetch }) => {
             <div className="bg-[#141d31] flex justify-between items-center gap-8 px-4 py-2">
                 <button
                     disabled={rejectLoading || acceptLoading}
-                    onClick={() => {handleReject(_id)}}
+                    onClick={() => {setOpenRejectModal(true)}}
                     className="w-1/2 text-center text-xs flex justify-center items-center
                  bg-red-500 bg-opacity-10 border-red-500 py-[6px] border rounded hover:bg-opacity-30 
                  hover:shadow-[0px_0px_7px] hover:shadow-red-600 duration-300 disabled:cursor-wait
@@ -85,7 +99,7 @@ const InstructorRequestCard = ({ item, refetch }) => {
                 </button>
                 <button
                     disabled={acceptLoading || rejectLoading}
-                    onClick={() => {handleAccept(_id)}}
+                    onClick={() => {setOpenAcceptModal(true)}}
                     className="w-1/2 text-center text-xs flex justify-center items-center
                  bg-green-500 bg-opacity-10 border-green-500 py-[6px] border rounded hover:bg-opacity-30 hover:shadow-[0px_0px_7px] hover:shadow-green-600 duration-300 disabled:cursor-wait ">
                     {
@@ -96,6 +110,8 @@ const InstructorRequestCard = ({ item, refetch }) => {
                     }
                 </button>
             </div>
+            <ConfirmModal openModal={openAcceptModal} setOpenModal={setOpenAcceptModal} modalHandler={acceptModalHandler} btnText="Accept"/>
+            <ConfirmModal openModal={openRejectModal} setOpenModal={setOpenRejectModal} modalHandler={rejectModalHandler} btnText="Reject"/>
         </div>
     )
 };

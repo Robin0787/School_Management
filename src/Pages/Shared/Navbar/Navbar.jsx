@@ -15,13 +15,13 @@ const Navbar = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
     return (
-        <>
-            <Container>
+        <div>
+            <Container >
                 <section className="relative flex justify-between items-center pt-5 pb-2 text-white">
                     <Link to={'/'} className="relative flex items-center gap-2 text-green-400">
-                        <GoBook size={50} />
-                        <GoBook size={30} className="absolute top-[10px] left-[10px]" />
-                        <h1 className={styles.logo_name}>Sherlock</h1>
+                        <GoBook size={45} />
+                        <GoBook size={30} className="absolute top-[7.5px] left-[8px]" />
+                        <h1 className={`${styles.logo_name} relative bottom-[3px]`}>Sherlock</h1>
                     </Link>
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
@@ -31,7 +31,7 @@ const Navbar = () => {
                         <Link to={'/teachers'} className={`${styles.nav_menu}`}>
                             Teachers
                         </Link>
-                        <Link className={`${styles.nav_menu}`}>
+                        <Link to={'/gallery'} className={`${styles.nav_menu}`}>
                             Gallery
                         </Link>
                         <Link to={'/about-us'} className={`${styles.nav_menu}`}>
@@ -104,7 +104,7 @@ const Navbar = () => {
                                 <Link to="/teachers" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Teachers
                                 </Link>
-                                <Link className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                                <Link to={'/gallery'} className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Gallery
                                 </Link>
                                 <Link to="/about-us" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
@@ -133,7 +133,7 @@ const Navbar = () => {
                     </section>
                 </section>
             </Container>
-        </>
+        </div>
     );
 };
 
