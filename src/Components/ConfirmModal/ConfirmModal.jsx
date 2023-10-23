@@ -32,7 +32,7 @@ const ConfirmModal = ({ prop, openModal, setOpenModal, modalHandler, btnText='De
               <Dialog.Panel className='w-[350px]  transform overflow-hidden rounded bg-[#0f172a] text-white py-8 text-left align-middle transition-all'>
                 <Dialog.Title
                   as='h3'
-                  className='text-xl font-medium text-center'
+                  className='text-3xl font-medium text-center'
                 > Are You Sure?
                 </Dialog.Title>
                 <div className='flex mt-8 gap-5 justify-center items-center'>

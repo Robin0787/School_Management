@@ -23,7 +23,7 @@ const ApprovedInstructors = () => {
     }, [setUserBannerText]);
 
     return (
-        <section className="bg-white text-black pt-10 px-8">
+        <section className="bg-white text-black py-10 px-8">
             {
                 isLoading ?
                     <ContentLoader />

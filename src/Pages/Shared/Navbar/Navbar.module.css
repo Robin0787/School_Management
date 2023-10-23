@@ -43,3 +43,9 @@
   color: #22c55e;
   background-color: transparent;
 }
+
+@media screen and (width < 400px) {
+  .logo_name {
+    font-size: 1.9rem;
+  }
+}

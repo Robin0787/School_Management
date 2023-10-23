@@ -24,7 +24,7 @@ const RejectedInstructors = () => {
     }, [setUserBannerText]);
 
     return (
-        <section className="bg-white text-black pb-10 lg:pb-0 pt-10 px-8">
+        <section className="bg-white text-black pb-10 lg:pb-5 pt-10 px-8">
             {
                 isLoading ?
                     <ContentLoader />
