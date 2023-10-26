@@ -2,12 +2,12 @@ import { Tab } from '@headlessui/react';
 import { useQuery } from "@tanstack/react-query";
 import AOS from 'aos';
 import axios from 'axios';
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import Container from '../../Components/Container';
 import ContentLoader from '../../Components/ContentLoader/ContentLoader';
 import ListDropdown from '../../Components/ListDropdown/ListDropdown';
+import { providerContext } from '../../Provider/Provider';
 import StudentsTable from '../Home/StudentsTable/StudentsTable';
-import Navbar from "../Shared/Navbar/Navbar";
 
 const groups = ['Science', 'Arts', 'Commerce'];
 const genders = ['Male', 'Female'];
@@ -18,7 +18,11 @@ const OurStudents = () => {
     const [showGroupFilter, setGroupFilter] = useState(false);
     const [showGenderFilter, setGenderFilter] = useState(true);
     const [selectedGender, setSelectedGender] = useState(genders[0]);
+    const { setIsBgImgTrue } = useContext(providerContext);
 
+    useEffect(() => {
+        setIsBgImgTrue(false);
+    });
 
 
     const { data: students = {}, isLoading } = useQuery({
@@ -39,18 +43,18 @@ const OurStudents = () => {
         setSelectedGender(gender);
     }, []);
 
+
+   
+
     const tabActive = `bg-black text-white dark:bg-white dark:text-black rounded text-sm px-5 py-3 text-center w-full uppercase`;
 
     const tabDefault = `bg-white dark:bg-[#0b1427] rounded text-sm text-black dark:text-white px-5 py-3 text-center w-full uppercase`;
 
     return (
         <section className="min-h-screen">
-            <section className="bg-[#0f172a] pb-2">
-                <Navbar />
-            </section>
-            <section className='min-h-[calc(100vh-86px)] pt-14 bg-white text-black dark:bg-[#0f172a] dark:text-white duration-300'>
+            <section className='bg-white text-black dark:bg-[#0f172a] dark:text-white duration-300 '>
                 <Container>
-                    <section className="pb-20 overflow-hidden">
+                    <section className="pt-28 pb-20 overflow-hidden">
                         <Tab.Group >
                             
                             <section className='flex flex-col md:flex-row justify-between items-center gap-5 mb-7'>

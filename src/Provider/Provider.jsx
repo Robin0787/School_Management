@@ -8,6 +8,7 @@ import app from "../Firebase/firebase.init";
 export const providerContext = createContext(null);
 
 const Provider = ({ children }) => {
+    const [isBgImgTrue, setIsBgImgTrue] = useState(false);
     const [userLoading, setUserLoading] = useState(true);
     const [theme, setTheme] = useState('dark');
     const [user, setUser] = useState(null);
@@ -87,7 +88,7 @@ const Provider = ({ children }) => {
     };
 
 
-    const values = { theme, setTheme, user, userRole, userStatus, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch, userBannerText, setUserBannerText };
+    const values = { theme, setTheme, user, userRole, userStatus, userLoading, createUser, signInUser, logOutUser, handleThemeSwitch, userBannerText, setUserBannerText, isBgImgTrue, setIsBgImgTrue };
     return (
         <providerContext.Provider value={values}>
             {children}

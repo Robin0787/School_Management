@@ -6,6 +6,7 @@ import Sections from "./Sections/Sections";
 import Students from "./Students_Calender_Section/Students";
 
 const Home = () => {
+
     return (
         <section>
             <Banner />

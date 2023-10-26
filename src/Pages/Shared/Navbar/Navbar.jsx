@@ -10,7 +10,7 @@ import { providerContext } from "../../../Provider/Provider";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-    const { user, theme, handleThemeSwitch } = useContext(providerContext);
+    const { user, theme, handleThemeSwitch, isBgImgTrue } = useContext(providerContext);
     const [showDropdown, setShowDropdown] = useState(false);
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
@@ -25,20 +25,20 @@ const Navbar = () => {
                     </Link>
                     {/* Navbar for medium and large devices */}
                     <section className="hidden md:flex items-center gap-10 ">
-                        <Link to={'/our-students'} className={`${styles.nav_menu}`}>
+                        <Link to={'/our-students'} className={`${styles.nav_menu } ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             Our Students
                         </Link>
-                        <Link to={'/teachers'} className={`${styles.nav_menu}`}>
+                        <Link to={'/teachers'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             Teachers
                         </Link>
-                        <Link to={'/gallery'} className={`${styles.nav_menu}`}>
+                        <Link to={'/gallery'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             Gallery
                         </Link>
-                        <Link to={'/about-us'} className={`${styles.nav_menu}`}>
+                        <Link to={'/about-us'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             About Us
                         </Link>
                         <button
-                            className="" onClick={handleThemeSwitch}>
+                            className={`${isBgImgTrue ? "" : "text-black dark:text-white"}`} onClick={handleThemeSwitch}>
                             {theme === 'dark' ?
                                 <BsFillSunFill size={20} /> :
                                 <BsFillMoonStarsFill size={20} />}
@@ -55,7 +55,7 @@ const Navbar = () => {
                                     <div className={`w-full ${showDropdown ? "h-10" : "h-0"} absolute top-full bg-[#0f172a] text-white rounded-b-md overflow-hidden duration-500`}>
                                         <div className="px-4 py-1">
                                             <Link to={'/dashboard'}>
-                                                <div className={`${styles.nav_menu} flex items-center gap-3`}>
+                                                <div className={`${isBgImgTrue ? "" : "text-black dark:text-white"} ${styles.nav_menu} flex items-center gap-3`}>
                                                     <BiSolidDashboard size={20} />
                                                     <h1>Dashboard</h1>
                                                 </div>
@@ -65,10 +65,10 @@ const Navbar = () => {
                                 </div>
                                 :
                                 <>
-                                    <Link to={'/user/signUp'} className={`${styles.nav_menu}`}>
+                                    <Link to={'/user/signUp'} className={`${isBgImgTrue ? "" : "text-black dark:text-white"} ${styles.nav_menu}`}>
                                         Sign Up
                                     </Link>
-                                    <Link to={'/user/signIn'} className={`${styles.nav_menu}`}>
+                                    <Link to={'/user/signIn'} className={`${isBgImgTrue ? "" : "text-black dark:text-white"} ${styles.nav_menu}`}>
                                         Sign In
                                     </Link>
                                 </>

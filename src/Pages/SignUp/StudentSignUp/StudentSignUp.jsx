@@ -22,8 +22,11 @@ const StudentSignUp = () => {
     const [phoneError, setPhoneError] = useState('');
     const navigate = useNavigate();
     const [formLoading, setFormLoading] = useState(false);
+    const { createUser, setUserBannerText, setIsBgImgTrue } = useContext(providerContext);
 
-    const { createUser, setUserBannerText } = useContext(providerContext);
+    useEffect(() => {
+        setIsBgImgTrue(true);
+    });
 
     const handleSignUp = (data) => {
         if (passError) {

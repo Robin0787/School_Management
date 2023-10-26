@@ -13,7 +13,7 @@ const SignIn = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showPass, setShowPass] = useState(false);
     const [showEyeIcon, setShowEyeIcon] = useState(false);
-    const { signInUser, setUserBannerText } = useContext(providerContext);
+    const { signInUser, setUserBannerText, setIsBgImgTrue } = useContext(providerContext);
     const [formLoading, setFormLoading] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -40,9 +40,13 @@ const SignIn = () => {
     useEffect(() => {
         setUserBannerText('Sign In Dear!');
     }, [setUserBannerText]);
+
+    useEffect(() => {
+        setIsBgImgTrue(true);
+    });
     
     return (
-        <section className="flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20 ">
+        <section className="relative flex justify-center items-center bg-white text-black dark:bg-[#0f172a] dark:text-white py-20 ">
             <section className="bg-[#0f172a] text-white  shadow shadow-gray-400 dark:shadow-gray-500 rounded flex flex-col md:flex-row gap-10 md:gap-0 lg:gap-10 items-center w-[95%] md:w-4/5">
                 <article className="w-full md:w-1/2">
                     <img src={banner} alt="" className="h-full w-full object-cover rounded-t md:rounded-l md:rounded-tr-none" />

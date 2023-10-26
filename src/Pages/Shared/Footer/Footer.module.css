@@ -1,0 +1,14 @@
+.logo_name {
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(0, 219, 80);
+  background-color: transparent;
+}
+
+.logo_name::selection {
+  color: rgb(0, 219, 80);
+  background: transparent;
+}

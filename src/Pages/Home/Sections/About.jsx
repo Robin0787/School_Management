@@ -21,7 +21,7 @@ const About = () => {
                         <Link to="/teachers" className="section-link">Teachers List</Link>
                         <Link className="section-link">Staff List</Link>
                         <Link className="section-link">Institute infrastructure</Link>
-                        <Link className="section-link">Mission & vission</Link>
+                        <Link className="section-link">Mission & vision</Link>
                         <Link className="section-link">Why Study Here</Link>
                     </div>
                 </div>

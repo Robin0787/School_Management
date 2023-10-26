@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { providerContext } from "../../Provider/Provider";
 
 const SignUp = () => {
-    const {setUserBannerText} = useContext(providerContext);
+    const {setUserBannerText, setIsBgImgTrue} = useContext(providerContext);
+
+    useEffect(() => {
+        setIsBgImgTrue(true);
+    });
 
     useEffect(() => {
         setUserBannerText('Sign Up Dear!');

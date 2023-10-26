@@ -43,7 +43,7 @@ const AddStudent = lazy(() => import("../Pages/Dashboard/Instructor/AddStudent/A
 const AddNotice = lazy(() => import("../Pages/Dashboard/Instructor/AddNotice/AddNotice"));
 const StudentsRequest = lazy(() => import('../Pages/Dashboard/Instructor/StudentsRequest/StudentsRequest'));
 const ApprovedStudents = lazy(() => import('../Pages/Dashboard/Instructor/ApprovedStudents/ApprovedStudents'));
-const RejectedStudents  = lazy(() => import("../Pages/Dashboard/Instructor/RejectedStudents/RejectedStudents"));
+const RejectedStudents = lazy(() => import("../Pages/Dashboard/Instructor/RejectedStudents/RejectedStudents"));
 
 const MyInfo = lazy(() => import('../Pages/Dashboard/Student/MyInfo/MyInfo'));
 
@@ -60,6 +60,22 @@ const routes = createBrowserRouter([
             {
                 path: 'classes',
                 element: <Suspense fallback={<PageLoader />}><Classes /></Suspense>
+            },
+            {
+                path: 'teachers',
+                element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
+            },
+            {
+                path: "our-students",
+                element: <Suspense fallback={<PageLoader />}><OurStudents /></Suspense>
+            },
+            {
+                path: 'about-us',
+                element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
+            },
+            {
+                path: 'gallery',
+                element: <Suspense fallback={<PageLoader />}><Gallery /></Suspense>
             }
         ]
     },
@@ -74,23 +90,6 @@ const routes = createBrowserRouter([
                 loader: ({ params }) => params.class_num
             }
         ]
-    },
-    // Individual routes
-    {
-        path: '/teachers',
-        element: <Suspense fallback={<PageLoader />}><Teachers /></Suspense>
-    },
-    {
-        path: "/our-students",
-        element: <Suspense fallback={<PageLoader />}><OurStudents /></Suspense>
-    },
-    {
-        path: '/about-us',
-        element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
-    },
-    {
-        path: '/gallery',
-        element: <Suspense fallback={<PageLoader />}><Gallery /></Suspense>
     },
     // Dashboard Routes
     {

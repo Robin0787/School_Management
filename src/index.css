@@ -126,8 +126,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .section-link {
   @apply text-gray-700 hover:text-green-600 dark:text-[#cecece] dark:hover:text-green-500 duration-300;
 }
+.footer-link {
+  @apply text-[#cecece] hover:text-green-600  dark:hover:text-green-500 duration-300;
+}
 
-.section-link {
+.section-link,
+.footer-link {
   position: relative;
   font-size: 16px;
   line-height: 16px;
@@ -137,7 +141,8 @@ input[type="number"]::-webkit-outer-spin-button {
   display: block;
 }
 
-.section-link::before {
+.section-link::before,
+.footer-link::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -148,7 +153,8 @@ input[type="number"]::-webkit-outer-spin-button {
   transition: all 0.3s ease-in-out 0s;
 }
 
-.section-link:hover::before {
+.section-link:hover::before,
+.footer-link:hover::before {
   transform: rotate(180deg);
 }
 

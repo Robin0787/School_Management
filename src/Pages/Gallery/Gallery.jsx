@@ -1,4 +1,7 @@
 import AOS from "aos";
+import { useContext, useEffect } from "react";
+import Container from "../../Components/Container";
+import { providerContext } from "../../Provider/Provider";
 import img1 from "../../assets/Home/Banner/img-1.jpg";
 import img2 from "../../assets/Home/Banner/img-2.jpg";
 import img3 from "../../assets/Home/Banner/img-3.jpg";
@@ -6,7 +9,6 @@ import img4 from "../../assets/Home/Banner/img-4.jpg";
 import img5 from "../../assets/Home/Banner/img-5.jpg";
 import img6 from "../../assets/Home/Banner/img-6.jpg";
 import getRandomAnimation from "../../helper/getRandomAnimation";
-import Navbar from "../Shared/Navbar/Navbar";
 import galleryStyles from './Gallery.module.css';
 
 
@@ -74,25 +76,30 @@ const images = [
 ]
 
 const Gallery = () => {
+    const { setIsBgImgTrue } = useContext(providerContext);
+
+    useEffect(() => {
+        setIsBgImgTrue(false);
+    });
+
     AOS.init();
     return (
-        <section className="min-h-screen">
-            <section className="bg-[#0f172a] pb-2">
-                <Navbar />
+        <section className="h-full w-full bg-white text-black dark:bg-[#0f172a] dark:text-white duration-300">
+            <section className="pt-24 pb-10 overflow-hidden">
+                <Container>
+                    <div className={galleryStyles.gallery}>
+                        {
+                            images.map((item, index) => (
+                                <div key={item.id} className="w-full h-full overflow-hidden mb-3"
+                                    data-aos={getRandomAnimation()} data-aos-delay='100' data-aos-once="false">
+                                    <img className={galleryStyles.image} src={item.img} alt={`photo-${item.id}`} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                </Container>
             </section>
-            <section className="h-full w-full bg-white text-black dark:bg-[#0f172a] dark:text-white duration-300 py-3">
-                <div className={galleryStyles.gallery}>
-                    {
-                        images.map((item, index) => (
-                            <div key={item.id} className="w-full h-full overflow-hidden mb-3"
-                            data-aos={getRandomAnimation()} data-aos-delay='100' data-aos-once="false">
-                                 <img className={galleryStyles.image} src={item.img} alt={`photo-${item.id}`}/>
-                            </div>
-                        ))
-                    }
-                </div>
-            </section>
-        </section>
+        </section >
     );
 };
 

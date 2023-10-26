@@ -20,9 +20,13 @@ const InstructorSignUp = () => {
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
     const [phoneError, setPhoneError] = useState('');
-    const {createUser, setUserBannerText} = useContext(providerContext);
+    const {createUser, setUserBannerText, setIsBgImgTrue} = useContext(providerContext);
     const [formLoading, setFormLoading] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setIsBgImgTrue(true);
+    });
 
     const handleSignUp = (data) => {
         if (passError) {

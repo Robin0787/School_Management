@@ -1,12 +1,19 @@
 import AOS from 'aos';
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useContext, useEffect } from "react";
 import { MdDateRange, MdSchool } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
+import { providerContext } from '../../Provider/Provider';
 import img from "../../assets/Home/Banner/img-1.jpg";
 import Loader from "../Loader/Loader";
 const Banner_Slider = lazy(() => import('../Banner_Slider/Banner_Slider'));
 
 const Banner = () => {
+    const {setIsBgImgTrue} = useContext(providerContext);
+
+    useEffect(() => {
+        setIsBgImgTrue(true);
+    });
+    
     AOS.init();
     return (
         <section className="h-[calc(100vh-0px)] bg-cover bg-center " style={{ backgroundImage: `url(${img})` }}>
