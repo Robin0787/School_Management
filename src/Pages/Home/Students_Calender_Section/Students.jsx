@@ -48,7 +48,6 @@ const Students = () => {
                     </h1>
                     <p className='mt-3 md:w-[90%] mx-auto text-justify sm:text-center text-gray-600 dark:text-gray-300'>Welcome to our Current Student Directory, where you can find information about the talented individuals currently pursuing their education at our institution. Our students are the heart of our school. Get to know the bright minds who shape the future within our halls of learning.</p>
                 </section>
-
                 <section className="pt-10 grid grid-cols-1 md:grid-cols-[1fr_4fr] 
                 lg:grid-cols-[1fr_4fr_2fr] gap-5 lg:gap-1 justify-start ">
                     <Tab.Group >
@@ -79,8 +78,8 @@ const Students = () => {
                             {
                                 showGroupFilter
                                     ?
-                                    <div className='w-full'>
-                                        <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-b" align="text-center" zIndex={'10'}/>
+                                    <div className='w-full mb-24'>
+                                        <ListDropdown items={groups} handleList={handleGroupList} selected={selectedGroup} title={'Group'} border="border-b" align="text-center" zIndex={'20'}/>
                                     </div>
                                     :
                                     ''
@@ -88,10 +87,10 @@ const Students = () => {
                             {
                                 showGenderFilter
                                     ?
-                                    <div className='w-full'>
+                                    <div className='w-full mb-16'>
                                         <ListDropdown items={genders}
                                             handleList={handleGenderList} selected={selectedGender}
-                                            title={'Gender'} border="border-b" align="text-center" zIndex={'10'}/>
+                                            title={'Gender'} border="border-b" align="text-center" zIndex={'20'}/>
                                     </div>
                                     :
                                     ''

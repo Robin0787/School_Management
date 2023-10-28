@@ -26,7 +26,7 @@ const Footer = () => {
                                     </div>
                                     <div className="w-full md:w-1/3">
                                         <h4 className="text-[20px] font-[700] text-white text-center mb-1 md:mb-3">Mail Us :</h4>
-                                        <h5 className="text-[18px] font-[700] text-primary text-center">info@example.com</h5>
+                                        <h5 className="text-[18px] font-[700] text-primary text-center">mohammadrobin636@gmail.com</h5>
                                     </div>
                                 </section>
                             </section>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </Container>
             </section>
             <section className="bg-[#070d1b] text-white py-5">
-                <p className="text-center text-[16px] leading-[30px] text-muted">Copyrights © 2023 <span className="text-primary">NAPH SCHOOL </span>. Developed by 
+                <p className="text-center text-[16px] leading-[30px] text-muted">Copyrights © 2023 <span className="text-primary">Sherlock </span>. Developed by 
                 <a href="https://robin-web-dev.netlify.app" rel="noreferrer" target="_blank" className="text-primary"> Robin Hossen</a></p>
             </section>
         </>

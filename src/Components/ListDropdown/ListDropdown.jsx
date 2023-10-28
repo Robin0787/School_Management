@@ -10,7 +10,7 @@ const ListDropdown = ({ items, handleList, selected, title, zIndex=1, border='bo
     return (
         <div className={`${border} dark:border-gray-600 rounded-[3px] py-[6px] cursor-pointer focus:border-white`}  style={{ zIndex }}>
             <Listbox value={selected} onChange={handleList}>
-                <div className="relative h-full z-40"  style={{ zIndex }}>
+                <div className="relative h-full z-40"  style={{ zIndex: zIndex }}>
                     <Listbox.Button 
                      className={`relative w-full ${align} py-2 pl-3 pr-10  sm:text-sm`}>
                         <span className="block truncate text-black dark:text-white">

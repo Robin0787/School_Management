@@ -80,7 +80,7 @@ const Navbar = () => {
                             <CgMenu size={35} />
                         </div>
                         <div
-                            className={`w-[100vw] overflow-hidden absolute -top-0 -left-[13px] ${openMobileMenu ? "h-[300px]" : "h-0"} 
+                            className={`w-[100vw] overflow-hidden absolute -top-0 -left-[13px] z-50 ${openMobileMenu ? "h-[340px]" : "h-0"} 
                             flex justify-center items-center duration-500 border-b border-gray-700`}
                         >
                             <div className="w-full bg-[#0f172a] flex flex-col gap-3 items-center py-4">
@@ -100,6 +100,9 @@ const Navbar = () => {
                                 </button>
                                 <Link to="/" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Home
+                                </Link>
+                                <Link to="/our-students" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                                    Our Students
                                 </Link>
                                 <Link to="/teachers" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Teachers

@@ -6,7 +6,7 @@ const We = () => {
     return (
         <section className="flex flex-col justify-start gap-5">
             <div className="relative flex items-center gap-2 text-green-400">
-            <h1 className={`${styles.logo_name} relative bottom-[3px]`}>NAPH School</h1>
+            <h1 className={`${styles.logo_name} relative bottom-[3px] uppercase`}>SHERLOCK</h1>
             </div>
             <p className="text-[#CECECE] text-justify text-[16px] leading-[30px]">Lorem ipsum dolor sit amet, elit. Aenean ligula eget dolor. Lorem ipsum dolor sit amet, consect to adipisicing elit. Ut enim ad minim veniam. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, quis us elit aboris nisi.</p>
             <div className="flex justify-start items-center gap-5 mt-5">

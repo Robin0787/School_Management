@@ -20,7 +20,7 @@ export default function StudentsTable({ items, query, value, h='md:h-[383px]' })
 
     return (
         <TableContainer component={Paper} id="studentsTable" 
-            className={`h-[336px] ${h}  w-full overflow-auto rounded z-0`}>
+            className={`h-[336px] ${h} w-full overflow-auto rounded z-0`}>
             <Table aria-label="simple table" className='relative z-0'>
 
                 <TableHead className='sticky w-full top-0 bg-white'>
