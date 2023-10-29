@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { ImSpinner9 } from "react-icons/im";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 const reject = async (_id) => {
     const url = `${import.meta.env.VITE_BASE_URL}/reject-student-request/${_id}`;
@@ -18,9 +19,10 @@ const accept = async (_id) => {
 const StudentRequestCard = ({ item }) => {
     const [acceptLoading, setAcceptLoading] = useState(false);
     const [rejectLoading, setRejectLoading] = useState(false);
+    const [openAcceptModal, setOpenAcceptModal] = useState(false);
+    const [openRejectModal, setOpenRejectModal] = useState(false);
     const { _id } = item;
     const queryCLient = useQueryClient();
-
 
 
     const acceptStudent = useMutation({
@@ -50,6 +52,21 @@ const StudentRequestCard = ({ item }) => {
             setRejectLoading(false);
         }
     });
+
+    function handleAcceptStudent (id) {
+        setAcceptLoading(true); 
+        acceptStudent.mutate(id);
+        setAcceptLoading(false); 
+        setOpenAcceptModal(false);
+    }
+
+    function handleRejectStudent (id) {
+        setRejectLoading(true); 
+        rejectStudent.mutate(id);
+        setRejectLoading(false); 
+        setOpenRejectModal(false);
+    }
+   
 
     return (
         <div className="border rounded-md bg-[#0f172a] text-white">
@@ -103,7 +120,7 @@ const StudentRequestCard = ({ item }) => {
             <div className="bg-[#141d31] flex justify-between items-center gap-8 px-4 py-2">
                 <button
                     disabled={rejectLoading || acceptLoading}
-                    onClick={() => { setRejectLoading(true); rejectStudent.mutate(_id); }}
+                    onClick={() => { setOpenRejectModal(true) }}
                     className="w-1/2 text-center text-xs flex justify-center items-center
                  bg-red-500 bg-opacity-10 border-red-500 py-[6px] border rounded hover:bg-opacity-30 
                  hover:shadow-[0px_0px_7px] hover:shadow-red-600 duration-300 disabled:cursor-wait
@@ -120,7 +137,7 @@ const StudentRequestCard = ({ item }) => {
                     disabled={acceptLoading || rejectLoading}
                     className="w-1/2 text-center text-xs flex justify-center items-center
                  bg-green-500 bg-opacity-10 border-green-500 py-[6px] border rounded hover:bg-opacity-30 hover:shadow-[0px_0px_7px] hover:shadow-green-600 duration-300 disabled:cursor-wait "
-                    onClick={() => { setAcceptLoading(true); acceptStudent.mutate(_id) }}>
+                    onClick={() => {setOpenAcceptModal(true)}}>
                     {
                         acceptLoading ?
                             <ImSpinner9 size={16} className="text-blue-500 animate-spin duration-200" />
@@ -129,6 +146,8 @@ const StudentRequestCard = ({ item }) => {
                     }
                 </button>
             </div>
+            <ConfirmModal openModal={openAcceptModal} modalHandler={handleAcceptStudent} setOpenModal={setOpenAcceptModal} prop={_id} btnText="Accept"/>
+            <ConfirmModal openModal={openRejectModal} modalHandler={handleRejectStudent} setOpenModal={setOpenRejectModal} prop={_id} btnText="Reject"/>
         </div>
     );
 };
