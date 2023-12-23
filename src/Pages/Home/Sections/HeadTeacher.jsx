@@ -1,5 +1,5 @@
 import AOS from "aos";
-import HeadTeacherImg from "../../../assets/Home/Sections/head.jpg";
+import HeadTeacherImg from "../../../assets/Home/Sections/head.jpeg";
 
 const HeadTeacher = () => {
     AOS.init();
@@ -14,7 +14,7 @@ const HeadTeacher = () => {
                 <div className="flex justify-center items-center">
                     <h3
                         className="relative -top-4 bg-white dark:bg-[#162446d2] text-center px-3 pb-1 rounded-full font-Themify text-lg font-thin text-black dark:text-white">
-                        Chris Thompson
+                        Abdur Rahim
                     </h3>
                 </div>
                 <div className="bg-white dark:bg-[#162446] px-2 py-2 italic font-thin  text-center">

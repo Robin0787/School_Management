@@ -82,8 +82,9 @@ const OurStudents = () => {
                                         Ten
                                     </Tab>
                                 </Tab.List>
+                                <article className='bg-gray-200 dark:bg-[#121f3a] p-3 rounded'>
                                 <div
-                                data-aos="fade-left" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false" className='w-[120px]  bg-gray-200 text-black dark:bg-[#121f3a] dark:text-white rounded'>
+                                data-aos="fade-left" data-aos-delay="50" data-aos-once="false" data-aos-mirror="false" className='w-[120px]  bg-white text-black dark:bg-[#0b1427] dark:text-white rounded'>
                                     {
                                         showGenderFilter
                                             ?
@@ -105,6 +106,7 @@ const OurStudents = () => {
                                             ''
                                     }
                                 </div>
+                                </article>
                             </section>
 
                             <Tab.Panels data-aos="zoom-in-up" data-aos-delay="100" data-aos-once="false" data-aos-mirror="false"
@@ -116,7 +118,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.six?.length > 0 ?
-                                                    <StudentsTable items={students.six} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
+                                                    <StudentsTable items={students.six} query={'gender'} value={selectedGender} h={"md:h-[640px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -131,7 +133,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.seven?.length > 0 ?
-                                                    <StudentsTable items={students.seven} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
+                                                    <StudentsTable items={students.seven} query={'gender'} value={selectedGender} h={"md:h-[640px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -146,7 +148,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.eight?.length > 0 ?
-                                                    <StudentsTable items={students.eight} query={'gender'} value={selectedGender} h={"md:h-[480px]"} />
+                                                    <StudentsTable items={students.eight} query={'gender'} value={selectedGender} h={"md:h-[640px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -161,7 +163,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.nine?.length > 0 ?
-                                                    <StudentsTable items={students.nine} query={'group'} value={selectedGroup} h={"md:h-[480px]"} />
+                                                    <StudentsTable items={students.nine} query={'group'} value={selectedGroup} h={"md:h-[640px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
@@ -176,7 +178,7 @@ const OurStudents = () => {
                                             :
                                             (
                                                 students?.ten?.length > 0 ?
-                                                    <StudentsTable items={students.ten} query={'group'} value={selectedGroup} h={"md:h-[480px]"} />
+                                                    <StudentsTable items={students.ten} query={'group'} value={selectedGroup} h={"md:h-[640px]"} />
                                                     :
                                                     <section className='flex justify-center items-center h-full w-full'>
                                                         <h1 className='text-xl text-center italic'>No Students Available!</h1>
