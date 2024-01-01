@@ -69,10 +69,10 @@ const routes = createBrowserRouter([
                 path: "our-students",
                 element: <Suspense fallback={<PageLoader />}><OurStudents /></Suspense>
             },
-            {
-                path: 'about-us',
-                element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
-            },
+            // {
+            //     path: 'about-us',
+            //     element: <Suspense fallback={<PageLoader />}><AboutUs /></Suspense>
+            // },
             {
                 path: 'gallery',
                 element: <Suspense fallback={<PageLoader />}><Gallery /></Suspense>
