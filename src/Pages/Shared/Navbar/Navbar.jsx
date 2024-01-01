@@ -34,9 +34,9 @@ const Navbar = () => {
                         <Link to={'/gallery'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             Gallery
                         </Link>
-                        <Link to={'/about-us'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
+                        {/* <Link to={'/about-us'} className={`${styles.nav_menu} ${isBgImgTrue ? "" : "text-black dark:text-white"}`}>
                             About Us
-                        </Link>
+                        </Link> */}
                         <button
                             className={`${isBgImgTrue ? "" : "text-black dark:text-white"}`} onClick={handleThemeSwitch}>
                             {theme === 'dark' ?
@@ -110,9 +110,9 @@ const Navbar = () => {
                                 <Link to={'/gallery'} className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     Gallery
                                 </Link>
-                                <Link to="/about-us" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
+                                {/* <Link to="/about-us" className={`${styles.nav_menu}`} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
                                     About Us
-                                </Link>
+                                </Link> */}
                                 {
                                     user ?
                                         <Link to={'/dashboard'} onClick={() => { setOpenMobileMenu(prev => !prev) }}>
